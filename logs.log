@@ -1,0 +1,1400 @@
+2025-08-06 20:31:06,659 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:31:06,663 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:31:06,911 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:31:06,995 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:31:13,233 [INFO] aiogram.event - Update id=182330194 is handled. Duration 343 ms by bot id=8153616825
+2025-08-06 20:31:14,717 [INFO] aiogram.event - Update id=182330195 is handled. Duration 515 ms by bot id=8153616825
+2025-08-06 20:31:18,707 [INFO] aiogram.event - Update id=182330196 is handled. Duration 328 ms by bot id=8153616825
+2025-08-06 20:31:19,919 [INFO] aiogram.event - Update id=182330197 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 20:31:21,529 [INFO] aiogram.event - Update id=182330198 is handled. Duration 171 ms by bot id=8153616825
+2025-08-06 20:31:22,934 [INFO] aiogram.event - Update id=182330199 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 20:31:22,939 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=38, wallet=None
+2025-08-06 20:31:22,939 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:31:27,291 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 20:31:27,293 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 20:31:27,294 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=38, wallet=None
+2025-08-06 20:31:27,295 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:31:27,296 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '38', 'description': 'Exchange order 38'}
+2025-08-06 20:31:27,672 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:31:27,673 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:31:27,675 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:31:27,676 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=38, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:31:27,677 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:31:27,678 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 20:31:36,762 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:31:36,763 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:31:36,765 [ERROR] handlers.user - Attempt 1 failed for order 38: 'PaymentAPIManager' object has no attribute 'nicepay_methods'
+2025-08-06 20:31:56,711 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:31:56,712 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:31:56,962 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:32:20,293 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:32:20,293 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:32:20,579 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:32:20,663 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:32:26,160 [INFO] aiogram.event - Update id=182330200 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 20:32:27,537 [INFO] aiogram.event - Update id=182330201 is handled. Duration 562 ms by bot id=8153616825
+2025-08-06 20:32:30,014 [INFO] aiogram.event - Update id=182330202 is handled. Duration 360 ms by bot id=8153616825
+2025-08-06 20:32:31,221 [INFO] aiogram.event - Update id=182330203 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:32:32,529 [INFO] aiogram.event - Update id=182330204 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:32:33,700 [INFO] aiogram.event - Update id=182330205 is handled. Duration 203 ms by bot id=8153616825
+2025-08-06 20:32:33,706 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=39, wallet=None
+2025-08-06 20:32:33,706 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:32:37,872 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 20:32:37,874 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 20:32:37,875 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=39, wallet=None
+2025-08-06 20:32:37,876 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:32:37,876 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '39', 'description': 'Exchange order 39'}
+2025-08-06 20:32:38,232 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:32:38,234 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:32:38,235 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:32:38,236 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=39, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:32:38,237 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:32:38,238 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 20:32:40,629 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:32:40,631 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:32:40,632 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=39, wallet=None
+2025-08-06 20:32:40,633 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 20:32:40,927 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'r92689-391abd-d5ec94-1b0ab1-dadJVs', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/r92689-391abd-d5ec94-1b0ab1-dadJVs', 'expired': 1754519547}}
+2025-08-06 20:32:40,929 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '39', 'order_id': '39', 'payment_url': '', 'amount': 2500}
+2025-08-06 20:32:40,930 [WARNING] asyncio - Attempt to update forbidden field 'nicepay_id' in orders table ignored
+2025-08-06 20:33:01,444 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:33:01,445 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:33:01,710 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:39:09,647 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:39:09,653 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:39:09,928 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:39:10,007 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:39:18,986 [INFO] aiogram.event - Update id=182330206 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 20:39:30,254 [INFO] aiogram.event - Update id=182330207 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 20:39:32,662 [INFO] aiogram.event - Update id=182330208 is handled. Duration 390 ms by bot id=8153616825
+2025-08-06 20:39:35,274 [INFO] aiogram.event - Update id=182330209 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 20:39:41,386 [INFO] aiogram.event - Update id=182330210 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 20:39:43,142 [INFO] aiogram.event - Update id=182330211 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 20:39:44,496 [INFO] aiogram.event - Update id=182330212 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 20:39:44,500 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=40, wallet=None
+2025-08-06 20:39:44,500 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:39:49,236 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 20:39:49,237 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 20:39:49,238 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=40, wallet=None
+2025-08-06 20:39:49,238 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:39:49,239 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '40', 'description': 'Exchange order 40'}
+2025-08-06 20:39:49,710 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:39:49,711 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:39:49,711 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:39:49,711 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=40, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:39:49,712 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:39:49,712 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 20:39:57,548 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:39:57,550 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:39:57,551 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=40, wallet=None
+2025-08-06 20:39:57,552 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 20:39:57,553 [ERROR] api.api_manager - Ошибка при создании заказа через NicePay: NicePayAPI.create_payment() got an unexpected keyword argument 'method'
+2025-08-06 20:39:57,554 [ERROR] api.api_manager - Все платежные API не сработали
+2025-08-06 20:39:57,555 [WARNING] handlers.user - None order creation failed on attempt 1 for order 40: Все платежные API не сработали
+2025-08-06 20:40:03,213 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:40:03,215 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:40:03,471 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:41:55,248 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:41:55,252 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:41:55,519 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:41:55,603 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:41:58,407 [INFO] aiogram.event - Update id=182330213 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 20:41:59,526 [INFO] aiogram.event - Update id=182330214 is handled. Duration 359 ms by bot id=8153616825
+2025-08-06 20:42:02,132 [INFO] aiogram.event - Update id=182330215 is handled. Duration 421 ms by bot id=8153616825
+2025-08-06 20:42:03,478 [INFO] aiogram.event - Update id=182330216 is handled. Duration 203 ms by bot id=8153616825
+2025-08-06 20:42:04,822 [INFO] aiogram.event - Update id=182330217 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 20:42:06,064 [INFO] aiogram.event - Update id=182330218 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 20:42:06,067 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=41, wallet=None
+2025-08-06 20:42:06,068 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:42:06,715 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': True, 'data': {'id': 'h0r7pi8v1n', 'requisite': '+7 989 444 50 01', 'owner': 'Сулейманов шихали ', 'bank': 'Озон банк', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-06 20:42:06,715 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'h0r7pi8v1n', 'requisite': '+7 989 444 50 01', 'owner': 'Сулейманов шихали ', 'bank': 'Озон банк', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-06 20:42:17,597 [INFO] api.onlypays_api - OnlyPays cancel_order response: {'success': True}
+2025-08-06 20:42:17,598 [INFO] api.api_manager - Отмена заказа h0r7pi8v1n через OnlyPays: {'success': True, 'api_name': 'OnlyPays'}
+2025-08-06 20:42:17,726 [INFO] aiogram.event - Update id=182330219 is handled. Duration 547 ms by bot id=8153616825
+2025-08-06 20:42:19,019 [INFO] aiogram.event - Update id=182330220 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 20:42:20,088 [INFO] aiogram.event - Update id=182330221 is handled. Duration 328 ms by bot id=8153616825
+2025-08-06 20:42:22,639 [INFO] aiogram.event - Update id=182330222 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 20:42:23,567 [INFO] aiogram.event - Update id=182330223 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 20:42:24,908 [INFO] aiogram.event - Update id=182330224 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 20:42:25,976 [INFO] aiogram.event - Update id=182330225 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 20:42:25,981 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=1250, pay_types=sbp, personal_id=42, wallet=None
+2025-08-06 20:42:25,981 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:42:30,117 [INFO] api.onlypays_api - OnlyPays create_order response (sum 1250): {'success': False, 'error': 'No available requisites'}
+2025-08-06 20:42:30,119 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 20:42:30,120 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=1250, pay_types=['sbp'], personal_id=42, wallet=None
+2025-08-06 20:42:30,121 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:42:30,122 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 1250, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '42', 'description': 'Exchange order 42'}
+2025-08-06 20:42:30,560 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:42:30,561 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:42:30,562 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:42:30,563 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=1250, pay_types=sbp, personal_id=42, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:42:30,563 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:42:30,564 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '1250'}
+2025-08-06 20:42:33,047 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:42:33,049 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:42:33,050 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=1250, pay_types=sbp_rub, personal_id=42, wallet=None
+2025-08-06 20:42:33,051 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 20:42:33,350 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'YMK689-393fcd-d5ec94-1b0ab1-dc5Dir', 'amount': 125000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/YMK689-393fcd-d5ec94-1b0ab1-dc5Dir', 'expired': 1754520140}}
+2025-08-06 20:42:33,353 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '42', 'order_id': '42', 'payment_url': '', 'amount': 1250}
+2025-08-06 20:42:33,359 [ERROR] handlers.user - Attempt 1 failed for order 42: no such column: nicepay_id
+2025-08-06 20:42:35,740 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:42:35,740 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:42:36,001 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:43:58,373 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:43:58,436 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:43:58,702 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:43:58,782 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:44:01,674 [INFO] aiogram.event - Update id=182330226 is handled. Duration 640 ms by bot id=8153616825
+2025-08-06 20:44:05,543 [INFO] aiogram.event - Update id=182330227 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 20:44:07,604 [INFO] aiogram.event - Update id=182330228 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 20:44:08,800 [INFO] aiogram.event - Update id=182330229 is handled. Duration 500 ms by bot id=8153616825
+2025-08-06 20:44:10,405 [INFO] aiogram.event - Update id=182330230 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 20:44:11,396 [INFO] aiogram.event - Update id=182330231 is handled. Duration 171 ms by bot id=8153616825
+2025-08-06 20:44:13,010 [INFO] aiogram.event - Update id=182330232 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 20:44:14,145 [INFO] aiogram.event - Update id=182330233 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 20:44:14,150 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=1250, pay_types=sbp, personal_id=1, wallet=None
+2025-08-06 20:44:14,150 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:44:18,427 [INFO] api.onlypays_api - OnlyPays create_order response (sum 1250): {'success': False, 'error': 'No available requisites'}
+2025-08-06 20:44:18,428 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 20:44:18,429 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=1250, pay_types=['sbp'], personal_id=1, wallet=None
+2025-08-06 20:44:18,430 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:44:18,431 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 1250, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-06 20:44:18,843 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:44:18,844 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:44:18,844 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:44:18,845 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=1250, pay_types=sbp, personal_id=1, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:44:18,846 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:44:18,846 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '1250'}
+2025-08-06 20:44:21,195 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:44:21,197 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:44:21,197 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=1250, pay_types=sbp_rub, personal_id=1, wallet=None
+2025-08-06 20:44:21,198 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 20:44:21,490 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'mby689-39468d-d5ec94-1b0ab1-dc9eQH', 'amount': 125000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/mby689-39468d-d5ec94-1b0ab1-dc9eQH', 'expired': 1754520248}}
+2025-08-06 20:44:21,491 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '1', 'order_id': '1', 'payment_url': '', 'amount': 1250}
+2025-08-06 20:47:02,585 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:47:02,587 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:47:02,840 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:47:06,033 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:47:06,038 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:47:06,300 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:47:06,382 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:47:10,144 [INFO] aiogram.event - Update id=182330234 is handled. Duration 329 ms by bot id=8153616825
+2025-08-06 20:47:11,140 [INFO] aiogram.event - Update id=182330235 is handled. Duration 281 ms by bot id=8153616825
+2025-08-06 20:47:12,171 [INFO] aiogram.event - Update id=182330236 is handled. Duration 421 ms by bot id=8153616825
+2025-08-06 20:47:14,573 [INFO] aiogram.event - Update id=182330237 is handled. Duration 266 ms by bot id=8153616825
+2025-08-06 20:47:15,695 [INFO] aiogram.event - Update id=182330238 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 20:47:17,105 [INFO] aiogram.event - Update id=182330239 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:47:18,275 [INFO] aiogram.event - Update id=182330240 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 20:47:18,284 [WARNING] handlers.user - Order 2 amount 250 is below Greengo minimum 500
+2025-08-06 20:47:25,928 [INFO] aiogram.event - Update id=182330241 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:47:27,127 [INFO] aiogram.event - Update id=182330242 is handled. Duration 313 ms by bot id=8153616825
+2025-08-06 20:47:29,454 [INFO] aiogram.event - Update id=182330243 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 20:47:30,816 [INFO] aiogram.event - Update id=182330244 is handled. Duration 92 ms by bot id=8153616825
+2025-08-06 20:47:33,016 [INFO] aiogram.event - Update id=182330245 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:47:34,596 [INFO] aiogram.event - Update id=182330246 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 20:47:34,600 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=625, pay_types=sbp, personal_id=3, wallet=None
+2025-08-06 20:47:34,600 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 20:47:34,849 [INFO] api.onlypays_api - OnlyPays create_order response (sum 625): {'success': False, 'error': 'min order amount is 1000'}
+2025-08-06 20:47:34,850 [WARNING] api.api_manager - OnlyPays не смог создать заказ: min order amount is 1000
+2025-08-06 20:47:34,851 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=625, pay_types=['sbp'], personal_id=3, wallet=None
+2025-08-06 20:47:34,851 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 20:47:34,852 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 625, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '3', 'description': 'Exchange order 3'}
+2025-08-06 20:47:35,203 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 20:47:35,204 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 20:47:35,206 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 20:47:35,207 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=625, pay_types=sbp, personal_id=3, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 20:47:35,207 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 20:47:35,208 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '625'}
+2025-08-06 20:47:35,587 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:47:35,589 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 20:47:35,590 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=625, pay_types=sbp_rub, personal_id=3, wallet=None
+2025-08-06 20:47:35,591 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 20:47:35,880 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'Hpz689-3952ad-d5ec94-1b0ab1-dcfdjF', 'amount': 62500, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/Hpz689-3952ad-d5ec94-1b0ab1-dcfdjF', 'expired': 1754520442}}
+2025-08-06 20:47:35,882 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '3', 'order_id': '3', 'payment_url': 'https://processinglink.io/pay/Hpz689-3952ad-d5ec94-1b0ab1-dcfdjF', 'amount': 625}
+2025-08-06 20:52:41,015 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 20:52:41,017 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:52:41,270 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 20:52:44,828 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 20:52:44,835 [INFO] __main__ - Database initialized successfully
+2025-08-06 20:52:45,119 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 20:52:45,199 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 20:54:12,676 [INFO] aiogram.event - Update id=182330247 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 20:54:13,613 [INFO] aiogram.event - Update id=182330248 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:02:55,488 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:02:55,489 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:02:55,747 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:02:58,879 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:02:58,883 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:02:59,129 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:02:59,213 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:03:24,083 [INFO] aiogram.event - Update id=182330249 is handled. Duration 344 ms by bot id=8153616825
+2025-08-06 21:03:25,181 [INFO] aiogram.event - Update id=182330250 is handled. Duration 436 ms by bot id=8153616825
+2025-08-06 21:03:26,803 [INFO] aiogram.event - Update id=182330251 is handled. Duration 358 ms by bot id=8153616825
+2025-08-06 21:03:28,132 [INFO] aiogram.event - Update id=182330252 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 21:03:36,838 [INFO] aiogram.event - Update id=182330253 is handled. Duration 188 ms by bot id=8153616825
+2025-08-06 21:03:38,251 [INFO] aiogram.event - Update id=182330254 is handled. Duration 234 ms by bot id=8153616825
+2025-08-06 21:03:38,257 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=4, wallet=None
+2025-08-06 21:03:38,258 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:03:42,534 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:03:42,536 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:03:42,536 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=4, wallet=None
+2025-08-06 21:03:42,537 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:03:42,537 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '4', 'description': 'Exchange order 4'}
+2025-08-06 21:03:43,068 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:03:43,069 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:03:43,071 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:03:43,072 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=4, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:03:43,073 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:03:43,074 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 21:03:45,800 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:03:45,801 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:03:45,803 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=4, wallet=None
+2025-08-06 21:03:45,803 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:03:46,100 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'E3X689-398f5d-d5ec94-1b0ab1-deb7Oq', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/E3X689-398f5d-d5ec94-1b0ab1-deb7Oq', 'expired': 1754521413}}
+2025-08-06 21:03:46,102 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '4', 'order_id': '4', 'payment_url': 'https://processinglink.io/pay/E3X689-398f5d-d5ec94-1b0ab1-deb7Oq', 'amount': 2500}
+2025-08-06 21:03:50,543 [INFO] aiogram.event - Update id=182330255 is not handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:03:50,544 [ERROR] aiogram.event - Cause exception while process update id=182330255 by bot id=8153616825
+KeyError: 'greengo_id'
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 924, in confirm_cancel_order_handler
+    await check_status_handler(message)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 809, in check_status_handler
+    if order['status'] == 'waiting' and (order['onlypays_id'] or order['pspware_id'] or order['greengo_id']):
+KeyError: 'greengo_id'
+2025-08-06 21:09:36,499 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:09:36,499 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:09:36,755 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:09:43,020 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:09:43,068 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:09:43,360 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:09:43,446 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:09:48,164 [INFO] aiogram.event - Update id=182330256 is handled. Duration 485 ms by bot id=8153616825
+2025-08-06 21:09:52,718 [INFO] aiogram.event - Update id=182330257 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:09:59,104 [INFO] aiogram.event - Update id=182330258 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:10:00,954 [INFO] aiogram.event - Update id=182330259 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 21:10:02,144 [INFO] aiogram.event - Update id=182330260 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:10:03,763 [INFO] aiogram.event - Update id=182330261 is handled. Duration 281 ms by bot id=8153616825
+2025-08-06 21:10:04,814 [INFO] aiogram.event - Update id=182330262 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:10:06,183 [INFO] aiogram.event - Update id=182330263 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 21:10:07,280 [INFO] aiogram.event - Update id=182330264 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:10:07,288 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=1, wallet=None
+2025-08-06 21:10:07,288 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:10:12,823 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:10:12,825 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:10:12,826 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=1, wallet=None
+2025-08-06 21:10:12,826 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:10:12,827 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-06 21:10:13,301 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:10:13,302 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:10:13,303 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:10:13,304 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=1, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:10:13,304 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:10:13,305 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 21:10:15,822 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:10:15,823 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:10:15,824 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=1, wallet=None
+2025-08-06 21:10:15,825 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:10:16,130 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'K7D689-39a7bd-d5ec94-1b0ab1-dff800', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/K7D689-39a7bd-d5ec94-1b0ab1-dff800', 'expired': 1754521803}}
+2025-08-06 21:10:16,132 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '1', 'order_id': '1', 'payment_url': 'https://processinglink.io/pay/K7D689-39a7bd-d5ec94-1b0ab1-dff800', 'amount': 2500}
+2025-08-06 21:10:18,010 [ERROR] api.nicepay_api - HTTP 404: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /public/api/payment/status</pre>
+</body>
+</html>
+ for https://nicepay.io/public/api/payment/status
+2025-08-06 21:10:18,011 [INFO] api.api_manager - Статус заказа 1 от NicePay: {'success': False, 'error': 'HTTP 404: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /public/api/payment/status</pre>\n</body>\n</html>\n', 'api_name': 'NicePay'}
+2025-08-06 21:10:18,112 [INFO] aiogram.event - Update id=182330265 is not handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:10:18,112 [ERROR] aiogram.event - Cause exception while process update id=182330265 by bot id=8153616825
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 877, in check_status_handler
+    await message.answer(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 248, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+2025-08-06 21:10:21,838 [ERROR] api.nicepay_api - HTTP 404: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /public/api/payment/status</pre>
+</body>
+</html>
+ for https://nicepay.io/public/api/payment/status
+2025-08-06 21:10:21,839 [INFO] api.api_manager - Статус заказа 1 от NicePay: {'success': False, 'error': 'HTTP 404: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /public/api/payment/status</pre>\n</body>\n</html>\n', 'api_name': 'NicePay'}
+2025-08-06 21:10:21,925 [INFO] aiogram.event - Update id=182330266 is not handled. Duration 280 ms by bot id=8153616825
+2025-08-06 21:10:21,925 [ERROR] aiogram.event - Cause exception while process update id=182330266 by bot id=8153616825
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 877, in check_status_handler
+    await message.answer(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 248, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+2025-08-06 21:10:47,388 [ERROR] api.nicepay_api - HTTP 404: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /public/api/payment/status</pre>
+</body>
+</html>
+ for https://nicepay.io/public/api/payment/status
+2025-08-06 21:10:47,388 [INFO] api.api_manager - Статус заказа 1 от NicePay: {'success': False, 'error': 'HTTP 404: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /public/api/payment/status</pre>\n</body>\n</html>\n', 'api_name': 'NicePay'}
+2025-08-06 21:10:47,472 [INFO] aiogram.event - Update id=182330267 is not handled. Duration 594 ms by bot id=8153616825
+2025-08-06 21:10:47,472 [ERROR] aiogram.event - Cause exception while process update id=182330267 by bot id=8153616825
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 947, in confirm_cancel_order_handler
+    await check_status_handler(message)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 877, in check_status_handler
+    await message.answer(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 248, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+2025-08-06 21:11:19,231 [ERROR] api.nicepay_api - HTTP 404: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /public/api/payment/cancel</pre>
+</body>
+</html>
+ for https://nicepay.io/public/api/payment/cancel
+2025-08-06 21:11:19,232 [INFO] api.api_manager - Отмена заказа 1 через NicePay: {'success': False, 'error': 'HTTP 404: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /public/api/payment/cancel</pre>\n</body>\n</html>\n', 'api_name': 'NicePay'}
+2025-08-06 21:11:19,479 [INFO] aiogram.event - Update id=182330268 is not handled. Duration 453 ms by bot id=8153616825
+2025-08-06 21:11:19,479 [ERROR] aiogram.event - Cause exception while process update id=182330268 by bot id=8153616825
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 54
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 932, in confirm_cancel_order_handler
+    await message.answer(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 248, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 54
+2025-08-06 21:13:11,913 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:13:11,913 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:13:12,164 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:13:16,115 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:13:16,119 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:13:16,375 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:13:16,462 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:13:24,014 [INFO] aiogram.event - Update id=182330269 is handled. Duration 546 ms by bot id=8153616825
+2025-08-06 21:13:24,802 [INFO] aiogram.event - Update id=182330270 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:13:26,461 [INFO] aiogram.event - Update id=182330271 is handled. Duration 328 ms by bot id=8153616825
+2025-08-06 21:13:27,572 [INFO] aiogram.event - Update id=182330272 is handled. Duration 281 ms by bot id=8153616825
+2025-08-06 21:13:28,311 [INFO] aiogram.event - Update id=182330273 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:13:29,575 [INFO] aiogram.event - Update id=182330274 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:13:31,212 [INFO] aiogram.event - Update id=182330275 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 21:13:31,216 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=2, wallet=None
+2025-08-06 21:13:31,217 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:13:35,348 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:13:35,349 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:13:35,350 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=2, wallet=None
+2025-08-06 21:13:35,351 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:13:35,352 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '2', 'description': 'Exchange order 2'}
+2025-08-06 21:13:35,825 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:13:35,827 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:13:35,828 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:13:35,829 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=2, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:13:35,830 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:13:35,831 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 21:13:38,395 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:13:38,397 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:13:38,397 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=2, wallet=None
+2025-08-06 21:13:38,398 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:13:38,690 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'qRq689-39b45d-d5ec94-1b0ab1-e05AFv', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/qRq689-39b45d-d5ec94-1b0ab1-e05AFv', 'expired': 1754522005}}
+2025-08-06 21:13:38,692 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '2', 'order_id': '2', 'payment_url': 'https://processinglink.io/pay/qRq689-39b45d-d5ec94-1b0ab1-e05AFv', 'amount': 2500}
+2025-08-06 21:13:40,958 [ERROR] api.nicepay_api - HTTP 404: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /public/api/payment/status</pre>
+</body>
+</html>
+ for https://nicepay.io/public/api/payment/status
+2025-08-06 21:13:40,959 [INFO] api.api_manager - Статус заказа 2 от NicePay: {'success': False, 'error': 'HTTP 404: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /public/api/payment/status</pre>\n</body>\n</html>\n', 'api_name': 'NicePay'}
+2025-08-06 21:13:41,060 [INFO] aiogram.event - Update id=182330276 is not handled. Duration 311 ms by bot id=8153616825
+2025-08-06 21:13:41,061 [ERROR] aiogram.event - Cause exception while process update id=182330276 by bot id=8153616825
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 878, in check_status_handler
+    await message.answer(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 248, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "!doctype" at byte offset 60
+2025-08-06 21:13:43,780 [INFO] aiogram.event - Update id=182330277 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:13:45,377 [INFO] aiogram.event - Update id=182330278 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-06 21:24:52,218 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:24:52,238 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:24:52,546 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:24:52,627 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:24:58,304 [INFO] aiogram.event - Update id=182330279 is handled. Duration 406 ms by bot id=8153616825
+2025-08-06 21:24:59,354 [INFO] aiogram.event - Update id=182330280 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:25:05,710 [INFO] aiogram.event - Update id=182330281 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 21:25:07,025 [INFO] aiogram.event - Update id=182330282 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:25:08,242 [INFO] aiogram.event - Update id=182330283 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 21:25:09,830 [INFO] aiogram.event - Update id=182330284 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:25:10,805 [INFO] aiogram.event - Update id=182330285 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 21:25:10,809 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=3, wallet=None
+2025-08-06 21:25:10,810 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:25:15,504 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:25:15,505 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:25:15,505 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=3, wallet=None
+2025-08-06 21:25:15,505 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:25:15,505 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '3', 'description': 'Exchange order 3'}
+2025-08-06 21:25:15,872 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:25:15,873 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:25:15,873 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:25:15,873 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=3, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:25:15,874 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:25:15,874 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 21:25:18,251 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:25:18,252 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:25:18,252 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=3, wallet=None
+2025-08-06 21:25:18,253 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:25:18,663 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'RQa689-39e01d-d5ec94-1b0ab1-e28i40', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/RQa689-39e01d-d5ec94-1b0ab1-e28i40', 'expired': 1754522705}}
+2025-08-06 21:25:18,665 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '3', 'order_id': '3', 'payment_url': 'https://processinglink.io/pay/RQa689-39e01d-d5ec94-1b0ab1-e28i40', 'amount': 2500}
+2025-08-06 21:25:22,068 [ERROR] api.api_manager - Ошибка проверки статуса через NicePay: 'NicePayAPI' object has no attribute 'get_payment_status'
+2025-08-06 21:25:22,207 [INFO] aiogram.event - Update id=182330286 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 21:39:18,889 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:39:18,909 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:39:19,197 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:39:19,276 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:39:24,887 [INFO] aiogram.event - Update id=182330287 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 21:39:26,027 [INFO] aiogram.event - Update id=182330288 is handled. Duration 343 ms by bot id=8153616825
+2025-08-06 21:39:27,354 [INFO] aiogram.event - Update id=182330289 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:39:28,443 [INFO] aiogram.event - Update id=182330290 is handled. Duration 171 ms by bot id=8153616825
+2025-08-06 21:39:29,790 [INFO] aiogram.event - Update id=182330291 is handled. Duration 187 ms by bot id=8153616825
+2025-08-06 21:39:32,007 [INFO] aiogram.event - Update id=182330292 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 21:39:32,015 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=sbp, personal_id=4, wallet=None
+2025-08-06 21:39:32,016 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:39:36,477 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:39:36,478 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:39:36,478 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['sbp'], personal_id=4, wallet=None
+2025-08-06 21:39:36,478 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:39:36,478 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '4', 'description': 'Exchange order 4'}
+2025-08-06 21:39:36,948 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:39:36,949 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:39:36,950 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:39:36,950 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=sbp, personal_id=4, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz\
+2025-08-06 21:39:36,950 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:39:36,950 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz\\', 'from_amount': '2500'}
+2025-08-06 21:39:39,464 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:39:39,466 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:39:39,466 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sbp_rub, personal_id=4, wallet=None
+2025-08-06 21:39:39,467 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:39:39,905 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'vuW689-3a15ed-d5ec94-1b0ab1-e3a9lq', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/vuW689-3a15ed-d5ec94-1b0ab1-e3a9lq', 'expired': 1754523566}}
+2025-08-06 21:39:39,906 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '4', 'order_id': '4', 'payment_url': 'https://processinglink.io/pay/vuW689-3a15ed-d5ec94-1b0ab1-e3a9lq', 'amount': 2500}
+2025-08-06 21:39:44,042 [INFO] aiogram.event - Update id=182330293 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:39:52,495 [INFO] aiogram.event - Update id=182330294 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:39:53,531 [INFO] aiogram.event - Update id=182330295 is handled. Duration 264 ms by bot id=8153616825
+2025-08-06 21:39:55,077 [INFO] aiogram.event - Update id=182330296 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 21:39:56,388 [INFO] aiogram.event - Update id=182330297 is handled. Duration 203 ms by bot id=8153616825
+2025-08-06 21:39:58,423 [INFO] aiogram.event - Update id=182330298 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 21:39:59,513 [INFO] aiogram.event - Update id=182330299 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 21:39:59,517 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=5, wallet=None
+2025-08-06 21:39:59,518 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-06 21:40:05,011 [INFO] api.onlypays_api - OnlyPays create_order response (sum 2500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 21:40:05,012 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 21:40:05,012 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=5, wallet=None
+2025-08-06 21:40:05,012 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-06 21:40:05,012 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '5', 'description': 'Exchange order 5'}
+2025-08-06 21:40:05,508 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:40:05,509 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:40:05,511 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:40:05,512 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=5, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:40:05,513 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-06 21:40:05,514 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '2500'}
+2025-08-06 21:40:11,490 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:40:11,492 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 21:40:11,493 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=5, wallet=None
+2025-08-06 21:40:11,494 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-06 21:40:11,780 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'qnt689-3a17ed-d5ec94-1b0ab1-e3ecGm', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/qnt689-3a17ed-d5ec94-1b0ab1-e3ecGm', 'expired': 1754523598}}
+2025-08-06 21:40:11,782 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '5', 'order_id': '5', 'payment_url': 'https://processinglink.io/pay/qnt689-3a17ed-d5ec94-1b0ab1-e3ecGm', 'amount': 2500}
+2025-08-06 21:40:14,857 [INFO] aiogram.event - Update id=182330300 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:40:17,159 [INFO] aiogram.event - Update id=182330301 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:40:18,749 [INFO] aiogram.event - Update id=182330302 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 21:40:19,191 [INFO] aiogram.event - Update id=182330303 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:43:33,945 [INFO] aiogram.event - Update id=182330304 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 21:43:34,996 [INFO] aiogram.event - Update id=182330305 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:43:36,161 [INFO] aiogram.event - Update id=182330306 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 21:43:39,197 [INFO] aiogram.event - Update id=182330307 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:43:40,149 [INFO] aiogram.event - Update id=182330308 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:43:45,535 [INFO] aiogram.event - Update id=182330309 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:43:46,546 [INFO] aiogram.event - Update id=182330310 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 21:43:46,551 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=625000, pay_types=sbp, personal_id=6, wallet=None
+2025-08-06 21:43:46,551 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:43:46,794 [INFO] api.onlypays_api - OnlyPays create_order response (sum 625000): {'success': False, 'error': 'max order amount is 150000'}
+2025-08-06 21:43:46,796 [WARNING] api.api_manager - OnlyPays не смог создать заказ: max order amount is 150000
+2025-08-06 21:43:46,797 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=625000, pay_types=['sbp'], personal_id=6, wallet=None
+2025-08-06 21:43:46,797 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 21:43:46,798 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 625000, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '6', 'description': 'Exchange order 6'}
+2025-08-06 21:43:47,233 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 21:43:47,233 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 21:43:47,234 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 21:43:47,235 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=625000, pay_types=sbp, personal_id=6, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 21:43:47,235 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 21:43:47,236 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '625000'}
+2025-08-06 21:43:47,505 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u043c\u043c\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 500 \u0440\u0443\u0431\u043b\u0435\u0439!"}
+2025-08-06 21:43:47,506 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u043c\u043c\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 500 \u0440\u0443\u0431\u043b\u0435\u0439!"}
+2025-08-06 21:43:47,507 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=625000, pay_types=sbp_rub, personal_id=6, wallet=None
+2025-08-06 21:43:47,508 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 21:43:47,754 [INFO] api.nicepay_api - NicePay response: {'status': 'error', 'data': {'message': 'Сумма должна быть меньше чем 85000 RUB. [8500000]'}}
+2025-08-06 21:43:47,755 [WARNING] api.nicepay_api - API error: Сумма должна быть меньше чем 85000 RUB. [8500000]
+2025-08-06 21:43:47,755 [WARNING] api.api_manager - NicePay не смог создать заказ: Сумма должна быть меньше чем 85000 RUB. [8500000]
+2025-08-06 21:43:47,756 [ERROR] api.api_manager - Все платежные API не сработали
+2025-08-06 21:43:47,757 [WARNING] handlers.user - None order creation failed on attempt 1 for order 6: Все платежные API не сработали
+2025-08-06 21:43:57,913 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:43:57,914 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:43:58,181 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:44:44,575 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:44:44,575 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:44:44,841 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:44:44,928 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:44:46,494 [INFO] aiogram.event - Update id=182330311 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:44:47,758 [INFO] aiogram.event - Update id=182330312 is handled. Duration 328 ms by bot id=8153616825
+2025-08-06 21:44:51,289 [INFO] aiogram.event - Update id=182330313 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 21:44:52,447 [INFO] aiogram.event - Update id=182330314 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 21:44:54,141 [INFO] aiogram.event - Update id=182330315 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 21:44:55,358 [INFO] aiogram.event - Update id=182330316 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:44:55,363 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=7, wallet=None
+2025-08-06 21:44:55,363 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:44:55,981 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': '4oyn87er0n', 'requisite': '+7 915 784 27 97', 'owner': '-', 'bank': 'Альфа-банк', 'payment_type': 'sbp', 'bank_id': 0}}
+2025-08-06 21:44:55,982 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': '4oyn87er0n', 'requisite': '+7 915 784 27 97', 'owner': '-', 'bank': 'Альфа-банк', 'payment_type': 'sbp', 'bank_id': 0}
+2025-08-06 21:44:59,832 [INFO] aiogram.event - Update id=182330317 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:45:00,982 [INFO] aiogram.event - Update id=182330318 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:45:01,643 [INFO] aiogram.event - Update id=182330319 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:45:02,847 [INFO] aiogram.event - Update id=182330320 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:45:03,701 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': '4oyn87er0n', 'status': 'waiting', 'personal_id': '7', 'received_sum': None}}
+2025-08-06 21:45:03,702 [INFO] api.api_manager - Статус заказа 4oyn87er0n от OnlyPays: {'success': True, 'data': {'id': '4oyn87er0n', 'status': 'waiting', 'personal_id': '7', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 21:45:03,819 [INFO] aiogram.event - Update id=182330321 is handled. Duration 530 ms by bot id=8153616825
+2025-08-06 21:45:38,460 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:45:38,463 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:45:38,726 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:45:41,881 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:45:41,881 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:45:42,146 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:45:42,213 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:45:42,851 [INFO] aiogram.event - Update id=182330322 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-06 21:45:43,905 [INFO] aiogram.event - Update id=182330323 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:45:44,589 [INFO] aiogram.event - Update id=182330324 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 21:45:48,216 [INFO] aiogram.event - Update id=182330325 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 21:45:49,221 [INFO] aiogram.event - Update id=182330326 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:45:50,288 [INFO] aiogram.event - Update id=182330327 is handled. Duration 452 ms by bot id=8153616825
+2025-08-06 21:45:51,581 [INFO] aiogram.event - Update id=182330328 is handled. Duration 343 ms by bot id=8153616825
+2025-08-06 21:45:52,799 [INFO] aiogram.event - Update id=182330329 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 21:45:55,486 [INFO] aiogram.event - Update id=182330330 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 21:45:56,683 [INFO] aiogram.event - Update id=182330331 is handled. Duration 218 ms by bot id=8153616825
+2025-08-06 21:45:56,687 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=8, wallet=None
+2025-08-06 21:45:56,688 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:46:00,293 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'br2np0r1fz', 'requisite': '+7 982 436 04 40', 'owner': '-', 'bank': 'Alfa', 'payment_type': 'sbp', 'bank_id': 0}}
+2025-08-06 21:46:00,294 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'br2np0r1fz', 'requisite': '+7 982 436 04 40', 'owner': '-', 'bank': 'Alfa', 'payment_type': 'sbp', 'bank_id': 0}
+2025-08-06 21:46:01,539 [INFO] aiogram.event - Update id=182330332 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-06 21:46:02,704 [INFO] aiogram.event - Update id=182330333 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:46:47,119 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:46:47,119 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:46:47,376 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:46:50,612 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:46:50,612 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:46:50,853 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:46:50,934 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:46:52,253 [INFO] aiogram.event - Update id=182330334 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:46:53,132 [INFO] aiogram.event - Update id=182330335 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 21:48:48,655 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:48:48,655 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:48:48,911 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:48:52,933 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:48:52,937 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:48:53,177 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:48:53,256 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:49:01,429 [INFO] aiogram.event - Update id=182330336 is handled. Duration 437 ms by bot id=8153616825
+2025-08-06 21:49:02,368 [INFO] aiogram.event - Update id=182330337 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 21:49:03,609 [INFO] aiogram.event - Update id=182330338 is handled. Duration 484 ms by bot id=8153616825
+2025-08-06 21:49:05,199 [INFO] aiogram.event - Update id=182330339 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 21:49:06,152 [INFO] aiogram.event - Update id=182330340 is handled. Duration 156 ms by bot id=8153616825
+2025-08-06 21:49:07,608 [INFO] aiogram.event - Update id=182330341 is handled. Duration 156 ms by bot id=8153616825
+2025-08-06 21:49:09,179 [INFO] aiogram.event - Update id=182330342 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:49:09,190 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=9, wallet=None
+2025-08-06 21:49:09,190 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:49:09,768 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'himu531elo', 'requisite': '+7 963 370 65 59', 'owner': 'Айшат А', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-06 21:49:09,769 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'himu531elo', 'requisite': '+7 963 370 65 59', 'owner': 'Айшат А', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-06 21:49:13,519 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'himu531elo', 'status': 'waiting', 'personal_id': '9', 'received_sum': None}}
+2025-08-06 21:49:13,520 [INFO] api.api_manager - Статус заказа himu531elo от OnlyPays: {'success': True, 'data': {'id': 'himu531elo', 'status': 'waiting', 'personal_id': '9', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 21:49:13,636 [INFO] aiogram.event - Update id=182330343 is handled. Duration 594 ms by bot id=8153616825
+2025-08-06 21:49:14,349 [INFO] aiogram.event - Update id=182330344 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:49:15,734 [INFO] aiogram.event - Update id=182330345 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:49:16,091 [INFO] aiogram.event - Update id=182330346 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:49:16,549 [INFO] aiogram.event - Update id=182330347 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:49:17,176 [INFO] aiogram.event - Update id=182330348 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 21:52:50,711 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:52:50,726 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:52:50,986 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:52:54,090 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:52:54,094 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:52:54,388 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:52:54,491 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:53:02,687 [INFO] aiogram.event - Update id=182330349 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:53:03,535 [INFO] aiogram.event - Update id=182330350 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 21:53:04,485 [INFO] aiogram.event - Update id=182330351 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 21:53:05,750 [INFO] aiogram.event - Update id=182330352 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 21:53:06,698 [INFO] aiogram.event - Update id=182330353 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 21:53:07,949 [INFO] aiogram.event - Update id=182330354 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-06 21:53:07,949 [ERROR] aiogram.event - Cause exception while process update id=182330354 by bot id=8153616825
+TypeError: InlineKeyboards.order_confirmation() got an unexpected keyword argument 'is_nicepay'
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 442, in address_input_handler
+    await show_order_confirmation(message, state, order_id)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 482, in show_order_confirmation
+    reply_markup=InlineKeyboards.order_confirmation(order_id, is_nicepay=is_nicepay),
+TypeError: InlineKeyboards.order_confirmation() got an unexpected keyword argument 'is_nicepay'
+2025-08-06 21:53:58,697 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:53:58,697 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:53:58,958 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:54:02,152 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:54:02,152 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:54:02,417 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:54:02,481 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:54:03,992 [INFO] aiogram.event - Update id=182330355 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 21:54:05,144 [INFO] aiogram.event - Update id=182330356 is handled. Duration 422 ms by bot id=8153616825
+2025-08-06 21:54:06,356 [INFO] aiogram.event - Update id=182330357 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 21:54:07,328 [INFO] aiogram.event - Update id=182330358 is handled. Duration 93 ms by bot id=8153616825
+2025-08-06 21:54:08,741 [INFO] aiogram.event - Update id=182330359 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 21:54:09,809 [INFO] aiogram.event - Update id=182330360 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 21:54:09,814 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=11, wallet=None
+2025-08-06 21:54:09,814 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 21:54:10,307 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'gbb3bze4wc', 'requisite': '+7 926 985 14 00', 'owner': 'Виталий К', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}}
+2025-08-06 21:54:10,309 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'gbb3bze4wc', 'requisite': '+7 926 985 14 00', 'owner': 'Виталий К', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}
+2025-08-06 21:54:12,834 [INFO] aiogram.event - Update id=182330361 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 21:54:26,514 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 21:54:26,515 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:54:26,771 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 21:54:30,105 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 21:54:30,153 [INFO] __main__ - Database initialized successfully
+2025-08-06 21:54:30,427 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 21:54:30,512 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 21:54:31,178 [INFO] aiogram.event - Update id=182330362 is handled. Duration 500 ms by bot id=8153616825
+2025-08-06 21:54:36,323 [INFO] aiogram.event - Update id=182330363 is handled. Duration 280 ms by bot id=8153616825
+2025-08-06 21:54:57,396 [INFO] aiogram.event - Update id=182330364 is handled. Duration 625 ms by bot id=8153616825
+2025-08-06 21:55:07,793 [INFO] aiogram.event - Update id=182330365 is handled. Duration 359 ms by bot id=8153616825
+2025-08-06 21:55:12,998 [INFO] aiogram.event - Update id=182330366 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 21:55:15,162 [INFO] aiogram.event - Update id=182330367 is handled. Duration 359 ms by bot id=8153616825
+2025-08-06 21:55:29,874 [INFO] aiogram.event - Update id=182330368 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 21:55:53,346 [INFO] aiogram.event - Update id=182330369 is handled. Duration 594 ms by bot id=8153616825
+2025-08-06 21:56:18,360 [INFO] aiogram.event - Update id=182330370 is handled. Duration 281 ms by bot id=8153616825
+2025-08-06 21:56:20,584 [INFO] aiogram.event - Update id=182330371 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:56:23,674 [INFO] aiogram.event - Update id=182330372 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:56:26,256 [INFO] aiogram.event - Update id=182330373 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 21:56:27,795 [INFO] aiogram.event - Update id=182330374 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 21:56:29,174 [INFO] aiogram.event - Update id=182330375 is handled. Duration 390 ms by bot id=8153616825
+2025-08-06 21:56:36,884 [INFO] aiogram.event - Update id=182330376 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 21:56:40,151 [INFO] aiogram.event - Update id=182330377 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 21:56:42,318 [INFO] aiogram.event - Update id=182330378 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:56:42,575 [INFO] aiogram.event - Update id=182330379 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 21:56:43,979 [INFO] aiogram.event - Update id=182330380 is handled. Duration 359 ms by bot id=8153616825
+2025-08-06 21:56:45,058 [INFO] aiogram.event - Update id=182330381 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 21:56:45,331 [INFO] aiogram.event - Update id=182330382 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 21:56:47,146 [INFO] aiogram.event - Update id=182330383 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 21:56:48,272 [INFO] aiogram.event - Update id=182330384 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 21:56:49,316 [INFO] aiogram.event - Update id=182330385 is handled. Duration 93 ms by bot id=8153616825
+2025-08-06 22:01:35,659 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:01:35,659 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:01:35,927 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:01:43,601 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:01:43,617 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:01:43,900 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:01:43,979 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:01:46,716 [INFO] aiogram.event - Update id=182330386 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 22:01:47,771 [INFO] aiogram.event - Update id=182330387 is handled. Duration 327 ms by bot id=8153616825
+2025-08-06 22:01:52,812 [INFO] aiogram.event - Update id=182330388 is handled. Duration 295 ms by bot id=8153616825
+2025-08-06 22:01:53,863 [INFO] aiogram.event - Update id=182330389 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 22:01:55,361 [INFO] aiogram.event - Update id=182330390 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 22:01:56,615 [INFO] aiogram.event - Update id=182330391 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 22:01:59,151 [INFO] aiogram.event - Update id=182330392 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 22:03:34,437 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:03:34,437 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:03:34,689 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:03:38,009 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:03:38,025 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:03:38,319 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:03:38,408 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:03:39,267 [INFO] aiogram.event - Update id=182330393 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 22:03:40,579 [INFO] aiogram.event - Update id=182330394 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 22:03:42,887 [INFO] aiogram.event - Update id=182330395 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 22:06:35,409 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:06:35,409 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:06:35,662 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:06:38,993 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:06:38,993 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:06:39,264 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:06:39,340 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:06:40,420 [INFO] aiogram.event - Update id=182330396 is handled. Duration 235 ms by bot id=8153616825
+2025-08-06 22:06:41,858 [INFO] aiogram.event - Update id=182330397 is handled. Duration 77 ms by bot id=8153616825
+2025-08-06 22:08:24,845 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:08:24,845 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:08:25,099 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:08:29,234 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:08:29,236 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:08:29,497 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:08:29,581 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:08:31,158 [INFO] aiogram.event - Update id=182330398 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 22:08:31,158 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=2, wallet=None
+2025-08-06 22:08:31,158 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 22:08:31,862 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'szvsfi5nta', 'requisite': '+7 988 266 72 11', 'owner': 'Абдулиуслим 3190', 'bank': 'Альфа-Банк', 'payment_type': 'sbp', 'bank_id': 5}}
+2025-08-06 22:08:31,862 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'szvsfi5nta', 'requisite': '+7 988 266 72 11', 'owner': 'Абдулиуслим 3190', 'bank': 'Альфа-Банк', 'payment_type': 'sbp', 'bank_id': 5}
+2025-08-06 22:08:46,267 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:08:46,269 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:08:46,516 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:08:49,676 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:08:49,682 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:08:49,921 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:08:49,998 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:08:53,632 [INFO] aiogram.event - Update id=182330399 is handled. Duration 360 ms by bot id=8153616825
+2025-08-06 22:08:54,730 [INFO] aiogram.event - Update id=182330400 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 22:09:46,348 [INFO] aiogram.event - Update id=182330401 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 22:09:49,348 [INFO] api.pspware_api - [PSPWareAPI] GET https://api.pspware.space/merchant/v2/health Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'}
+2025-08-06 22:09:49,704 [INFO] api.pspware_api - [PSPWareAPI] Response status 200 Body: {"status":"ok"}
+2025-08-06 22:09:50,746 [INFO] aiogram.event - Update id=182330402 is handled. Duration 1405 ms by bot id=8153616825
+2025-08-06 22:09:54,577 [INFO] aiogram.event - Update id=182330403 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 22:09:56,792 [INFO] aiogram.event - Update id=182330404 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 22:09:58,490 [INFO] aiogram.event - Update id=182330405 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 22:12:19,368 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:12:19,390 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:12:19,688 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:12:19,781 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:15:42,726 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:15:42,744 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:15:43,006 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:15:43,084 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:16:59,380 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 22:16:59,380 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:16:59,633 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 22:17:03,884 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 22:17:03,887 [INFO] __main__ - Database initialized successfully
+2025-08-06 22:17:04,145 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 22:17:04,222 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 22:17:16,711 [INFO] aiogram.event - Update id=182330406 is handled. Duration 500 ms by bot id=8153616825
+2025-08-06 22:17:18,209 [INFO] aiogram.event - Update id=182330407 is handled. Duration 282 ms by bot id=8153616825
+2025-08-06 22:17:20,121 [INFO] aiogram.event - Update id=182330408 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 22:17:21,431 [INFO] aiogram.event - Update id=182330409 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 22:17:22,678 [INFO] aiogram.event - Update id=182330410 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 22:17:24,616 [INFO] aiogram.event - Update id=182330411 is handled. Duration 219 ms by bot id=8153616825
+2025-08-06 22:17:26,833 [INFO] aiogram.event - Update id=182330412 is handled. Duration 156 ms by bot id=8153616825
+2025-08-06 22:17:30,078 [INFO] aiogram.event - Update id=182330413 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 22:17:30,758 [INFO] aiogram.event - Update id=182330414 is handled. Duration 204 ms by bot id=8153616825
+2025-08-06 22:17:31,340 [INFO] aiogram.event - Update id=182330415 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 22:17:31,907 [INFO] aiogram.event - Update id=182330416 is handled. Duration 93 ms by bot id=8153616825
+2025-08-06 22:17:32,686 [INFO] aiogram.event - Update id=182330417 is handled. Duration 92 ms by bot id=8153616825
+2025-08-06 22:17:33,709 [INFO] aiogram.event - Update id=182330418 is handled. Duration 515 ms by bot id=8153616825
+2025-08-06 22:17:35,904 [INFO] aiogram.event - Update id=182330419 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 22:17:37,060 [INFO] aiogram.event - Update id=182330420 is handled. Duration 342 ms by bot id=8153616825
+2025-08-06 22:17:38,969 [INFO] aiogram.event - Update id=182330421 is handled. Duration 343 ms by bot id=8153616825
+2025-08-06 22:17:40,691 [INFO] aiogram.event - Update id=182330422 is handled. Duration 281 ms by bot id=8153616825
+2025-08-06 22:17:43,261 [INFO] aiogram.event - Update id=182330423 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 22:17:44,264 [INFO] aiogram.event - Update id=182330424 is handled. Duration 312 ms by bot id=8153616825
+2025-08-06 22:17:46,012 [INFO] aiogram.event - Update id=182330425 is handled. Duration 343 ms by bot id=8153616825
+2025-08-06 23:08:56,464 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-08-06 23:08:56,464 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-06 23:09:00,423 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 64] Указанное сетевое имя более недоступно
+2025-08-06 23:09:00,477 [WARNING] aiogram.dispatcher - Sleep for 1.296418 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-06 23:09:01,859 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2025-08-06 23:09:01,859 [WARNING] aiogram.dispatcher - Sleep for 1.609111 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-06 23:09:04,609 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:09:04,612 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:09:04,870 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:09:09,167 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:09:09,167 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:09:09,452 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:09:09,551 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:09:25,858 [INFO] aiogram.event - Update id=182330426 is handled. Duration 358 ms by bot id=8153616825
+2025-08-06 23:09:26,496 [INFO] aiogram.event - Update id=182330427 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 23:09:34,831 [INFO] aiogram.event - Update id=182330428 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 23:09:36,922 [INFO] aiogram.event - Update id=182330429 is handled. Duration 391 ms by bot id=8153616825
+2025-08-06 23:09:43,131 [INFO] aiogram.event - Update id=182330430 is handled. Duration 407 ms by bot id=8153616825
+2025-08-06 23:09:48,863 [INFO] aiogram.event - Update id=182330431 is handled. Duration 311 ms by bot id=8153616825
+2025-08-06 23:09:51,754 [INFO] aiogram.event - Update id=182330432 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 23:09:52,091 [INFO] aiogram.event - Update id=182330433 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:09:53,250 [INFO] api.pspware_api - [PSPWareAPI] GET https://api.pspware.space/merchant/v2/health Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'}
+2025-08-06 23:09:53,697 [INFO] api.pspware_api - [PSPWareAPI] Response status 200 Body: {"status":"ok"}
+2025-08-06 23:09:53,866 [INFO] aiogram.event - Update id=182330434 is handled. Duration 641 ms by bot id=8153616825
+2025-08-06 23:09:59,178 [INFO] aiogram.event - Update id=182330435 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 23:10:07,440 [INFO] aiogram.event - Update id=182330436 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:10:08,903 [INFO] aiogram.event - Update id=182330437 is handled. Duration 233 ms by bot id=8153616825
+2025-08-06 23:10:10,181 [INFO] aiogram.event - Update id=182330438 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:10:14,929 [INFO] aiogram.event - Update id=182330439 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 23:10:18,183 [INFO] aiogram.event - Update id=182330440 is handled. Duration 170 ms by bot id=8153616825
+2025-08-06 23:10:20,533 [INFO] api.onlypays_api - OnlyPays get_balance response: {'success': False, 'error': 'data error'}
+2025-08-06 23:10:20,642 [INFO] aiogram.event - Update id=182330441 is handled. Duration 719 ms by bot id=8153616825
+2025-08-06 23:10:22,461 [INFO] aiogram.event - Update id=182330442 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:10:32,140 [INFO] aiogram.event - Update id=182330443 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 23:10:33,965 [INFO] aiogram.event - Update id=182330444 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:10:35,905 [INFO] aiogram.event - Update id=182330445 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:10:37,267 [INFO] aiogram.event - Update id=182330446 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:11:13,899 [INFO] aiogram.event - Update id=182330447 is handled. Duration 311 ms by bot id=8153616825
+2025-08-06 23:11:17,847 [INFO] aiogram.event - Update id=182330448 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:11:19,022 [INFO] aiogram.event - Update id=182330449 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 23:11:22,103 [INFO] aiogram.event - Update id=182330450 is handled. Duration 297 ms by bot id=8153616825
+2025-08-06 23:11:23,795 [INFO] aiogram.event - Update id=182330451 is handled. Duration 188 ms by bot id=8153616825
+2025-08-06 23:11:26,886 [INFO] aiogram.event - Update id=182330452 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 23:11:26,893 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=1500, pay_types=sbp, personal_id=3, wallet=None
+2025-08-06 23:11:26,893 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:11:29,578 [INFO] aiogram.event - Update id=182330453 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:11:31,008 [INFO] api.onlypays_api - OnlyPays create_order response (sum 1500): {'success': False, 'error': 'No available requisites'}
+2025-08-06 23:11:31,009 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 23:11:31,009 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=1500, pay_types=['sbp'], personal_id=3, wallet=None
+2025-08-06 23:11:31,010 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 23:11:31,010 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 1500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '3', 'description': 'Exchange order 3'}
+2025-08-06 23:11:31,118 [INFO] aiogram.event - Update id=182330454 is handled. Duration 188 ms by bot id=8153616825
+2025-08-06 23:11:31,122 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=12500, pay_types=card, personal_id=4, wallet=None
+2025-08-06 23:11:31,122 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-06 23:11:31,405 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 23:11:31,407 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 23:11:31,408 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 23:11:31,409 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=1500, pay_types=sbp, personal_id=3, wallet=bc1qrfqd5ndfdwfulgz6vdn473r9hrkm5erp0vy8fg
+2025-08-06 23:11:31,410 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 23:11:31,411 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qrfqd5ndfdwfulgz6vdn473r9hrkm5erp0vy8fg', 'from_amount': '1500'}
+2025-08-06 23:11:31,660 [INFO] api.onlypays_api - OnlyPays create_order response (sum 12500): {'success': True, 'data': {'id': 'hmawvsn9ys', 'requisite': '5536 9139 7534 8042', 'owner': 'Сергей Б', 'bank': 'Тинькофф', 'payment_type': 'card', 'bank_id': 2}}
+2025-08-06 23:11:31,661 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'hmawvsn9ys', 'requisite': '5536 9139 7534 8042', 'owner': 'Сергей Б', 'bank': 'Тинькофф', 'payment_type': 'card', 'bank_id': 2}
+2025-08-06 23:11:33,873 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 23:11:33,874 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 23:11:33,875 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=1500, pay_types=sbp_rub, personal_id=3, wallet=None
+2025-08-06 23:11:33,875 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 23:11:34,326 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': '8rQ689-3b6e8d-d5ec94-1b0ab1-f10OhP', 'amount': 150000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/8rQ689-3b6e8d-d5ec94-1b0ab1-f10OhP', 'expired': 1754529080}}
+2025-08-06 23:11:34,328 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '3', 'order_id': '3', 'payment_url': 'https://processinglink.io/pay/8rQ689-3b6e8d-d5ec94-1b0ab1-f10OhP', 'amount': 1500}
+2025-08-06 23:12:13,568 [INFO] aiogram.event - Update id=182330455 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 23:12:15,404 [INFO] aiogram.event - Update id=182330456 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 23:12:50,984 [INFO] aiogram.event - Update id=182330457 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 23:13:35,823 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:13:35,823 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:13:36,076 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:13:39,295 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:13:39,301 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:13:39,540 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:13:39,607 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:13:48,434 [INFO] aiogram.event - Update id=182330458 is handled. Duration 295 ms by bot id=8153616825
+2025-08-06 23:13:49,375 [INFO] aiogram.event - Update id=182330459 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:13:50,598 [INFO] aiogram.event - Update id=182330460 is handled. Duration 313 ms by bot id=8153616825
+2025-08-06 23:13:52,401 [INFO] aiogram.event - Update id=182330461 is handled. Duration 280 ms by bot id=8153616825
+2025-08-06 23:13:53,382 [INFO] aiogram.event - Update id=182330462 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:13:54,846 [INFO] aiogram.event - Update id=182330463 is handled. Duration 141 ms by bot id=8153616825
+2025-08-06 23:13:55,986 [INFO] aiogram.event - Update id=182330464 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:13:55,994 [ERROR] handlers.user - Attempt 1 failed for API OnlyPays order 5: PaymentAPIManager.create_order() got an unexpected keyword argument 'api_name'
+2025-08-06 23:13:55,995 [ERROR] handlers.user - Attempt 1 failed for API PSPWare order 5: PaymentAPIManager.create_order() got an unexpected keyword argument 'api_name'
+2025-08-06 23:13:55,996 [ERROR] handlers.user - Attempt 1 failed for API Greengo order 5: PaymentAPIManager.create_order() got an unexpected keyword argument 'api_name'
+2025-08-06 23:13:55,996 [ERROR] handlers.user - Attempt 1 failed for API NicePay order 5: PaymentAPIManager.create_order() got an unexpected keyword argument 'api_name'
+2025-08-06 23:14:04,266 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:14:04,266 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:14:04,518 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:14:16,000 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:14:16,004 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:14:16,252 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:14:16,331 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:15:23,456 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:15:23,456 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:15:23,718 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:15:26,850 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:15:26,866 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:15:27,115 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:15:27,208 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:15:30,157 [INFO] aiogram.event - Update id=182330465 is handled. Duration 358 ms by bot id=8153616825
+2025-08-06 23:17:32,663 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:17:32,664 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:17:32,920 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:17:36,036 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:17:36,052 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:17:36,330 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:17:36,410 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:17:41,114 [INFO] aiogram.event - Update id=182330466 is handled. Duration 625 ms by bot id=8153616825
+2025-08-06 23:17:43,306 [INFO] aiogram.event - Update id=182330467 is handled. Duration 295 ms by bot id=8153616825
+2025-08-06 23:17:44,288 [INFO] aiogram.event - Update id=182330468 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 23:17:48,310 [INFO] aiogram.event - Update id=182330469 is handled. Duration 139 ms by bot id=8153616825
+2025-08-06 23:17:49,302 [INFO] aiogram.event - Update id=182330470 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:17:49,306 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=6, wallet=None
+2025-08-06 23:17:49,306 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:17:49,936 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'nu949ezfan', 'requisite': '+7 996 207 05 91', 'owner': 'Денис П.', 'bank': 'Альфа', 'payment_type': 'sbp', 'bank_id': 5}}
+2025-08-06 23:17:49,937 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'nu949ezfan', 'requisite': '+7 996 207 05 91', 'owner': 'Денис П.', 'bank': 'Альфа', 'payment_type': 'sbp', 'bank_id': 5}
+2025-08-06 23:17:54,640 [INFO] aiogram.event - Update id=182330471 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 23:17:55,941 [INFO] aiogram.event - Update id=182330472 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 23:17:56,661 [INFO] aiogram.event - Update id=182330473 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 23:17:58,129 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}}
+2025-08-06 23:17:58,131 [INFO] api.api_manager - Статус заказа nu949ezfan от OnlyPays: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 23:17:58,232 [INFO] aiogram.event - Update id=182330474 is handled. Duration 608 ms by bot id=8153616825
+2025-08-06 23:18:00,810 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}}
+2025-08-06 23:18:00,812 [INFO] api.api_manager - Статус заказа nu949ezfan от OnlyPays: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 23:18:00,930 [INFO] aiogram.event - Update id=182330475 is handled. Duration 608 ms by bot id=8153616825
+2025-08-06 23:21:09,748 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:21:09,757 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:21:10,010 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:21:29,771 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:21:29,771 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:21:30,052 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:21:30,128 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:21:33,329 [INFO] aiogram.event - Update id=182330476 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 23:21:34,398 [INFO] aiogram.event - Update id=182330477 is not handled. Duration 14 ms by bot id=8153616825
+2025-08-06 23:21:34,993 [INFO] aiogram.event - Update id=182330478 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 23:21:35,815 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}}
+2025-08-06 23:21:35,817 [INFO] api.api_manager - Статус заказа nu949ezfan от OnlyPays: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 23:21:36,096 [INFO] aiogram.event - Update id=182330479 is handled. Duration 672 ms by bot id=8153616825
+2025-08-06 23:21:36,481 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}}
+2025-08-06 23:21:36,482 [INFO] api.api_manager - Статус заказа nu949ezfan от OnlyPays: {'success': True, 'data': {'id': 'nu949ezfan', 'status': 'waiting', 'personal_id': '6', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-06 23:21:36,587 [INFO] aiogram.event - Update id=182330480 is handled. Duration 532 ms by bot id=8153616825
+2025-08-06 23:21:37,614 [INFO] aiogram.event - Update id=182330481 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-06 23:21:38,367 [INFO] aiogram.event - Update id=182330482 is not handled. Duration 16 ms by bot id=8153616825
+2025-08-06 23:21:51,160 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:21:51,161 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:21:51,428 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:21:58,323 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:21:58,323 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:21:58,585 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:21:58,652 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:21:59,304 [INFO] aiogram.event - Update id=182330483 is not handled. Duration 14 ms by bot id=8153616825
+2025-08-06 23:22:48,111 [INFO] aiogram.event - Update id=182330484 is handled. Duration 389 ms by bot id=8153616825
+2025-08-06 23:22:59,692 [INFO] aiogram.event - Update id=182330485 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 23:23:06,330 [INFO] aiogram.event - Update id=182330486 is handled. Duration 577 ms by bot id=8153616825
+2025-08-06 23:23:10,797 [INFO] aiogram.event - Update id=182330487 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 23:23:13,855 [INFO] aiogram.event - Update id=182330488 is handled. Duration 342 ms by bot id=8153616825
+2025-08-06 23:23:15,106 [INFO] aiogram.event - Update id=182330489 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:23:22,722 [INFO] aiogram.event - Update id=182330490 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 23:23:24,412 [INFO] aiogram.event - Update id=182330491 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:23:42,659 [INFO] aiogram.event - Update id=182330492 is handled. Duration 280 ms by bot id=8153616825
+2025-08-06 23:23:45,026 [INFO] aiogram.event - Update id=182330493 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:23:49,631 [INFO] aiogram.event - Update id=182330494 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:24:28,230 [INFO] aiogram.event - Update id=182330495 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 23:24:30,345 [INFO] aiogram.event - Update id=182330496 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:24:39,322 [INFO] aiogram.event - Update id=182330497 is handled. Duration 155 ms by bot id=8153616825
+2025-08-06 23:24:39,425 [INFO] aiogram.event - Update id=182330498 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:24:39,650 [INFO] aiogram.event - Update id=182330499 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:24:39,921 [INFO] aiogram.event - Update id=182330500 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 23:24:40,168 [INFO] aiogram.event - Update id=182330501 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 23:24:44,168 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:24:44,169 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:24:44,421 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:24:47,542 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:24:47,548 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:24:47,805 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:24:47,887 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:25:01,521 [INFO] aiogram.event - Update id=182330502 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 23:25:02,453 [INFO] aiogram.event - Update id=182330503 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:25:03,788 [INFO] aiogram.event - Update id=182330504 is handled. Duration 438 ms by bot id=8153616825
+2025-08-06 23:25:05,729 [INFO] aiogram.event - Update id=182330505 is handled. Duration 311 ms by bot id=8153616825
+2025-08-06 23:25:06,599 [INFO] aiogram.event - Update id=182330506 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:25:07,856 [INFO] aiogram.event - Update id=182330507 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:25:08,961 [INFO] aiogram.event - Update id=182330508 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 23:25:20,178 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:25:20,178 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:25:20,445 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:25:23,674 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:25:23,674 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:25:23,931 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:25:24,000 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:25:25,346 [INFO] aiogram.event - Update id=182330509 is handled. Duration 438 ms by bot id=8153616825
+2025-08-06 23:25:46,107 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:25:46,107 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:25:46,388 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:25:49,854 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:25:49,854 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:25:50,144 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:25:50,227 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:25:50,862 [INFO] aiogram.event - Update id=182330510 is handled. Duration 280 ms by bot id=8153616825
+2025-08-06 23:25:50,866 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=8, wallet=None
+2025-08-06 23:25:50,866 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:25:51,326 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'u6ecfdj6my', 'requisite': '+7 951 334 21 87', 'owner': 'Ксения В.', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}}
+2025-08-06 23:25:51,326 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'u6ecfdj6my', 'requisite': '+7 951 334 21 87', 'owner': 'Ксения В.', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}
+2025-08-06 23:25:51,348 [ERROR] handlers.user - Attempt 1 failed for order 8: type object 'ReplyKeyboards' has no attribute 'order_menu'
+2025-08-06 23:26:04,908 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:26:04,909 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:26:05,160 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:26:08,040 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:26:08,040 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:26:08,318 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:26:08,402 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:26:16,371 [INFO] aiogram.event - Update id=182330512 is handled. Duration 172 ms by bot id=8153616825
+2025-08-06 23:26:17,364 [INFO] aiogram.event - Update id=182330511 is handled. Duration 3421 ms by bot id=8153616825
+2025-08-06 23:26:17,723 [INFO] aiogram.event - Update id=182330513 is handled. Duration 344 ms by bot id=8153616825
+2025-08-06 23:26:19,989 [INFO] aiogram.event - Update id=182330514 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:26:21,348 [INFO] aiogram.event - Update id=182330515 is handled. Duration 328 ms by bot id=8153616825
+2025-08-06 23:26:22,933 [INFO] aiogram.event - Update id=182330516 is handled. Duration 311 ms by bot id=8153616825
+2025-08-06 23:26:24,265 [INFO] aiogram.event - Update id=182330517 is handled. Duration 140 ms by bot id=8153616825
+2025-08-06 23:26:25,547 [INFO] aiogram.event - Update id=182330518 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 23:26:26,733 [INFO] aiogram.event - Update id=182330519 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:26:26,740 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=9, wallet=None
+2025-08-06 23:26:26,740 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:26:27,136 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': True, 'data': {'id': 'vlwojqfjsw', 'requisite': '+7 999 623 01 06', 'owner': 'Рафаэль', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}}
+2025-08-06 23:26:27,138 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'vlwojqfjsw', 'requisite': '+7 999 623 01 06', 'owner': 'Рафаэль', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}
+2025-08-06 23:26:27,158 [ERROR] handlers.user - Attempt 1 failed for order 9: type object 'ReplyKeyboards' has no attribute 'order_menu'
+2025-08-06 23:26:27,879 [INFO] aiogram.event - Update id=182330520 is handled. Duration 375 ms by bot id=8153616825
+2025-08-06 23:26:29,568 [INFO] aiogram.event - Update id=182330521 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:26:32,746 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:26:32,747 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:26:33,015 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:26:35,880 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:26:35,880 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:26:36,134 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:26:36,215 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:28:01,508 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:28:01,521 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:28:01,778 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:30:45,429 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:30:45,429 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:30:45,714 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:30:45,789 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:30:56,265 [INFO] aiogram.event - Update id=182330523 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 23:30:57,301 [INFO] aiogram.event - Update id=182330524 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 23:30:58,416 [INFO] aiogram.event - Update id=182330525 is handled. Duration 265 ms by bot id=8153616825
+2025-08-06 23:30:59,194 [INFO] aiogram.event - Update id=182330526 is handled. Duration 108 ms by bot id=8153616825
+2025-08-06 23:31:00,795 [INFO] aiogram.event - Update id=182330527 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:31:01,950 [INFO] aiogram.event - Update id=182330528 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 23:31:01,954 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=sbp, personal_id=10, wallet=None
+2025-08-06 23:31:01,955 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:31:06,200 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': False, 'error': 'No available requisites'}
+2025-08-06 23:31:06,201 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 23:31:06,202 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=6250, pay_types=['sbp'], personal_id=10, wallet=None
+2025-08-06 23:31:06,202 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 23:31:06,203 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 6250, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '10', 'description': 'Exchange order 10'}
+2025-08-06 23:31:06,720 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 23:31:06,721 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 23:31:06,722 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 23:31:06,723 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=6250, pay_types=sbp, personal_id=10, wallet=bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz
+2025-08-06 23:31:06,724 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 23:31:06,725 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qyk7c3nu3sqpygh8xdl2vdxwmr3w0jufp23ymxz', 'from_amount': '6250'}
+2025-08-06 23:31:07,417 [ERROR] api.greengo_api - Greengo network error: 0, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url=URL('https://api.greengo.cc/api/v2/order/create')
+2025-08-06 23:31:07,418 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: 0, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url=URL('https://api.greengo.cc/api/v2/order/create')
+2025-08-06 23:31:07,419 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=6250, pay_types=sbp_rub, personal_id=10, wallet=None
+2025-08-06 23:31:07,420 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 23:31:07,699 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'NCV689-3bb7dd-d5ec94-1b0ab1-f3avA2', 'amount': 625000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/NCV689-3bb7dd-d5ec94-1b0ab1-f3avA2', 'expired': 1754530253}}
+2025-08-06 23:31:07,701 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '10', 'order_id': '10', 'payment_url': 'https://processinglink.io/pay/NCV689-3bb7dd-d5ec94-1b0ab1-f3avA2', 'amount': 6250}
+2025-08-06 23:31:10,291 [INFO] aiogram.event - Update id=182330529 is handled. Duration 125 ms by bot id=8153616825
+2025-08-06 23:31:20,442 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:31:20,442 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:31:20,711 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'
+2025-08-06 23:31:23,652 [INFO] __main__ - Starting bot in polling mode
+2025-08-06 23:31:23,698 [INFO] __main__ - Database initialized successfully
+2025-08-06 23:31:23,953 [INFO] aiogram.dispatcher - Start polling
+2025-08-06 23:31:24,032 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:31:30,943 [INFO] aiogram.event - Update id=182330530 is handled. Duration 561 ms by bot id=8153616825
+2025-08-06 23:31:38,027 [INFO] aiogram.event - Update id=182330531 is handled. Duration 578 ms by bot id=8153616825
+2025-08-06 23:31:39,669 [INFO] aiogram.event - Update id=182330532 is handled. Duration 94 ms by bot id=8153616825
+2025-08-06 23:31:40,824 [INFO] aiogram.event - Update id=182330533 is handled. Duration 296 ms by bot id=8153616825
+2025-08-06 23:31:48,145 [INFO] aiogram.event - Update id=182330534 is handled. Duration 390 ms by bot id=8153616825
+2025-08-06 23:31:55,348 [INFO] aiogram.event - Update id=182330535 is handled. Duration 313 ms by bot id=8153616825
+2025-08-06 23:34:12,988 [INFO] aiogram.event - Update id=182330536 is handled. Duration 421 ms by bot id=8153616825
+2025-08-06 23:34:18,763 [INFO] aiogram.event - Update id=182330537 is handled. Duration 250 ms by bot id=8153616825
+2025-08-06 23:34:22,704 [INFO] aiogram.event - Update id=182330538 is handled. Duration 202 ms by bot id=8153616825
+2025-08-06 23:34:26,280 [INFO] aiogram.event - Update id=182330539 is handled. Duration 390 ms by bot id=8153616825
+2025-08-06 23:34:30,058 [INFO] aiogram.event - Update id=182330540 is handled. Duration 780 ms by bot id=8153616825
+2025-08-06 23:34:31,944 [INFO] aiogram.event - Update id=182330541 is handled. Duration 186 ms by bot id=8153616825
+2025-08-06 23:34:35,336 [INFO] aiogram.event - Update id=182330542 is handled. Duration 110 ms by bot id=8153616825
+2025-08-06 23:34:37,035 [INFO] aiogram.event - Update id=182330543 is handled. Duration 109 ms by bot id=8153616825
+2025-08-06 23:34:37,044 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=1875, pay_types=sbp, personal_id=1, wallet=None
+2025-08-06 23:34:37,044 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-06 23:34:40,962 [INFO] api.onlypays_api - OnlyPays create_order response (sum 1875): {'success': False, 'error': 'No available requisites'}
+2025-08-06 23:34:40,962 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-06 23:34:40,962 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=1875, pay_types=['sbp'], personal_id=1, wallet=None
+2025-08-06 23:34:40,963 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: sbp -> sbp)
+2025-08-06 23:34:40,963 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 1875, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['sbp'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-06 23:34:41,368 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-06 23:34:41,368 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-06 23:34:41,368 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-06 23:34:41,368 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=1875, pay_types=sbp, personal_id=1, wallet=bc1qrfqd5ndfdwfulgz6vdn473r9hrkm5erp0vy8fg
+2025-08-06 23:34:41,368 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: sbp -> sbp)
+2025-08-06 23:34:41,368 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'sbp', 'wallet': 'bc1qrfqd5ndfdwfulgz6vdn473r9hrkm5erp0vy8fg', 'from_amount': '1875'}
+2025-08-06 23:34:50,570 [ERROR] api.greengo_api - Greengo HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 23:34:50,571 [WARNING] api.api_manager - Greengo не смог создать заказ: HTTP 400: {"result":false,"message":"\u041d\u0435\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0445 \u0441\u0447\u0435\u0442\u043e\u0432"}
+2025-08-06 23:34:50,571 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=1875, pay_types=sbp_rub, personal_id=1, wallet=None
+2025-08-06 23:34:50,571 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: sbp -> sbp_rub)
+2025-08-06 23:34:50,844 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'enE689-3bc5dd-d5ec94-1b0ab1-f3eaoF', 'amount': 187500, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/enE689-3bc5dd-d5ec94-1b0ab1-f3eaoF', 'expired': 1754530477}}
+2025-08-06 23:34:50,845 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '1', 'order_id': '1', 'payment_url': 'https://processinglink.io/pay/enE689-3bc5dd-d5ec94-1b0ab1-f3eaoF', 'amount': 1875}
+2025-08-06 23:41:37,225 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-06 23:41:37,225 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-06 23:41:37,486 [ERROR] __main__ - Shutdown error: 'Config' object has no attribute 'USE_WEBHOOK'

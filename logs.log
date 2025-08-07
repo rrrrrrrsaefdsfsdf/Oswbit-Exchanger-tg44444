@@ -469,3 +469,668 @@ RuntimeError: This event loop is already running
 2025-08-07 12:40:48,449 [INFO] aiogram.event - Update id=182330644 is handled. Duration 125 ms by bot id=8153616825
 2025-08-07 12:40:49,362 [INFO] aiogram.event - Update id=182330645 is handled. Duration 109 ms by bot id=8153616825
 2025-08-07 12:40:55,585 [INFO] aiogram.event - Update id=182330646 is handled. Duration 594 ms by bot id=8153616825
+2025-08-07 13:03:48,466 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:03:48,547 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:03:52,716 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:03:52,716 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:03:53,926 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:03:54,235 [INFO] aiogram.event - Update id=182330676 is handled. Duration 312 ms by bot id=8153616825
+2025-08-07 13:03:55,192 [INFO] aiogram.event - Update id=182330677 is handled. Duration 125 ms by bot id=8153616825
+2025-08-07 13:03:58,145 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:03:58,145 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:04:03,313 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:03,314 [WARNING] aiogram.dispatcher - Sleep for 1.253553 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:04:08,721 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:08,721 [WARNING] aiogram.dispatcher - Sleep for 1.608075 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:04:11,411 [INFO] aiogram.dispatcher - Connection established (tryings = 3, bot id = 8153616825)
+2025-08-07 13:04:11,418 [INFO] aiogram.event - Update id=182330684 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-07 13:04:14,558 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:14,559 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:04:19,727 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:19,727 [WARNING] aiogram.dispatcher - Sleep for 1.189462 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:04:25,051 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:25,051 [WARNING] aiogram.dispatcher - Sleep for 1.572955 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:04:31,317 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:31,317 [WARNING] aiogram.dispatcher - Sleep for 1.959417 seconds and try again... (tryings = 3, bot id = 8153616825)
+2025-08-07 13:04:38,513 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:38,513 [WARNING] aiogram.dispatcher - Sleep for 2.351660 seconds and try again... (tryings = 4, bot id = 8153616825)
+2025-08-07 13:04:46,846 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:46,846 [WARNING] aiogram.dispatcher - Sleep for 3.217438 seconds and try again... (tryings = 5, bot id = 8153616825)
+2025-08-07 13:04:53,739 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:04:53,739 [WARNING] aiogram.dispatcher - Sleep for 4.038320 seconds and try again... (tryings = 6, bot id = 8153616825)
+2025-08-07 13:05:02,449 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:02,450 [WARNING] aiogram.dispatcher - Sleep for 5.091518 seconds and try again... (tryings = 7, bot id = 8153616825)
+2025-08-07 13:05:12,788 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:12,788 [WARNING] aiogram.dispatcher - Sleep for 5.037912 seconds and try again... (tryings = 8, bot id = 8153616825)
+2025-08-07 13:05:23,168 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:23,168 [WARNING] aiogram.dispatcher - Sleep for 4.970193 seconds and try again... (tryings = 9, bot id = 8153616825)
+2025-08-07 13:05:33,288 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:33,290 [WARNING] aiogram.dispatcher - Sleep for 5.121314 seconds and try again... (tryings = 10, bot id = 8153616825)
+2025-08-07 13:05:43,489 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:43,490 [WARNING] aiogram.dispatcher - Sleep for 5.040383 seconds and try again... (tryings = 11, bot id = 8153616825)
+2025-08-07 13:05:53,470 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:05:53,470 [WARNING] aiogram.dispatcher - Sleep for 5.024758 seconds and try again... (tryings = 12, bot id = 8153616825)
+2025-08-07 13:06:03,719 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:06:03,719 [WARNING] aiogram.dispatcher - Sleep for 4.879371 seconds and try again... (tryings = 13, bot id = 8153616825)
+2025-08-07 13:06:13,937 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:06:13,937 [WARNING] aiogram.dispatcher - Sleep for 4.917119 seconds and try again... (tryings = 14, bot id = 8153616825)
+2025-08-07 13:06:24,049 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:06:24,049 [WARNING] aiogram.dispatcher - Sleep for 5.212748 seconds and try again... (tryings = 15, bot id = 8153616825)
+2025-08-07 13:06:27,417 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:06:27,417 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:06:27,673 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:08:15,282 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:08:15,357 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:08:19,516 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:19,516 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:08:20,738 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:08:21,106 [INFO] aiogram.event - Update id=182330693 is handled. Duration 375 ms by bot id=8153616825
+2025-08-07 13:08:24,655 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:24,655 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:08:26,775 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:08:26,782 [INFO] aiogram.event - Update id=182330696 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-07 13:08:29,866 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:29,866 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:08:35,009 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:35,009 [WARNING] aiogram.dispatcher - Sleep for 1.410452 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:08:36,939 [INFO] aiogram.dispatcher - Connection established (tryings = 2, bot id = 8153616825)
+2025-08-07 13:08:36,945 [INFO] aiogram.event - Update id=182330700 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-07 13:08:40,558 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:40,558 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:08:45,706 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:45,707 [WARNING] aiogram.dispatcher - Sleep for 1.175227 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:08:51,338 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:51,338 [WARNING] aiogram.dispatcher - Sleep for 1.442777 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:08:53,551 [INFO] aiogram.dispatcher - Connection established (tryings = 3, bot id = 8153616825)
+2025-08-07 13:08:54,325 [INFO] aiogram.event - Update id=182330703 is handled. Duration 780 ms by bot id=8153616825
+2025-08-07 13:08:57,750 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:08:57,755 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:08:59,864 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:09:00,146 [INFO] aiogram.event - Update id=182330704 is handled. Duration 281 ms by bot id=8153616825
+2025-08-07 13:09:04,434 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:04,434 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:09:08,783 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:08,783 [WARNING] aiogram.dispatcher - Sleep for 1.474279 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:09:17,491 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:17,491 [WARNING] aiogram.dispatcher - Sleep for 1.875984 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:09:27,492 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:27,492 [WARNING] aiogram.dispatcher - Sleep for 2.462417 seconds and try again... (tryings = 3, bot id = 8153616825)
+2025-08-07 13:09:38,223 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:38,224 [WARNING] aiogram.dispatcher - Sleep for 3.212973 seconds and try again... (tryings = 4, bot id = 8153616825)
+2025-08-07 13:09:46,654 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:09:46,654 [WARNING] aiogram.dispatcher - Sleep for 4.227584 seconds and try again... (tryings = 5, bot id = 8153616825)
+2025-08-07 13:09:51,937 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:09:51,937 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:09:52,194 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:09:56,175 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:09:56,247 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:09:59,161 [INFO] aiogram.event - Update id=182330705 is handled. Duration 297 ms by bot id=8153616825
+2025-08-07 13:10:00,205 [INFO] aiogram.event - Update id=182330706 is handled. Duration 108 ms by bot id=8153616825
+2025-08-07 13:10:01,487 [INFO] aiogram.event - Update id=182330707 is handled. Duration 406 ms by bot id=8153616825
+2025-08-07 13:10:04,311 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:04,311 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:10:04,483 [INFO] aiogram.event - Update id=182330708 is handled. Duration 375 ms by bot id=8153616825
+2025-08-07 13:10:08,355 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:10:08,460 [INFO] aiogram.event - Update id=182330709 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:10:09,986 [INFO] aiogram.event - Update id=182330710 is handled. Duration 140 ms by bot id=8153616825
+2025-08-07 13:10:11,166 [INFO] aiogram.event - Update id=182330711 is handled. Duration 155 ms by bot id=8153616825
+2025-08-07 13:10:11,170 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=10, wallet=None
+2025-08-07 13:10:11,171 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:10:12,051 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'y9cdc7jyhz', 'requisite': '+7 961 128 72 95', 'owner': 'Дарья К.', 'bank': 'БКС', 'payment_type': 'sbp', 'bank_id': 0}}
+2025-08-07 13:10:12,052 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'y9cdc7jyhz', 'requisite': '+7 961 128 72 95', 'owner': 'Дарья К.', 'bank': 'БКС', 'payment_type': 'sbp', 'bank_id': 0}
+2025-08-07 13:10:13,445 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:13,446 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:10:17,058 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-07 13:10:17,065 [INFO] aiogram.event - Update id=182330713 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-07 13:10:18,039 [INFO] aiogram.event - Update id=182330714 is not handled. Duration 15 ms by bot id=8153616825
+2025-08-07 13:10:18,807 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:18,807 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:10:19,041 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'y9cdc7jyhz', 'status': 'waiting', 'personal_id': '10', 'received_sum': None}}
+2025-08-07 13:10:19,042 [INFO] api.api_manager - Статус заказа y9cdc7jyhz от OnlyPays: {'success': True, 'data': {'id': 'y9cdc7jyhz', 'status': 'waiting', 'personal_id': '10', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-07 13:10:19,157 [INFO] aiogram.event - Update id=182330715 is handled. Duration 531 ms by bot id=8153616825
+2025-08-07 13:10:23,950 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:23,950 [WARNING] aiogram.dispatcher - Sleep for 1.331035 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:10:29,852 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:29,853 [WARNING] aiogram.dispatcher - Sleep for 1.784462 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:10:36,576 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:36,577 [WARNING] aiogram.dispatcher - Sleep for 2.411811 seconds and try again... (tryings = 3, bot id = 8153616825)
+2025-08-07 13:10:44,377 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:44,383 [WARNING] aiogram.dispatcher - Sleep for 3.107631 seconds and try again... (tryings = 4, bot id = 8153616825)
+2025-08-07 13:10:53,433 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:10:53,447 [WARNING] aiogram.dispatcher - Sleep for 3.948724 seconds and try again... (tryings = 5, bot id = 8153616825)
+2025-08-07 13:11:01,206 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:01,206 [WARNING] aiogram.dispatcher - Sleep for 4.986034 seconds and try again... (tryings = 6, bot id = 8153616825)
+2025-08-07 13:11:10,890 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:10,890 [WARNING] aiogram.dispatcher - Sleep for 4.886688 seconds and try again... (tryings = 7, bot id = 8153616825)
+2025-08-07 13:11:20,955 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:20,955 [WARNING] aiogram.dispatcher - Sleep for 5.014646 seconds and try again... (tryings = 8, bot id = 8153616825)
+2025-08-07 13:11:31,077 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:31,085 [WARNING] aiogram.dispatcher - Sleep for 5.059226 seconds and try again... (tryings = 9, bot id = 8153616825)
+2025-08-07 13:11:41,315 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:41,315 [WARNING] aiogram.dispatcher - Sleep for 4.887279 seconds and try again... (tryings = 10, bot id = 8153616825)
+2025-08-07 13:11:51,406 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:11:51,419 [WARNING] aiogram.dispatcher - Sleep for 5.202988 seconds and try again... (tryings = 11, bot id = 8153616825)
+2025-08-07 13:11:55,739 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:11:55,739 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:11:55,992 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:11:59,808 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:11:59,886 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:12:00,419 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'y9cdc7jyhz', 'status': 'waiting', 'personal_id': '10', 'received_sum': None}}
+2025-08-07 13:12:00,419 [INFO] api.api_manager - Статус заказа y9cdc7jyhz от OnlyPays: {'success': True, 'data': {'id': 'y9cdc7jyhz', 'status': 'waiting', 'personal_id': '10', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-07 13:12:00,419 [INFO] aiogram.event - Update id=182330716 is not handled. Duration 437 ms by bot id=8153616825
+2025-08-07 13:12:00,419 [ERROR] aiogram.event - Cause exception while process update id=182330716 by bot id=8153616825
+AttributeError: type object 'ReplyKeyboards' has no attribute 'order_menu'
+Traceback (most recent call last):
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\middlewares\chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\handlers\user.py", line 928, in check_status_handler
+    reply_markup=ReplyKeyboards.order_menu(),
+AttributeError: type object 'ReplyKeyboards' has no attribute 'order_menu'
+2025-08-07 13:12:04,142 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:04,143 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-07 13:12:09,284 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:09,284 [WARNING] aiogram.dispatcher - Sleep for 1.171090 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-07 13:12:14,608 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:14,608 [WARNING] aiogram.dispatcher - Sleep for 1.561986 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-07 13:12:20,735 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:20,735 [WARNING] aiogram.dispatcher - Sleep for 2.046137 seconds and try again... (tryings = 3, bot id = 8153616825)
+2025-08-07 13:12:26,959 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:26,959 [WARNING] aiogram.dispatcher - Sleep for 2.457303 seconds and try again... (tryings = 4, bot id = 8153616825)
+2025-08-07 13:12:33,569 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-07 13:12:33,570 [WARNING] aiogram.dispatcher - Sleep for 3.373848 seconds and try again... (tryings = 5, bot id = 8153616825)
+2025-08-07 13:12:47,033 [INFO] aiogram.dispatcher - Connection established (tryings = 6, bot id = 8153616825)
+2025-08-07 13:12:50,545 [INFO] aiogram.event - Update id=182330725 is handled. Duration 327 ms by bot id=8153616825
+2025-08-07 13:12:52,037 [INFO] aiogram.event - Update id=182330726 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:12:53,374 [INFO] aiogram.event - Update id=182330727 is handled. Duration 530 ms by bot id=8153616825
+2025-08-07 13:12:55,997 [INFO] aiogram.event - Update id=182330728 is handled. Duration 375 ms by bot id=8153616825
+2025-08-07 13:12:57,117 [INFO] aiogram.event - Update id=182330729 is handled. Duration 108 ms by bot id=8153616825
+2025-08-07 13:12:58,681 [INFO] aiogram.event - Update id=182330730 is handled. Duration 202 ms by bot id=8153616825
+2025-08-07 13:12:59,852 [INFO] aiogram.event - Update id=182330731 is handled. Duration 187 ms by bot id=8153616825
+2025-08-07 13:12:59,856 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=11, wallet=None
+2025-08-07 13:12:59,856 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:13:00,439 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'z994e00aob', 'requisite': '+7 903 911 15 13', 'owner': 'Домашкин Дмитрий Петрович', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}}
+2025-08-07 13:13:00,439 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'z994e00aob', 'requisite': '+7 903 911 15 13', 'owner': 'Домашкин Дмитрий Петрович', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}
+2025-08-07 13:13:00,448 [ERROR] handlers.user - Attempt 1 failed for order 11: type object 'ReplyKeyboards' has no attribute 'order_menu'
+2025-08-07 13:13:58,461 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:13:58,462 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:13:58,723 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:14:02,572 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:14:02,673 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:14:04,737 [INFO] aiogram.event - Update id=182330732 is handled. Duration 297 ms by bot id=8153616825
+2025-08-07 13:14:07,055 [INFO] aiogram.event - Update id=182330733 is handled. Duration 437 ms by bot id=8153616825
+2025-08-07 13:14:09,712 [INFO] aiogram.event - Update id=182330734 is handled. Duration 452 ms by bot id=8153616825
+2025-08-07 13:14:10,710 [INFO] aiogram.event - Update id=182330735 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:14:11,970 [INFO] aiogram.event - Update id=182330736 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:14:13,068 [INFO] aiogram.event - Update id=182330737 is handled. Duration 93 ms by bot id=8153616825
+2025-08-07 13:14:13,072 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=12, wallet=None
+2025-08-07 13:14:13,073 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:14:14,181 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'anf4e3hy3g', 'requisite': '+7 950 243 34 63', 'owner': 'Николай И.', 'bank': 'АК БАРС Банк', 'payment_type': 'sbp', 'bank_id': 20}}
+2025-08-07 13:14:14,182 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'anf4e3hy3g', 'requisite': '+7 950 243 34 63', 'owner': 'Николай И.', 'bank': 'АК БАРС Банк', 'payment_type': 'sbp', 'bank_id': 20}
+2025-08-07 13:14:14,191 [ERROR] handlers.user - Attempt 1 failed for order 12: InlineKeyboards.order_menu() missing 1 required positional argument: 'order_id'
+2025-08-07 13:15:12,751 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:15:12,752 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:15:13,005 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:15:16,967 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:15:17,042 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:15:20,148 [INFO] aiogram.event - Update id=182330738 is handled. Duration 359 ms by bot id=8153616825
+2025-08-07 13:15:21,368 [INFO] aiogram.event - Update id=182330739 is handled. Duration 437 ms by bot id=8153616825
+2025-08-07 13:15:24,259 [INFO] aiogram.event - Update id=182330740 is handled. Duration 391 ms by bot id=8153616825
+2025-08-07 13:15:26,953 [INFO] aiogram.event - Update id=182330741 is handled. Duration 108 ms by bot id=8153616825
+2025-08-07 13:15:28,141 [INFO] aiogram.event - Update id=182330742 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:15:29,298 [INFO] aiogram.event - Update id=182330743 is handled. Duration 94 ms by bot id=8153616825
+2025-08-07 13:15:29,303 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=13, wallet=None
+2025-08-07 13:15:29,303 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:15:30,008 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'j80d6pjgid', 'requisite': '+7 999 878 88 86', 'owner': 'Ситорохон', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}}
+2025-08-07 13:15:30,009 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'j80d6pjgid', 'requisite': '+7 999 878 88 86', 'owner': 'Ситорохон', 'bank': 'Тинькофф', 'payment_type': 'sbp', 'bank_id': 2}
+2025-08-07 13:15:31,753 [INFO] aiogram.event - Update id=182330744 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-07 13:15:33,646 [INFO] aiogram.event - Update id=182330745 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-07 13:16:01,208 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:16:01,208 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:16:01,464 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:16:05,247 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:16:05,324 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:16:06,829 [INFO] aiogram.event - Update id=182330746 is handled. Duration 327 ms by bot id=8153616825
+2025-08-07 13:16:08,645 [INFO] aiogram.event - Update id=182330747 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:16:09,893 [INFO] aiogram.event - Update id=182330748 is handled. Duration 500 ms by bot id=8153616825
+2025-08-07 13:16:12,538 [INFO] aiogram.event - Update id=182330749 is handled. Duration 390 ms by bot id=8153616825
+2025-08-07 13:16:15,985 [INFO] aiogram.event - Update id=182330750 is handled. Duration 140 ms by bot id=8153616825
+2025-08-07 13:16:17,190 [INFO] aiogram.event - Update id=182330751 is handled. Duration 125 ms by bot id=8153616825
+2025-08-07 13:16:18,206 [INFO] aiogram.event - Update id=182330752 is handled. Duration 108 ms by bot id=8153616825
+2025-08-07 13:16:18,212 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=14, wallet=None
+2025-08-07 13:16:18,213 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:16:18,819 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'py3eo9ks0h', 'requisite': '+7 982 241 93 41', 'owner': 'Лушников Д', 'bank': 'АК БАРС Банк', 'payment_type': 'sbp', 'bank_id': 20}}
+2025-08-07 13:16:18,819 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'py3eo9ks0h', 'requisite': '+7 982 241 93 41', 'owner': 'Лушников Д', 'bank': 'АК БАРС Банк', 'payment_type': 'sbp', 'bank_id': 20}
+2025-08-07 13:16:20,126 [INFO] aiogram.event - Update id=182330753 is handled. Duration 187 ms by bot id=8153616825
+2025-08-07 13:16:20,133 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=14, wallet=None
+2025-08-07 13:16:20,134 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:16:20,643 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'qbd8xsveba', 'requisite': '+7 926 841 65 50', 'owner': 'Федор К.', 'bank': 'Альфа', 'payment_type': 'sbp', 'bank_id': 5}}
+2025-08-07 13:16:20,643 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'qbd8xsveba', 'requisite': '+7 926 841 65 50', 'owner': 'Федор К.', 'bank': 'Альфа', 'payment_type': 'sbp', 'bank_id': 5}
+2025-08-07 13:16:23,876 [INFO] aiogram.event - Update id=182330754 is handled. Duration 125 ms by bot id=8153616825
+2025-08-07 13:16:23,881 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=14, wallet=None
+2025-08-07 13:16:23,881 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:16:24,404 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'f4pvttcv9z', 'requisite': '+7 925 133 72 29', 'owner': 'Андарс', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}}
+2025-08-07 13:16:24,405 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'f4pvttcv9z', 'requisite': '+7 925 133 72 29', 'owner': 'Андарс', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}
+2025-08-07 13:16:27,378 [INFO] aiogram.event - Update id=182330755 is handled. Duration 108 ms by bot id=8153616825
+2025-08-07 13:16:27,383 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=14, wallet=None
+2025-08-07 13:16:27,383 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:16:27,951 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'vr8cqcehol', 'requisite': '+7 989 661 38 28', 'owner': 'Абдусаламова Сиянат Курбановна', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-07 13:16:27,951 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'vr8cqcehol', 'requisite': '+7 989 661 38 28', 'owner': 'Абдусаламова Сиянат Курбановна', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-07 13:16:30,122 [INFO] aiogram.event - Update id=182330756 is handled. Duration 172 ms by bot id=8153616825
+2025-08-07 13:16:30,126 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=14, wallet=None
+2025-08-07 13:16:30,126 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:16:30,736 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': '38grks36bn', 'requisite': '+7 904 149 73 27', 'owner': 'Юлия И', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-07 13:16:30,737 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': '38grks36bn', 'requisite': '+7 904 149 73 27', 'owner': 'Юлия И', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-07 13:16:33,525 [INFO] aiogram.event - Update id=182330757 is handled. Duration 156 ms by bot id=8153616825
+2025-08-07 13:17:21,967 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:17:21,967 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:17:22,231 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-08-07 13:17:25,896 [INFO] aiogram.dispatcher - Start polling
+2025-08-07 13:17:25,971 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:17:28,181 [INFO] aiogram.event - Update id=182330758 is handled. Duration 296 ms by bot id=8153616825
+2025-08-07 13:17:29,336 [INFO] aiogram.event - Update id=182330759 is handled. Duration 484 ms by bot id=8153616825
+2025-08-07 13:17:36,326 [INFO] aiogram.event - Update id=182330760 is handled. Duration 405 ms by bot id=8153616825
+2025-08-07 13:17:37,254 [INFO] aiogram.event - Update id=182330761 is handled. Duration 125 ms by bot id=8153616825
+2025-08-07 13:17:38,415 [INFO] aiogram.event - Update id=182330762 is handled. Duration 140 ms by bot id=8153616825
+2025-08-07 13:17:39,438 [INFO] aiogram.event - Update id=182330763 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:17:39,443 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=15, wallet=None
+2025-08-07 13:17:39,443 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:17:40,059 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': '00cvmhvsqq', 'requisite': '+7 916 989 16 00', 'owner': 'Сотникова Евгения Олеговна', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}}
+2025-08-07 13:17:40,060 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': '00cvmhvsqq', 'requisite': '+7 916 989 16 00', 'owner': 'Сотникова Евгения Олеговна', 'bank': 'Сбер', 'payment_type': 'sbp', 'bank_id': 1}
+2025-08-07 13:17:42,314 [INFO] aiogram.event - Update id=182330764 is handled. Duration 655 ms by bot id=8153616825
+2025-08-07 13:17:42,318 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=15, wallet=None
+2025-08-07 13:17:42,319 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:17:42,939 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'ipthbrw5la', 'requisite': '+7 922 303 74 15', 'owner': 'Анна О', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-07 13:17:42,940 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'ipthbrw5la', 'requisite': '+7 922 303 74 15', 'owner': 'Анна О', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-07 13:18:22,042 [INFO] api.onlypays_api - OnlyPays get_status response: {'success': True, 'data': {'id': 'ipthbrw5la', 'status': 'waiting', 'personal_id': '15', 'received_sum': None}}
+2025-08-07 13:18:22,043 [INFO] api.api_manager - Статус заказа ipthbrw5la от OnlyPays: {'success': True, 'data': {'id': 'ipthbrw5la', 'status': 'waiting', 'personal_id': '15', 'received_sum': None}, 'api_name': 'OnlyPays'}
+2025-08-07 13:18:22,425 [INFO] aiogram.event - Update id=182330765 is handled. Duration 812 ms by bot id=8153616825
+2025-08-07 13:18:25,345 [INFO] aiogram.event - Update id=182330766 is handled. Duration 172 ms by bot id=8153616825
+2025-08-07 13:18:26,402 [INFO] aiogram.event - Update id=182330767 is handled. Duration 140 ms by bot id=8153616825
+2025-08-07 13:18:27,629 [INFO] aiogram.event - Update id=182330768 is handled. Duration 390 ms by bot id=8153616825
+2025-08-07 13:18:32,731 [INFO] aiogram.event - Update id=182330769 is handled. Duration 484 ms by bot id=8153616825
+2025-08-07 13:18:33,942 [INFO] aiogram.event - Update id=182330770 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:18:35,234 [INFO] aiogram.event - Update id=182330771 is handled. Duration 109 ms by bot id=8153616825
+2025-08-07 13:18:36,490 [INFO] aiogram.event - Update id=182330772 is handled. Duration 93 ms by bot id=8153616825
+2025-08-07 13:18:36,494 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=10625, pay_types=sbp, personal_id=16, wallet=None
+2025-08-07 13:18:36,494 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: sbp -> sbp)
+2025-08-07 13:18:37,161 [INFO] api.onlypays_api - OnlyPays create_order response (sum 10625): {'success': True, 'data': {'id': 'ypjsyo5hke', 'requisite': '+7 934 111 50 07', 'owner': 'Магомед Абдурахманов', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}}
+2025-08-07 13:18:37,162 [INFO] api.api_manager - Успешное создание заказа через OnlyPays: {'id': 'ypjsyo5hke', 'requisite': '+7 934 111 50 07', 'owner': 'Магомед Абдурахманов', 'bank': 'Озон', 'payment_type': 'sbp', 'bank_id': 13}
+2025-08-07 13:19:08,524 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'Oswbit Exchanger'
+2025-08-07 13:19:08,525 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-07 13:19:08,785 [ERROR] asyncio - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<main() done, defined at c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py:64> exception=RuntimeError('This event loop is already running')>
+Traceback (most recent call last):
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1860, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 439, in select
+    self._poll(timeout)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 788, in _poll
+    status = _overlapped.GetQueuedCompletionStatus(self._iocp, ms)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 66, in main
+    await run_polling()
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 55, in run_polling
+    await dp.start_polling(bot, skip_updates=True)
+  File "C:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\.venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 543, in start_polling
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 384, in wait
+    return await _wait(fs, timeout, return_when, loop)
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\tasks.py", line 491, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\behin\Documents\Oswaldo\Oswbit-Exchanger-tg\main.py", line 75, in main
+    loop.run_until_complete(loop.shutdown_asyncgens())
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 622, in run_until_complete
+    self._check_running()
+  File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running

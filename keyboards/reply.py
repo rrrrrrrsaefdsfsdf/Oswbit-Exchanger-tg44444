@@ -71,7 +71,7 @@ class ReplyKeyboards:
         
         if not is_nicepay:                                                
             builder.row(
-                KeyboardButton(text="✅ Подтвердить заявку"),
+                # KeyboardButton(text="✅ Подтвердить заявку"),
                 KeyboardButton(text="❌ Отменить заявку")
             )
         

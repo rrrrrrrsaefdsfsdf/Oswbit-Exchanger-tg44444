@@ -1226,6 +1226,85 @@ async def contact_handler(message: Message, state: FSMContext):
     await state.clear()
 
 
+
+
+
+
+
+from aiogram.types import ReplyKeyboardRemove
+
+# @router.message(F.text == "✅ Подтвердить заявку")
+# async def confirm_order_handler(message: Message):
+#     orders = await db.get_user_orders(message.from_user.id, 1)
+#     if not orders:
+#         await message.answer(
+#             "У вас нет активных заявок",
+#             reply_markup=ReplyKeyboards.main_menu()
+#         )
+#         return
+
+#     order = orders[0]
+#     order_id = order['id']
+#     if order['user_id'] != message.from_user.id:
+#         await message.answer("❌ Нет прав для этой заявки", reply_markup=ReplyKeyboardRemove())
+#         return
+
+#     payment_type = order.get('payment_type')
+#     if order['total_amount'] and payment_type:
+#         await message.answer(
+#             "⏳ Ваш запрос принят. Реквизиты будут отправлены в следующем сообщении.\nВремя ожидания до 4-х минут...",
+#             reply_markup=ReplyKeyboardRemove()  # Удаляем клавиатуру
+#         )
+#         asyncio.create_task(
+#             request_requisites_with_retries(order_id, order['user_id'], payment_type, message.bot)
+#         )
+#     else:
+#         display_id = order.get('personal_id', order_id)
+#         await message.answer(
+#             f"✅ <b>Заявка #{display_id} подтверждена!</b>\n\n"
+#             f"Ожидайте реквизиты для оплаты.\n"
+#             f"Время обработки: 5-15 минут.",
+#             parse_mode="HTML",
+#             reply_markup=ReplyKeyboards.main_menu()  # Заменяем на главную клавиатуру
+#         )
+
+
+
+
+@router.message(F.text == "❌ Отменить заявку")
+async def cancel_order_handler(message: Message):
+    orders = await db.get_user_orders(message.from_user.id, 1)
+    if not orders:
+        await message.answer(
+            "У вас нет активных заявок",
+            reply_markup=ReplyKeyboards.main_menu()
+        )
+        return
+
+    order = orders[0]
+    order_id = order['id']
+    if order['user_id'] != message.from_user.id:
+        await message.answer("❌ Нет прав для этой заявки", reply_markup=ReplyKeyboardRemove())
+        return
+
+    await db.update_order(order_id, status='cancelled')
+    display_id = order.get('personal_id', order_id)
+    await message.answer(
+        f"❌ Заявка #{display_id} отменена.",
+        parse_mode="HTML",
+        reply_markup=ReplyKeyboards.main_menu()  # Заменяем на главную клавиатуру
+    )
+
+
+
+
+
+
+
+
+
+
+
 @router.message(ExchangeStates.waiting_for_note)
 async def note_handler(message: Message, state: FSMContext):
     if message.text == "◶️ Главное меню":

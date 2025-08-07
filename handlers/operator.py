@@ -458,22 +458,6 @@ async def note_input_handler(message: Message, state: FSMContext):
         await message.answer("❌ Ошибка сохранения заметки")
     await state.clear()
 
-async def add_operator(user_id: int) -> bool:
-    if user_id not in OPERATORS:
-        OPERATORS.append(user_id)
-        logger.info(f"Добавлен оператор: {user_id}")
-        return True
-    return False
-
-async def remove_operator(user_id: int) -> bool:
-    if user_id in OPERATORS:
-        OPERATORS.remove(user_id)
-        logger.info(f"Удалён оператор: {user_id}")
-        return True
-    return False
-
-def get_operators_list() -> list:
-    return OPERATORS.copy()
 
 
 

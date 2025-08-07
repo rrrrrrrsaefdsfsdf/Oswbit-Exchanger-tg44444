@@ -38,87 +38,42 @@ async def init_database():
     try:
         db = Database(config.DATABASE_URL)
         await db.init_db()
-        logger.info("Database initialized successfully")
     except Exception as e:
-        logger.error(f"Failed to initialize database: {e}")
-        raise
-
-async def on_startup():
-    try:
-        await init_database()
-        
-        if config.USE_WEBHOOK:
-            await bot.set_webhook(url=config.WEBHOOK_URL + config.WEBHOOK_PATH, 
-                                drop_pending_updates=True)
-            logger.info("Webhook set successfully")
-        
-        logger.info("Bot startup completed")
-    except Exception as e:
-        logger.error(f"Startup error: {e}")
+        logger.error(f"Ошибка инициализации базы данных: {e}")
         raise
 
 async def on_shutdown():
     try:
-        if config.USE_WEBHOOK:
-            await bot.delete_webhook()
-            logger.info("Webhook deleted")
-        
         await bot.session.close()
-        logger.info("Bot shutdown completed")
     except Exception as e:
-        logger.error(f"Shutdown error: {e}")
-
-def create_app() -> web.Application:
-    app = web.Application()
-    webhook_requests_handler = SimpleRequestHandler(dispatcher=dp, bot=bot)
-    webhook_requests_handler.register(app, path=config.WEBHOOK_PATH)
-    setup_application(app, dp, bot=bot)
-    return app
+        logger.error(f"Ошибка при завершении работы: {e}")
 
 async def run_polling():
-    logger.info("Starting bot in polling mode")
     try:
         await init_database()
         await bot.delete_webhook(drop_pending_updates=True)
         await dp.start_polling(bot, skip_updates=True)
     except KeyboardInterrupt:
-        logger.info("Bot stopped by user")
+        logger.info("Бот остановлен пользователем")
     except Exception as e:
-        logger.error(f"Polling error: {e}")
-        raise
-    finally:
-        await on_shutdown()
-
-async def run_webhook():
-    logger.info("Starting bot in webhook mode")
-    try:
-        await on_startup()
-        
-        app = create_app()
-        runner = web.AppRunner(app)
-        await runner.setup()
-        
-        site = web.TCPSite(runner, host=config.WEBHOOK_HOST, port=config.WEBHOOK_PORT)
-        await site.start()
-        
-        logger.info(f"Webhook server started on {config.WEBHOOK_HOST}:{config.WEBHOOK_PORT}")
-        
-                         
-        await asyncio.Event().wait()
-        
-    except Exception as e:
-        logger.error(f"Webhook error: {e}")
+        logger.error(f"Ошибка polling: {e}")
         raise
     finally:
         await on_shutdown()
 
 async def main():
-    mode = os.getenv('BOT_MODE', 'polling').lower()
-    
-    if mode == 'webhook' and config.USE_WEBHOOK:
-        await run_webhook()
-    else:
+    try:
         await run_polling()
+    except KeyboardInterrupt:
+        logger.info("Основной процесс остановлен пользователем")
+    finally:
+        loop = asyncio.get_event_loop()
+        if not loop.is_closed():
+            tasks = [task for task in asyncio.all_tasks(loop) if task is not asyncio.current_task(loop)]
+            for task in tasks:
+                task.cancel()
+            loop.run_until_complete(loop.shutdown_asyncgens())
+            loop.close()
 
 if __name__ == "__main__":
     asyncio.run(main())

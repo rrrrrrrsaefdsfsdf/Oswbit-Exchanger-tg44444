@@ -3,6 +3,7 @@ import logging
 import asyncio
 import os
 from datetime import datetime
+import traceback
 from aiogram import Router, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery, BufferedInputFile, InlineKeyboardButton
@@ -315,7 +316,7 @@ async def process_amount_and_show_calculation(callback: CallbackQuery, state: FS
         f"💰 Сумма: {rub_amount:,.0f} ₽\n"
         f"₿ Получите: {crypto_amount:.8f} BTC\n\n"
         f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"
-        f"Выберите способ {'оплаты' if direction == 'rub_to_crypto' else 'получения'}:"
+        f"Выберите способ оплаты <b>(Рекомендуем СБП)</b>:"
     )
     await callback.message.edit_text(
         text,
@@ -644,8 +645,6 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
 
 
 
-
-
 @router.callback_query(F.data.startswith(("confirm_order_", "cancel_order_")))
 async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext):
                                             
@@ -863,7 +862,7 @@ async def check_status_handler(message: Message):
     if order.get('nicepay_id'):
         await message.answer(
             f"📋 Статус заявки #{display_id}: ⏳ В обработке\n\n"
-            f"Для заявок через NicePay статус обновляется автоматически.\n"
+            f"Для заявок статус обновляется автоматически.\n"
             f"Вы получите уведомление при изменении статуса.",
             reply_markup=ReplyKeyboards.main_menu()
         )
@@ -951,63 +950,6 @@ async def check_status_handler(message: Message):
             reply_markup=ReplyKeyboards.main_menu()
         )
 
-
-
-
-
-
-@router.message(F.text.in_(["✅ Подтвердить заявку", "❌ Отменить заявку", "🔄 Проверить статус"]))
-async def handle_order_menu(message: Message, state: FSMContext):
-    logger.info(f"Received message: {message.text}, user_id: {message.from_user.id}")
-    try:
-                                                                      
-        data = await state.get_data()
-        order_id = data.get("order_id")
-        if not order_id:
-            await message.answer("❌ Не найден ID заявки. Пожалуйста, начните заново.")
-            return
-
-        order = await db.get_order(order_id)
-        if not order or order['user_id'] != message.from_user.id:
-            await message.answer("❌ Нет прав или заявка не найдена")
-            return
-
-        if message.text == "✅ Подтвердить заявку":
-            payment_type = order.get('payment_type')
-            if order['total_amount'] and payment_type:
-                await message.answer(
-                    "⏳ Ваш запрос принят. Реквизиты будут отправлены в следующем сообщении.\n"
-                    "Время ожидания до 4-х минут..."
-                )
-                asyncio.create_task(
-                    request_requisites_with_retries(order_id, order['user_id'], payment_type, message.bot)
-                )
-            else:
-                text = (
-                    f"✅ <b>Заявка #{order.get('personal_id', order_id)} подтверждена!</b>\n\n"
-                    f"Ожидайте реквизиты для оплаты.\n"
-                    f"Время обработки: 5-15 минут."
-                )
-                await message.answer(text, parse_mode="HTML")
-        
-        elif message.text == "❌ Отменить заявку":
-            await db.update_order(order_id, status='cancelled')
-            order = await db.get_order(order_id)
-            display_id = order.get('personal_id', order_id) if order else order_id
-            text = f"❌ Заявка #{display_id} отменена."
-            await message.answer(text, parse_mode="HTML")
-        
-        elif message.text == "🔄 Проверить статус":
-            text = f"📋 Статус заявки #{order.get('personal_id', order_id)}: {order.get('status', 'Неизвестно')}"
-            await message.answer(text, parse_mode="HTML")
-
-                                 
-        await asyncio.sleep(3)
-        await message.answer("🎯 Главное меню:", reply_markup=ReplyKeyboards.main_menu())
-
-    except Exception as e:
-        logger.error(f"Error in handle_order_menu: {e}")
-        await message.answer("❌ Произошла ошибка, попробуйте позже")
 
 
 
@@ -1283,70 +1225,6 @@ async def contact_handler(message: Message, state: FSMContext):
         )
     await state.clear()
 
-@router.callback_query(F.data.startswith("op_sent_"))
-async def operator_sent_handler(callback: CallbackQuery):
-    order_id = int(callback.data.split("_")[-1])
-    try:
-        await db.update_order(order_id, status='completed')
-        order = await db.get_order(order_id)
-        if not order:
-            await callback.answer("Заявка не найдена")
-            return
-        display_id = order.get('personal_id', order_id)
-        text_client = (
-            f"🎉 <b>Заявка завершена!</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"₿ Отправлено: {order['amount_btc']:.8f} BTC\n"
-            f"📍 На адрес: <code>{order['btc_address']}</code>\n\n"
-            f"✅ <b>Bitcoin успешно отправлен!</b>\n"
-            f"Проверьте ваш кошелек.\n\n"
-            f"Спасибо за использование {config.EXCHANGE_NAME}!"
-        )
-        await callback.bot.send_message(
-            order['user_id'],
-            text_client,
-            parse_mode="HTML",
-            reply_markup=ReplyKeyboards.main_menu()
-        )
-        await callback.message.edit_text(
-            f"✅ <b>ЗАЯВКА ЗАВЕРШЕНА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время завершения: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"💎 Bitcoin отправлен клиенту!"
-        )
-        await callback.answer("✅ Заявка отмечена как завершенная")
-    except Exception as e:
-        logger.error(f"Operator sent handler error: {e}")
-        await callback.answer("❌ Ошибка обновления статуса")
-
-@router.callback_query(F.data.startswith("op_problem_"))
-async def operator_problem_handler(callback: CallbackQuery, state: FSMContext):
-    order_id = int(callback.data.split("_")[-1])
-    try:
-        await db.update_order(order_id, status='problem')
-        order = await db.get_order(order_id)
-        if not order:
-            await callback.answer("Заявка не найдена")
-            return
-        display_id = order.get('personal_id', order_id)
-        text = (
-            f"⚠️ <b>ПРОБЛЕМА С ЗАЯВКОЙ</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"📝 Пожалуйста, добавьте заметку с описанием проблемы:"
-        )
-        await callback.message.edit_text(
-            text,
-            parse_mode="HTML"
-        )
-        await state.set_state(ExchangeStates.waiting_for_note)
-        await state.update_data(order_id=order_id)
-        await callback.answer("📝 Ожидается заметка о проблеме")
-    except Exception as e:
-        logger.error(f"Operator problem handler error: {e}")
-        await callback.answer("❌ Ошибка обновления статуса")
 
 @router.message(ExchangeStates.waiting_for_note)
 async def note_handler(message: Message, state: FSMContext):
@@ -1383,30 +1261,6 @@ async def note_handler(message: Message, state: FSMContext):
         )
     await state.clear()
 
-@router.callback_query(F.data.startswith("op_note_"))
-async def operator_note_handler(callback: CallbackQuery, state: FSMContext):
-    order_id = int(callback.data.split("_")[-1])
-    try:
-        order = await db.get_order(order_id)
-        if not order:
-            await callback.answer("Заявка не найдена")
-            return
-        display_id = order.get('personal_id', order_id)
-        text = (
-            f"📝 <b>Добавление заметки к заявке #{display_id}</b>\n\n"
-            f"Введите текст заметки:"
-        )
-        await callback.message.edit_text(
-            text,
-            parse_mode="HTML"
-        )
-        await state.set_state(ExchangeStates.waiting_for_note)
-        await state.update_data(order_id=order_id)
-        await callback.answer("📝 Ожидается заметка")
-    except Exception as e:
-        logger.error(f"Operator note handler error: {e}")
-        await callback.answer("❌ Ошибка")
-
 @router.callback_query(F.data.startswith("op_handle_"))
 async def operator_handle_handler(callback: CallbackQuery):
     order_id = int(callback.data.split("_")[-1])
@@ -1431,38 +1285,6 @@ async def operator_handle_handler(callback: CallbackQuery):
     except Exception as e:
         logger.error(f"Operator handle handler error: {e}")
         await callback.answer("❌ Ошибка")
-
-@router.callback_query(F.data.startswith("op_cancel_"))
-async def operator_cancel_handler(callback: CallbackQuery):
-    order_id = int(callback.data.split("_")[-1])
-    try:
-        order = await db.get_order(order_id)
-        if not order:
-            await callback.answer("Заявка не найдена")
-            return
-        display_id = order.get('personal_id', order_id)
-        api_response = await payment_api_manager.cancel_order(
-            order_id=order['onlypays_id'] or order['pspware_id'] or order['greengo_id'],
-            api_name='OnlyPays' if order['onlypays_id'] else 'PSPWare' if order['pspware_id'] else 'Greengo'
-        )
-        if not api_response.get('success'):
-            await callback.answer(f"❌ Ошибка отмены: {api_response.get('error', 'Неизвестная ошибка')}")
-            return
-        await db.update_order(order_id, status='cancelled')
-        text = (
-            f"❌ <b>Заявка #{display_id} отменена</b>\n\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"
-        )
-        await callback.message.edit_text(
-            text,
-            parse_mode="HTML"
-        )
-        await notify_client_order_cancelled(order)
-        await callback.answer("❌ Заявка отменена")
-    except Exception as e:
-        logger.error(f"Operator cancel handler error: {e}")
-        await callback.answer("❌ Ошибка отмены")
 
 @router.callback_query(F.data.startswith("review_approve_"))
 async def review_approve_handler(callback: CallbackQuery):
@@ -1654,6 +1476,12 @@ async def health_check_handler(message: Message):
             reply_markup=ReplyKeyboards.main_menu()
         )
 
+
+
+
+
+
+
 async def process_pspware_webhook(webhook_data: dict, bot):
     try:
         order_id = webhook_data.get('personal_id')
@@ -1717,6 +1545,11 @@ async def process_greengo_webhook(webhook_data: dict, bot):
     except Exception as e:
         logger.error(f"Greengo webhook processing error: {e}")
 
+
+
+
+
+
 async def process_nicepay_webhook(webhook_data: dict, bot):
     try:
         order_id = webhook_data.get('merchantOrderId')
@@ -1749,6 +1582,12 @@ async def process_nicepay_webhook(webhook_data: dict, bot):
             logger.info(f"NicePay заявка #{order_id} отменена")
     except Exception as e:
         logger.error(f"NicePay webhook processing error: {e}")
+
+
+
+
+
+
 
 async def process_onlypays_webhook(webhook_data: dict, bot):
     try:

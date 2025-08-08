@@ -1718,3 +1718,18 @@ KeyError: 'address'
 2025-08-08 23:28:41,138 [WARNING] aiogram.dispatcher - Received SIGINT signal
 2025-08-08 23:28:41,141 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
 2025-08-08 23:28:41,142 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:53:44,968 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:53:45,080 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:53:48,593 [INFO] aiogram.event - Update id=182331108 is handled. Duration 519 ms by bot id=8153616825
+2025-08-08 23:53:49,543 [INFO] aiogram.event - Update id=182331109 is handled. Duration 140 ms by bot id=8153616825
+2025-08-08 23:53:51,116 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:53:51,269 [INFO] aiogram.event - Update id=182331110 is handled. Duration 626 ms by bot id=8153616825
+2025-08-08 23:54:24,760 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:54:24,763 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:54:24,763 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:54:27,822 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:54:27,935 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:54:30,041 [INFO] aiogram.event - Update id=182331111 is handled. Duration 514 ms by bot id=8153616825
+2025-08-08 23:54:42,207 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:54:42,209 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:54:42,209 [INFO] aiogram.dispatcher - Polling stopped

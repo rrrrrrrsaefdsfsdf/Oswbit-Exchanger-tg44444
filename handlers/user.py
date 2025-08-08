@@ -75,8 +75,8 @@ async def show_main_menu(message_or_callback, is_callback=False):
         
 
     default_welcome = (
-        f"🥷 Добро пожаловать в {config.EXCHANGE_NAME}, ниндзя!\n"
-        f"У нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
+        f"<b>🥷 Добро пожаловать в {config.EXCHANGE_NAME}, ниндзя!</b>\n"
+        f"\nУ нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
         f"Быстро. Дешево. Анонимно.\n\n"
         f"Оператор: {config.SUPPORT_MANAGER}\n"
         f"Канал: {config.NEWS_CHANNEL}\n\n"
@@ -216,9 +216,9 @@ async def buy_crypto_selected(callback: CallbackQuery, state: FSMContext):
         )
         btc_rate = await BitcoinAPI.get_btc_rate()
         text = (
-            f"💰 <b>Покупка Bitcoin</b>\n\n"
+            f"💰 <b>Покупка Bitcoin\n\n"
             f"📊 Текущий курс: {btc_rate:,.0f} ₽\n"
-            f"💱 Обмен: от {config.MIN_AMOUNT:,.0f} RUB до {config.MAX_AMOUNT:,.0f} RUB\n\n"
+            f"\n💱Обмен: от {config.MIN_AMOUNT:,.0f} RUB до {config.MAX_AMOUNT:,.0f} RUB</b>\n\n"
             f"Введите сумму в рублях или BTC (в BTC вводить через точку, например 0.001):"
         )
         await callback.message.edit_text(

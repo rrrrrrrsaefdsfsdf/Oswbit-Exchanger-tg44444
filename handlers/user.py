@@ -281,7 +281,7 @@ async def manual_amount_input(message: Message, state: FSMContext):
             return
 
         if amount < 1:
-            # Считаем, что пользователь ввёл сумму в BTC
+                                                        
             await process_amount_and_show_calculation_for_message(
                 message, state, crypto, direction, amount, is_crypto=True
             )
@@ -289,7 +289,7 @@ async def manual_amount_input(message: Message, state: FSMContext):
             await message.answer("⚠️ Минимальная сумма для обмена 2.000 RUB")
             return
         else:
-            # Считаем, что пользователь ввёл сумму в рублях
+                                                           
             if not (config.MIN_AMOUNT <= amount <= config.MAX_AMOUNT):
                 await message.answer(
                     f"❌ Сумма должна быть от {config.MIN_AMOUNT:,} ₽ до {config.MAX_AMOUNT:,} ₽. Пожалуйста, введите корректную сумму."
@@ -485,18 +485,18 @@ async def address_input_handler(message: Message, state: FSMContext):
 
 
 
-# async def create_exchange_order(user_id: int, state: FSMContext) -> int:
-#     data = await state.get_data()
-#     order_id = await db.create_order(
-#         user_id=user_id,
-#         amount_rub=data["rub_amount"],
-#         amount_btc=data["crypto_amount"],
-#         btc_address=data["address"],
-#         rate=data["rate"],
-#         total_amount=data["total_amount"],
-#         payment_type=data["payment_type"]
-#     )
-#     return order_id
+                                                                          
+                                   
+                                       
+                          
+                                        
+                                           
+                                      
+                            
+                                            
+                                           
+       
+                     
 
 
 
@@ -509,7 +509,7 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
         btc_address=data["address"],
         rate=data["rate"],
         total_amount=data["total_amount"],
-        payment_type=data["payment_type"]  # Используем payment_type из состояния
+        payment_type=data["payment_type"]                                        
     )
     return order_id
 
@@ -539,7 +539,7 @@ async def show_order_confirmation(message: Message, state: FSMContext, order_id:
         reply_markup=InlineKeyboards.order_confirmation(order_id),
         parse_mode="HTML"
     )
-    # await state.clear()
+                         
 
 
 
@@ -679,50 +679,18 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
 
 
 
-# @router.callback_query(F.data.startswith(("confirm_order_", "cancel_order_")))
-# async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext):
+                                                                                
+                                                                                   
                                             
-#     action = "confirm" if callback.data.startswith("confirm") else "cancel"
-#     order_id = int(callback.data.split("_")[-1])
-#     order = await db.get_order(order_id)
+                                                                             
+                                                  
+                                          
     
-#     if not order or order['user_id'] != callback.from_user.id:
-#         await callback.answer("❌ Нет прав или заявка не найдена")
-#         return
+                                                                
+                                                                   
+                
     
-#     if action == "confirm":
-#         if not order:
-#             await callback.message.edit_text("❌ Заявка не найдена")
-#             return
-#         user_id = order['user_id']
-#         payment_type = order.get('payment_type')
-#         if order['total_amount'] and payment_type:
-#             await callback.message.edit_text(
-#                 "⏳ Ваш запрос принят. Реквизиты будут отправлены в следующем сообщении.\nВремя ожидания до 4-х минут..."
-#             )
-#             asyncio.create_task(
-#                 request_requisites_with_retries(order_id, user_id, payment_type, callback.bot)
-#             )
-#             return
-#         else:
-#             text = (
-#                 f"✅ <b>Заявка #{order.get('personal_id', order_id)} подтверждена!</b>\n\n"
-#                 f"Ожидайте реквизиты для оплаты.\n"
-#                 f"Время обработки: 5-15 минут."
-#             )
-#     else:
-#         await db.update_order(order_id, status='cancelled')
-#         order = await db.get_order(order_id)
-#         display_id = order.get('personal_id', order_id) if order else order_id
-#         text = f"❌ Заявка #{display_id} отменена."
-
-#     await callback.message.edit_text(text, parse_mode="HTML")
-#     await asyncio.sleep(3)
-#     await callback.bot.send_message(
-#         callback.message.chat.id,
-#         "🎯 Главное меню:",
-#         reply_markup=ReplyKeyboards.main_menu()
-#     )
+                             
 
 
 
@@ -1312,42 +1280,15 @@ async def contact_handler(message: Message, state: FSMContext):
 
 from aiogram.types import ReplyKeyboardRemove
 
-# @router.message(F.text == "✅ Подтвердить заявку")
-# async def confirm_order_handler(message: Message):
-#     orders = await db.get_user_orders(message.from_user.id, 1)
-#     if not orders:
-#         await message.answer(
-#             "У вас нет активных заявок",
-#             reply_markup=ReplyKeyboards.main_menu()
-#         )
-#         return
+                         
+                                                  
+                                                                                                
+                
 
-#     order = orders[0]
-#     order_id = order['id']
-#     if order['user_id'] != message.from_user.id:
-#         await message.answer("❌ Нет прав для этой заявки", reply_markup=ReplyKeyboardRemove())
-#         return
-
-#     payment_type = order.get('payment_type')
-#     if order['total_amount'] and payment_type:
-#         await message.answer(
-#             "⏳ Ваш запрос принят. Реквизиты будут отправлены в следующем сообщении.\nВремя ожидания до 4-х минут...",
-#             reply_markup=ReplyKeyboardRemove()  # Удаляем клавиатуру
-#         )
-#         asyncio.create_task(
-#             request_requisites_with_retries(order_id, order['user_id'], payment_type, message.bot)
-#         )
-#     else:
-#         display_id = order.get('personal_id', order_id)
-#         await message.answer(
-#             f"✅ <b>Заявка #{display_id} подтверждена!</b>\n\n"
-#             f"Ожидайте реквизиты для оплаты.\n"
-#             f"Время обработки: 5-15 минут.",
-#             parse_mode="HTML",
-#             reply_markup=ReplyKeyboards.main_menu()  # Заменяем на главную клавиатуру
-#         )
-
-
+                                              
+                                                
+                               
+                                                                                                            
 
 
 @router.message(F.text == "❌ Отменить заявку")
@@ -1371,7 +1312,7 @@ async def cancel_order_handler(message: Message):
     await message.answer(
         f"❌ Заявка #{display_id} отменена.",
         parse_mode="HTML",
-        reply_markup=ReplyKeyboards.main_menu()  # Заменяем на главную клавиатуру
+        reply_markup=ReplyKeyboards.main_menu()                                  
     )
 
 

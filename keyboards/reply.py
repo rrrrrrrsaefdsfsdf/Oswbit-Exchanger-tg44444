@@ -55,7 +55,7 @@ class ReplyKeyboards:
         
         builder.row(
             KeyboardButton(text="💳 Банковская карта"),
-            # KeyboardButton(text="📱 СБП")
+                                          
         )
         builder.row(
             KeyboardButton(text="◀️ Назад"),
@@ -71,7 +71,7 @@ class ReplyKeyboards:
         
         if not is_nicepay:                                                
             builder.row(
-                # KeyboardButton(text="✅ Подтвердить заявку"),
+                                                              
                 KeyboardButton(text="❌ Отменить заявку")
             )
         

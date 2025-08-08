@@ -13,7 +13,7 @@ class Keyboards:
         builder = InlineKeyboardBuilder()
         builder.row(
             InlineKeyboardButton(text="💳 Банковская карта", callback_data="payment_card"),
-            # InlineKeyboardButton(text="📱 СБП", callback_data="payment_sbp")
+                                                                             
         )
         builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="exchange"))
         return builder.as_markup()
@@ -272,10 +272,10 @@ class InlineKeyboards:
                     text="💳 Банковская карта", 
                     callback_data=f"payment_{crypto}_{direction}_{amount}_card"
                 ),
-                # InlineKeyboardButton(
-                #     text="📱 СБП", 
-                #     callback_data=f"payment_{crypto}_{direction}_{amount}_sbp"
-                # )
+                                       
+                                    
+                                                                                
+                   
             )
 
         

@@ -16,10 +16,12 @@ class NicePayAPI:
 
     async def _make_request(self, url: str, params: dict, retries: int = 3, delay: int = 5) -> dict:
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
+        connector = aiohttp.TCPConnector(verify_ssl=False)
         for attempt in range(1, retries + 1):
-            logger.debug(f"Attempt {attempt} to {url} with params: {params}")
             try:
-                async with aiohttp.ClientSession() as session:
+                logger.debug(f"Attempt {attempt} to {url} with params: {params}")
+    
+                async with aiohttp.ClientSession(connector=connector) as session:
                     async with session.post(url, json=params, headers=headers) as resp:
                         logger.debug(f"Response status: {resp.status}")
                         if resp.status != 200:

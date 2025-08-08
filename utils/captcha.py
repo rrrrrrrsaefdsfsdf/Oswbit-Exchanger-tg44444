@@ -4,16 +4,15 @@ import io
 from typing import Tuple
 from captcha.image import ImageCaptcha
 
+import os
+
 class CaptchaGenerator:
-
-
-
     @staticmethod
     def generate_image_captcha() -> Tuple[io.BytesIO, str]:
-                                         
         text = ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
-        
-        image = ImageCaptcha(width=200, height=80, fonts=['arial.ttf'])
+        font_path = os.path.join(os.path.dirname(__file__), 'arialblackcyrit_italic.ttf')
+        image = ImageCaptcha(width=200, height=80, fonts=[font_path])
+     
         
         data = image.generate(text)
         

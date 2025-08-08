@@ -1134,3 +1134,587 @@ Traceback (most recent call last):
   File "C:\Users\behin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 582, in _check_running
     raise RuntimeError('This event loop is already running')
 RuntimeError: This event loop is already running
+2025-08-08 22:11:12,933 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:11:13,069 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:11:17,331 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:17,331 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-08 22:11:19,046 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-08 22:11:19,063 [INFO] aiogram.event - Update id=182331051 is not handled. Duration 14 ms by bot id=8153616825
+2025-08-08 22:11:19,063 [ERROR] aiogram.event - Cause exception while process update id=182331051 by bot id=8153616825
+OSError: cannot open resource
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 101, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 104, in start_handler
+    image_buffer, answer = CaptchaGenerator.generate_image_captcha()
+  File "/Users/yunix/Documents/oswaldo/OswBit/utils/captcha.py", line 18, in generate_image_captcha
+    data = image.generate(text)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 200, in generate
+    im = self.generate_image(chars)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 188, in generate_image
+    im = self.create_captcha_image(chars, color, background)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 158, in create_captcha_image
+    images.append(self._draw_character(" ", draw, color))
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 105, in _draw_character
+    font = random.choice(self.truefonts)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 65, in truefonts
+    self._truefonts = [
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 66, in <listcomp>
+    truetype(n, s)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 880, in truetype
+    return freetype(font)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 877, in freetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 285, in __init__
+    self.font = core.getfont(
+OSError: cannot open resource
+2025-08-08 22:11:22,520 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:22,521 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-08 22:11:27,718 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:27,719 [WARNING] aiogram.dispatcher - Sleep for 1.426773 seconds and try again... (tryings = 1, bot id = 8153616825)
+2025-08-08 22:11:33,611 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:33,612 [WARNING] aiogram.dispatcher - Sleep for 1.815633 seconds and try again... (tryings = 2, bot id = 8153616825)
+2025-08-08 22:11:40,207 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:40,208 [WARNING] aiogram.dispatcher - Sleep for 2.483199 seconds and try again... (tryings = 3, bot id = 8153616825)
+2025-08-08 22:11:47,934 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:47,935 [WARNING] aiogram.dispatcher - Sleep for 3.365417 seconds and try again... (tryings = 4, bot id = 8153616825)
+2025-08-08 22:11:57,138 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:11:57,138 [WARNING] aiogram.dispatcher - Sleep for 4.381369 seconds and try again... (tryings = 5, bot id = 8153616825)
+2025-08-08 22:12:05,269 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-08 22:12:05,270 [WARNING] aiogram.dispatcher - Sleep for 5.078193 seconds and try again... (tryings = 6, bot id = 8153616825)
+2025-08-08 22:12:20,483 [INFO] aiogram.dispatcher - Connection established (tryings = 7, bot id = 8153616825)
+2025-08-08 22:12:25,846 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:12:25,848 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:12:25,849 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:12:29,721 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:12:29,836 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:12:35,178 [INFO] aiogram.event - Update id=182331053 is not handled. Duration 9 ms by bot id=8153616825
+2025-08-08 22:12:35,179 [ERROR] aiogram.event - Cause exception while process update id=182331053 by bot id=8153616825
+OSError: cannot open resource
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 101, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 104, in start_handler
+    image_buffer, answer = CaptchaGenerator.generate_image_captcha()
+  File "/Users/yunix/Documents/oswaldo/OswBit/utils/captcha.py", line 18, in generate_image_captcha
+    data = image.generate(text)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 200, in generate
+    im = self.generate_image(chars)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 188, in generate_image
+    im = self.create_captcha_image(chars, color, background)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 159, in create_captcha_image
+    images.append(self._draw_character(c, draw, color))
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 105, in _draw_character
+    font = random.choice(self.truefonts)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 65, in truefonts
+    self._truefonts = [
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 66, in <listcomp>
+    truetype(n, s)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 880, in truetype
+    return freetype(font)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 877, in freetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 285, in __init__
+    self.font = core.getfont(
+OSError: cannot open resource
+2025-08-08 22:14:32,882 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:14:32,885 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:14:32,885 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:14:36,261 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:14:36,373 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:14:41,700 [INFO] aiogram.event - Update id=182331054 is not handled. Duration 7 ms by bot id=8153616825
+2025-08-08 22:14:41,700 [ERROR] aiogram.event - Cause exception while process update id=182331054 by bot id=8153616825
+OSError: cannot open resource
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 101, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 104, in start_handler
+    image_buffer, answer = CaptchaGenerator.generate_image_captcha()
+  File "/Users/yunix/Documents/oswaldo/OswBit/utils/captcha.py", line 18, in generate_image_captcha
+    data = image.generate(text)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 200, in generate
+    im = self.generate_image(chars)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 188, in generate_image
+    im = self.create_captcha_image(chars, color, background)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 158, in create_captcha_image
+    images.append(self._draw_character(" ", draw, color))
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 105, in _draw_character
+    font = random.choice(self.truefonts)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 65, in truefonts
+    self._truefonts = [
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 66, in <listcomp>
+    truetype(n, s)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 880, in truetype
+    return freetype(font)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 877, in freetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 285, in __init__
+    self.font = core.getfont(
+OSError: cannot open resource
+2025-08-08 22:14:52,471 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:14:52,474 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:14:52,474 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:16:22,685 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:16:22,803 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:16:34,928 [INFO] aiogram.event - Update id=182331055 is not handled. Duration 12 ms by bot id=8153616825
+2025-08-08 22:16:34,928 [ERROR] aiogram.event - Cause exception while process update id=182331055 by bot id=8153616825
+OSError: cannot open resource
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 101, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 104, in start_handler
+    image_buffer, answer = CaptchaGenerator.generate_image_captcha()
+  File "/Users/yunix/Documents/oswaldo/OswBit/utils/captcha.py", line 17, in generate_image_captcha
+    data = image.generate(text)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 200, in generate
+    im = self.generate_image(chars)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 188, in generate_image
+    im = self.create_captcha_image(chars, color, background)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 159, in create_captcha_image
+    images.append(self._draw_character(c, draw, color))
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 105, in _draw_character
+    font = random.choice(self.truefonts)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 65, in truefonts
+    self._truefonts = [
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/captcha/image.py", line 66, in <listcomp>
+    truetype(n, s)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 880, in truetype
+    return freetype(font)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 877, in freetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 285, in __init__
+    self.font = core.getfont(
+OSError: cannot open resource
+2025-08-08 22:20:21,082 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:20:21,085 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:20:21,085 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:20:24,246 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:20:24,353 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:20:37,024 [INFO] aiogram.event - Update id=182331056 is handled. Duration 1310 ms by bot id=8153616825
+2025-08-08 22:20:44,565 [INFO] aiogram.event - Update id=182331057 is handled. Duration 440 ms by bot id=8153616825
+2025-08-08 22:31:34,536 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:31:34,539 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:31:34,539 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:31:37,781 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:31:37,887 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:31:46,615 [INFO] aiogram.event - Update id=182331058 is handled. Duration 487 ms by bot id=8153616825
+2025-08-08 22:40:37,972 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:40:37,975 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:40:37,975 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:40:41,019 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:40:41,135 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:41:19,258 [INFO] aiogram.event - Update id=182331059 is handled. Duration 467 ms by bot id=8153616825
+2025-08-08 22:41:21,337 [INFO] aiogram.event - Update id=182331060 is handled. Duration 156 ms by bot id=8153616825
+2025-08-08 22:41:23,095 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:41:23,274 [INFO] aiogram.event - Update id=182331061 is handled. Duration 636 ms by bot id=8153616825
+2025-08-08 22:41:41,294 [INFO] aiogram.event - Update id=182331062 is handled. Duration 619 ms by bot id=8153616825
+2025-08-08 22:41:47,086 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:41:47,235 [INFO] aiogram.event - Update id=182331063 is handled. Duration 590 ms by bot id=8153616825
+2025-08-08 22:42:02,234 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:42:02,236 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit Exchanger'
+2025-08-08 22:42:02,237 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:42:04,923 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:42:05,031 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:42:07,849 [INFO] aiogram.event - Update id=182331064 is not handled. Duration 4 ms by bot id=8153616825
+2025-08-08 22:42:07,849 [ERROR] aiogram.event - Cause exception while process update id=182331064 by bot id=8153616825
+AttributeError: 'NoneType' object has no attribute 'lower'
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 123, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 392, in payment_method_selected
+    reply_markup=InlineKeyboards.amount_input_keyboard(crypto.lower(), direction)
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-08-08 22:42:17,286 [INFO] aiogram.event - Update id=182331065 is handled. Duration 523 ms by bot id=8153616825
+2025-08-08 22:42:19,185 [INFO] aiogram.event - Update id=182331066 is handled. Duration 239 ms by bot id=8153616825
+2025-08-08 22:42:20,741 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:42:20,932 [INFO] aiogram.event - Update id=182331067 is handled. Duration 589 ms by bot id=8153616825
+2025-08-08 22:42:22,087 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:42:22,260 [INFO] aiogram.event - Update id=182331068 is handled. Duration 557 ms by bot id=8153616825
+2025-08-08 22:49:25,260 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:49:25,262 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:49:25,262 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:49:28,539 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:49:28,651 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:49:34,703 [INFO] aiogram.event - Update id=182331069 is handled. Duration 472 ms by bot id=8153616825
+2025-08-08 22:49:36,713 [INFO] aiogram.event - Update id=182331070 is handled. Duration 129 ms by bot id=8153616825
+2025-08-08 22:49:38,248 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:49:38,407 [INFO] aiogram.event - Update id=182331071 is handled. Duration 636 ms by bot id=8153616825
+2025-08-08 22:49:39,930 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:49:40,139 [INFO] aiogram.event - Update id=182331072 is handled. Duration 629 ms by bot id=8153616825
+2025-08-08 22:51:13,556 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:51:13,557 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:51:13,557 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:51:17,074 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:51:17,182 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:51:20,128 [INFO] aiogram.event - Update id=182331073 is handled. Duration 468 ms by bot id=8153616825
+2025-08-08 22:51:21,261 [INFO] aiogram.event - Update id=182331074 is handled. Duration 167 ms by bot id=8153616825
+2025-08-08 22:51:22,445 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:51:22,616 [INFO] aiogram.event - Update id=182331075 is handled. Duration 623 ms by bot id=8153616825
+2025-08-08 22:51:23,787 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:51:23,946 [INFO] aiogram.event - Update id=182331076 is handled. Duration 558 ms by bot id=8153616825
+2025-08-08 22:52:50,444 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 22:52:50,447 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:52:50,447 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 22:52:53,974 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 22:52:54,081 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 22:52:56,996 [INFO] aiogram.event - Update id=182331077 is handled. Duration 510 ms by bot id=8153616825
+2025-08-08 22:52:58,643 [INFO] aiogram.event - Update id=182331078 is handled. Duration 143 ms by bot id=8153616825
+2025-08-08 22:52:59,911 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:53:00,146 [INFO] aiogram.event - Update id=182331079 is handled. Duration 687 ms by bot id=8153616825
+2025-08-08 22:53:01,430 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 22:53:01,657 [INFO] aiogram.event - Update id=182331080 is handled. Duration 614 ms by bot id=8153616825
+2025-08-08 22:55:57,426 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 54] Connection reset by peer
+2025-08-08 22:55:57,444 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-08 22:56:08,903 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-08 23:10:18,998 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:10:19,002 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:10:19,003 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:10:24,260 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:10:24,400 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:10:27,347 [INFO] aiogram.event - Update id=182331081 is handled. Duration 644 ms by bot id=8153616825
+2025-08-08 23:10:28,856 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:10:28,999 [INFO] aiogram.event - Update id=182331082 is handled. Duration 628 ms by bot id=8153616825
+2025-08-08 23:10:31,739 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:10:31,742 [INFO] aiogram.event - Update id=182331083 is not handled. Duration 419 ms by bot id=8153616825
+2025-08-08 23:10:31,743 [ERROR] aiogram.event - Cause exception while process update id=182331083 by bot id=8153616825
+KeyError: 'address'
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 123, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 252, in amount_selected
+    await process_amount_and_show_calculation(callback, state, crypto, direction, amount)
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 340, in process_amount_and_show_calculation
+    order_id = await create_exchange_order(callback.from_user.id, state)
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/user.py", line 521, in create_exchange_order
+    btc_address=data["address"],
+KeyError: 'address'
+2025-08-08 23:12:42,977 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:12:42,981 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:12:42,981 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:12:46,472 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:12:46,581 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:12:48,549 [INFO] aiogram.event - Update id=182331084 is handled. Duration 451 ms by bot id=8153616825
+2025-08-08 23:12:50,461 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:12:50,624 [INFO] aiogram.event - Update id=182331085 is handled. Duration 576 ms by bot id=8153616825
+2025-08-08 23:12:51,834 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:12:51,966 [INFO] aiogram.event - Update id=182331086 is handled. Duration 505 ms by bot id=8153616825
+2025-08-08 23:15:21,832 [INFO] aiogram.event - Update id=182331087 is handled. Duration 551 ms by bot id=8153616825
+2025-08-08 23:15:24,417 [INFO] aiogram.event - Update id=182331088 is handled. Duration 130 ms by bot id=8153616825
+2025-08-08 23:15:24,421 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=None
+2025-08-08 23:15:24,421 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-08 23:15:25,518 [ERROR] api.onlypays_api - OnlyPays create_order error: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:25,518 [WARNING] api.api_manager - OnlyPays не смог создать заказ: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:25,518 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=1, wallet=None
+2025-08-08 23:15:25,518 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-08 23:15:25,519 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-08 23:15:26,087 [ERROR] api.pspware_api - [PSPWareAPI] Исключение при создании заказа: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:26,088 [WARNING] api.api_manager - PSPWare не смог создать заказ: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:26,088 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-08 23:15:26,088 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-08 23:15:26,088 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '2500'}
+2025-08-08 23:15:26,646 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:26,647 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:26,647 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=1, wallet=None
+2025-08-08 23:15:26,647 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-08 23:15:27,040 [ERROR] api.nicepay_api - Network error (attempt 1): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:15:32,286 [ERROR] api.nicepay_api - Network error (attempt 2): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:15:37,629 [ERROR] api.nicepay_api - Network error (attempt 3): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:15:37,630 [WARNING] api.api_manager - NicePay не смог создать заказ: Network error after 3 attempts: Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:15:37,630 [ERROR] api.api_manager - Все платежные API не сработали
+2025-08-08 23:15:37,630 [WARNING] handlers.user - None order creation failed on attempt 1 for order 1: Все платежные API не сработали
+2025-08-08 23:16:37,631 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=None
+2025-08-08 23:16:37,632 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-08 23:16:38,253 [ERROR] api.onlypays_api - OnlyPays create_order error: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:38,254 [WARNING] api.api_manager - OnlyPays не смог создать заказ: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:38,254 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=1, wallet=None
+2025-08-08 23:16:38,254 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-08 23:16:38,254 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-08 23:16:38,762 [ERROR] api.pspware_api - [PSPWareAPI] Исключение при создании заказа: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:38,762 [WARNING] api.api_manager - PSPWare не смог создать заказ: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:38,762 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-08 23:16:38,763 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-08 23:16:38,763 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '2500'}
+2025-08-08 23:16:39,262 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:39,263 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:39,263 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=1, wallet=None
+2025-08-08 23:16:39,263 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-08 23:16:39,533 [ERROR] api.nicepay_api - Network error (attempt 1): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:16:44,790 [ERROR] api.nicepay_api - Network error (attempt 2): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:16:50,111 [ERROR] api.nicepay_api - Network error (attempt 3): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:16:50,111 [WARNING] api.api_manager - NicePay не смог создать заказ: Network error after 3 attempts: Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:16:50,111 [ERROR] api.api_manager - Все платежные API не сработали
+2025-08-08 23:16:50,112 [WARNING] handlers.user - None order creation failed on attempt 2 for order 1: Все платежные API не сработали
+2025-08-08 23:17:50,113 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=None
+2025-08-08 23:17:50,115 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-08 23:17:50,487 [ERROR] api.onlypays_api - OnlyPays create_order error: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:50,487 [WARNING] api.api_manager - OnlyPays не смог создать заказ: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:50,487 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=1, wallet=None
+2025-08-08 23:17:50,488 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-08 23:17:50,488 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-08 23:17:50,907 [ERROR] api.pspware_api - [PSPWareAPI] Исключение при создании заказа: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:50,907 [WARNING] api.api_manager - PSPWare не смог создать заказ: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:50,907 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-08 23:17:50,907 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-08 23:17:50,907 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '2500'}
+2025-08-08 23:17:51,340 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:51,340 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:17:51,340 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=1, wallet=None
+2025-08-08 23:17:51,340 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-08 23:17:51,607 [ERROR] api.nicepay_api - Network error (attempt 1): Cannot connect to host nicepay.io:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')], host=https://nicepay.io/public/api/payment
+2025-08-08 23:17:54,597 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:17:54,599 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:17:54,599 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:20:15,474 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:20:15,590 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:20:17,544 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:18,001 [INFO] aiogram.event - Update id=182331089 is handled. Duration 937 ms by bot id=8153616825
+2025-08-08 23:20:26,570 [INFO] aiogram.event - Update id=182331090 is handled. Duration 172 ms by bot id=8153616825
+2025-08-08 23:20:29,203 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 1] [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2548)
+2025-08-08 23:20:29,203 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-08 23:20:29,332 [INFO] aiogram.event - Update id=182331091 is handled. Duration 197 ms by bot id=8153616825
+2025-08-08 23:20:29,334 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=2, wallet=None
+2025-08-08 23:20:29,334 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-08 23:20:29,712 [ERROR] api.onlypays_api - OnlyPays create_order error: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:29,713 [WARNING] api.api_manager - OnlyPays не смог создать заказ: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:29,713 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=2, wallet=None
+2025-08-08 23:20:29,713 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-08 23:20:29,713 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '2', 'description': 'Exchange order 2'}
+2025-08-08 23:20:30,093 [ERROR] api.pspware_api - [PSPWareAPI] Исключение при создании заказа: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:30,094 [WARNING] api.api_manager - PSPWare не смог создать заказ: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:30,094 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=2, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-08 23:20:30,094 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-08 23:20:30,094 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '2500'}
+2025-08-08 23:20:30,489 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:30,489 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:20:30,489 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=2, wallet=None
+2025-08-08 23:20:30,490 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-08 23:20:31,026 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'pln689-65c0fd-d5ec94-1b0ab3-6ee52T', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/pln689-65c0fd-d5ec94-1b0ab3-6ee52T', 'expired': 1754702431}}
+2025-08-08 23:20:31,027 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '2', 'order_id': '2', 'payment_url': 'https://processinglink.io/pay/pln689-65c0fd-d5ec94-1b0ab3-6ee52T', 'amount': 2500}
+2025-08-08 23:20:40,328 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-08 23:20:43,583 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:20:43,584 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:20:43,584 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-08 23:20:57,729 [INFO] aiogram.dispatcher - Start polling
+2025-08-08 23:20:57,837 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:21:05,866 [INFO] aiogram.event - Update id=182331092 is handled. Duration 727 ms by bot id=8153616825
+2025-08-08 23:21:11,908 [INFO] aiogram.event - Update id=182331093 is handled. Duration 331 ms by bot id=8153616825
+2025-08-08 23:21:15,350 [INFO] aiogram.event - Update id=182331094 is handled. Duration 153 ms by bot id=8153616825
+2025-08-08 23:21:16,823 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:17,103 [INFO] aiogram.event - Update id=182331095 is handled. Duration 674 ms by bot id=8153616825
+2025-08-08 23:21:18,994 [ERROR] utils.bitcoin - Error fetching BTC rate: Cannot connect to host api.coingecko.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:19,147 [INFO] aiogram.event - Update id=182331096 is handled. Duration 547 ms by bot id=8153616825
+2025-08-08 23:21:23,247 [INFO] aiogram.event - Update id=182331097 is handled. Duration 161 ms by bot id=8153616825
+2025-08-08 23:21:25,092 [INFO] aiogram.event - Update id=182331098 is handled. Duration 240 ms by bot id=8153616825
+2025-08-08 23:21:25,095 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=None
+2025-08-08 23:21:25,095 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-08 23:21:25,468 [ERROR] api.onlypays_api - OnlyPays create_order error: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:25,469 [WARNING] api.api_manager - OnlyPays не смог создать заказ: Cannot connect to host onlypays.net:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:25,469 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=2500, pay_types=['c2c'], personal_id=1, wallet=None
+2025-08-08 23:21:25,469 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-08 23:21:25,469 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 2500, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '1', 'description': 'Exchange order 1'}
+2025-08-08 23:21:25,894 [ERROR] api.pspware_api - [PSPWareAPI] Исключение при создании заказа: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:25,894 [WARNING] api.api_manager - PSPWare не смог создать заказ: Cannot connect to host api.pspware.space:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:25,894 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=2500, pay_types=card, personal_id=1, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-08 23:21:25,894 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-08 23:21:25,894 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '2500'}
+2025-08-08 23:21:26,306 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:26,306 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-08 23:21:26,307 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=2500, pay_types=sberbank_rub, personal_id=1, wallet=None
+2025-08-08 23:21:26,307 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-08 23:21:26,844 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': 'PHU689-65c465-57ff8e-138608-9beOjZ', 'amount': 250000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/PHU689-65c465-57ff8e-138608-9beOjZ', 'expired': 1754702486}}
+2025-08-08 23:21:26,845 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '1', 'order_id': '1', 'payment_url': 'https://processinglink.io/pay/PHU689-65c465-57ff8e-138608-9beOjZ', 'amount': 2500}
+2025-08-08 23:28:41,138 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-08 23:28:41,141 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-08 23:28:41,142 [INFO] aiogram.dispatcher - Polling stopped

@@ -55,7 +55,7 @@ class ReplyKeyboards:
         
         builder.row(
             KeyboardButton(text="💳 Банковская карта"),
-            KeyboardButton(text="📱 СБП")
+            # KeyboardButton(text="📱 СБП")
         )
         builder.row(
             KeyboardButton(text="◀️ Назад"),

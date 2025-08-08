@@ -64,26 +64,25 @@ class ExchangeStates(StatesGroup):
 
 db = Database(config.DATABASE_URL)
 
+
+
+
+
+
 async def show_main_menu(message_or_callback, is_callback=False):
+
+
+        
+
     default_welcome = (
-        f"🎉 Приветствуем вас, дорогие друзья 🎉\n"
-        f"💰 {config.EXCHANGE_NAME} 💰\n\n"
-        f"🟡 BTC - BITCOIN\n\n"
-        f"🔥 НАДЁЖНЫЙ, КАЧЕСТВЕННЫЙ И МОМЕНТАЛЬНЫЙ ОБМЕН КРИПТОВАЛЮТ 🔥\n\n"
-        f"⚡️ САМАЯ НИЗКАЯ КОМИССИЯ\n"
-        f"🤖 Моментальный автоматический обмен 24/7\n"
-        f"✅ Быстро / Надёжно / Качественно\n\n"
-        f"━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"🤝 По вопросам сотрудничества:\n"
-        f"💬 НАШ ЧАТ ➖ {config.SUPPORT_CHAT}\n\n"
-        f"🆘 Наша тех.поддержка:\n"
-        f"👤 Менеджер ➖ {config.SUPPORT_MANAGER}\n\n"
-        f"━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"📢 НОВОСТНОЙ КАНАЛ ➖ {config.NEWS_CHANNEL}\n"
-        f"📝 КАНАЛ ОТЗЫВЫ ➖ {config.REVIEWS_CHANNEL}\n\n"
-        f"━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"🥷 Добро пожаловать в {config.EXCHANGE_NAME}, ниндзя!\n"
+        f"У нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
+        f"Быстро. Дешево. Анонимно.\n\n"
+        f"Оператор: {config.SUPPORT_MANAGER}\n"
+        f"Канал: {config.NEWS_CHANNEL}\n\n"
         f"Выберите действие в меню:"
     )
+
     welcome_msg = await db.get_setting("welcome_message", default_welcome)
     if is_callback:
         await message_or_callback.bot.send_message(
@@ -93,6 +92,10 @@ async def show_main_menu(message_or_callback, is_callback=False):
         )
     else:
         await message_or_callback.answer(welcome_msg, reply_markup=ReplyKeyboards.main_menu())
+
+
+
+
 
 @router.message(CommandStart())
 async def start_handler(message: Message, state: FSMContext):
@@ -214,8 +217,9 @@ async def buy_crypto_selected(callback: CallbackQuery, state: FSMContext):
         btc_rate = await BitcoinAPI.get_btc_rate()
         text = (
             f"💰 <b>Покупка Bitcoin</b>\n\n"
-            f"📊 Текущий курс: {btc_rate:,.0f} ₽\n\n"
-            f"Введите сумму в рублях (от {config.MIN_AMOUNT:,} ₽ до {config.MAX_AMOUNT:,} ₽) или выберите из предложенных:"
+            f"📊 Текущий курс: {btc_rate:,.0f} ₽\n"
+            f"💱 Обмен: от {config.MIN_AMOUNT:,.0f} RUB до {config.MAX_AMOUNT:,.0f} RUB\n\n"
+            f"Введите сумму в рублях или BTC (в BTC вводить через точку, например 0.001):"
         )
         await callback.message.edit_text(
             text,
@@ -256,7 +260,6 @@ async def back_to_buy_selection(callback: CallbackQuery, state: FSMContext):
     )
 
 
-
 @router.message(ExchangeStates.waiting_for_amount)
 async def manual_amount_input(message: Message, state: FSMContext):
     if message.text == "◶️ Главное меню":
@@ -270,11 +273,6 @@ async def manual_amount_input(message: Message, state: FSMContext):
         if amount <= 0:
             await message.answer("❌ Сумма должна быть больше 0")
             return
-        if not (config.MIN_AMOUNT <= amount <= config.MAX_AMOUNT):
-            await message.answer(
-                f"❌ Сумма должна быть от {config.MIN_AMOUNT:,} ₽ до {config.MAX_AMOUNT:,} ₽. Пожалуйста, введите корректную сумму."
-            )
-            return
 
         crypto = data.get("crypto")
         direction = data.get("direction")
@@ -282,15 +280,35 @@ async def manual_amount_input(message: Message, state: FSMContext):
             await message.answer("❌ Ошибка: данные о криптовалюте или направлении отсутствуют.")
             return
 
-        await process_amount_and_show_calculation_for_message(
-            message, state, crypto, direction, amount
-        )
+        if amount < 1:
+            # Считаем, что пользователь ввёл сумму в BTC
+            await process_amount_and_show_calculation_for_message(
+                message, state, crypto, direction, amount, is_crypto=True
+            )
+        elif 1 <= amount <= 2000:
+            await message.answer("⚠️ Минимальная сумма для обмена 2.000 RUB")
+            return
+        else:
+            # Считаем, что пользователь ввёл сумму в рублях
+            if not (config.MIN_AMOUNT <= amount <= config.MAX_AMOUNT):
+                await message.answer(
+                    f"❌ Сумма должна быть от {config.MIN_AMOUNT:,} ₽ до {config.MAX_AMOUNT:,} ₽. Пожалуйста, введите корректную сумму."
+                )
+                return
+            await process_amount_and_show_calculation_for_message(
+                message, state, crypto, direction, amount
+            )
 
     except (ValueError, TypeError) as e:
         logger.error(f"Error parsing amount: {message.text}, error: {e}")
         await message.answer("❌ Введите корректное число (например, 5000 или 5000.50)")
 
-async def process_amount_and_show_calculation(callback: CallbackQuery, state: FSMContext, 
+
+
+
+
+
+async def process_amount_and_show_calculation(callback: CallbackQuery, state: FSMContext,
                                             crypto: str, direction: str, amount: float):
     btc_rate = await BitcoinAPI.get_btc_rate()
     if direction == "rub_to_crypto":
@@ -307,7 +325,8 @@ async def process_amount_and_show_calculation(callback: CallbackQuery, state: FS
         rub_amount=rub_amount,
         crypto_amount=crypto_amount,
         rate=btc_rate,
-        total_amount=total_amount
+        total_amount=total_amount,
+        payment_type='card'
     )
     operation_text = "Покупка" if direction == "rub_to_crypto" else "Продажа"
     text = (
@@ -316,21 +335,19 @@ async def process_amount_and_show_calculation(callback: CallbackQuery, state: FS
         f"💰 Сумма: {rub_amount:,.0f} ₽\n"
         f"₿ Получите: {crypto_amount:.8f} BTC\n\n"
         f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"
-        f"Выберите способ оплаты <b>(Рекомендуем СБП)</b>:"
+        f"Введите ваш Bitcoin адрес:"
     )
-    await callback.message.edit_text(
-        text,
-        reply_markup=InlineKeyboards.payment_methods_for_crypto(
-            crypto.lower(), str(amount), direction
-        ),
-        parse_mode="HTML"
-    )
+    await callback.message.edit_text(text, parse_mode="HTML")
+    await state.set_state(ExchangeStates.waiting_for_address)
 
 async def process_amount_and_show_calculation_for_message(message: Message, state: FSMContext,
-                                                        crypto: str, direction: str, amount: float):
+                                                        crypto: str, direction: str, amount: float, is_crypto: bool = False):
     btc_rate = await BitcoinAPI.get_btc_rate()
     if direction == "rub_to_crypto":
-        rub_amount = amount
+        if is_crypto:
+            rub_amount = await BitcoinAPI.get_btc_to_rub(amount)
+        else:
+            rub_amount = amount
         crypto_amount = BitcoinAPI.calculate_btc_amount(rub_amount, btc_rate)
     else:
         crypto_amount = amount
@@ -343,7 +360,8 @@ async def process_amount_and_show_calculation_for_message(message: Message, stat
         rub_amount=rub_amount,
         crypto_amount=crypto_amount,
         rate=btc_rate,
-        total_amount=total_amount
+        total_amount=total_amount,
+        payment_type='card'
     )
     operation_text = "Покупка" if direction == "rub_to_crypto" else "Продажа"
     text = (
@@ -352,15 +370,12 @@ async def process_amount_and_show_calculation_for_message(message: Message, stat
         f"💰 Сумма: {rub_amount:,.0f} ₽\n"
         f"₿ Получите: {crypto_amount:.8f} BTC\n\n"
         f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"
-        f"Выберите способ {'оплаты' if direction == 'rub_to_crypto' else 'получения'}:"
+        f"Введите ваш Bitcoin адрес:"
     )
-    await message.answer(
-        text,
-        reply_markup=InlineKeyboards.payment_methods_for_crypto(
-            crypto.lower(), str(amount), direction
-        ),
-        parse_mode="HTML"
-    )
+    await message.answer(text, parse_mode="HTML")
+    await state.set_state(ExchangeStates.waiting_for_address)
+
+
 
 
 
@@ -470,6 +485,21 @@ async def address_input_handler(message: Message, state: FSMContext):
 
 
 
+# async def create_exchange_order(user_id: int, state: FSMContext) -> int:
+#     data = await state.get_data()
+#     order_id = await db.create_order(
+#         user_id=user_id,
+#         amount_rub=data["rub_amount"],
+#         amount_btc=data["crypto_amount"],
+#         btc_address=data["address"],
+#         rate=data["rate"],
+#         total_amount=data["total_amount"],
+#         payment_type=data["payment_type"]
+#     )
+#     return order_id
+
+
+
 async def create_exchange_order(user_id: int, state: FSMContext) -> int:
     data = await state.get_data()
     order_id = await db.create_order(
@@ -479,9 +509,15 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
         btc_address=data["address"],
         rate=data["rate"],
         total_amount=data["total_amount"],
-        payment_type=data["payment_type"]
+        payment_type=data["payment_type"]  # Используем payment_type из состояния
     )
     return order_id
+
+
+
+
+
+
 
 async def show_order_confirmation(message: Message, state: FSMContext, order_id: int):
     data = await state.get_data()
@@ -498,14 +534,12 @@ async def show_order_confirmation(message: Message, state: FSMContext, order_id:
         f"Подтвердите создание заявки:"
     )
     
-
-    
     await message.answer(
         text,
         reply_markup=InlineKeyboards.order_confirmation(order_id),
         parse_mode="HTML"
     )
-    await state.clear()
+    # await state.clear()
 
 
 
@@ -645,17 +679,64 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
 
 
 
+# @router.callback_query(F.data.startswith(("confirm_order_", "cancel_order_")))
+# async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext):
+                                            
+#     action = "confirm" if callback.data.startswith("confirm") else "cancel"
+#     order_id = int(callback.data.split("_")[-1])
+#     order = await db.get_order(order_id)
+    
+#     if not order or order['user_id'] != callback.from_user.id:
+#         await callback.answer("❌ Нет прав или заявка не найдена")
+#         return
+    
+#     if action == "confirm":
+#         if not order:
+#             await callback.message.edit_text("❌ Заявка не найдена")
+#             return
+#         user_id = order['user_id']
+#         payment_type = order.get('payment_type')
+#         if order['total_amount'] and payment_type:
+#             await callback.message.edit_text(
+#                 "⏳ Ваш запрос принят. Реквизиты будут отправлены в следующем сообщении.\nВремя ожидания до 4-х минут..."
+#             )
+#             asyncio.create_task(
+#                 request_requisites_with_retries(order_id, user_id, payment_type, callback.bot)
+#             )
+#             return
+#         else:
+#             text = (
+#                 f"✅ <b>Заявка #{order.get('personal_id', order_id)} подтверждена!</b>\n\n"
+#                 f"Ожидайте реквизиты для оплаты.\n"
+#                 f"Время обработки: 5-15 минут."
+#             )
+#     else:
+#         await db.update_order(order_id, status='cancelled')
+#         order = await db.get_order(order_id)
+#         display_id = order.get('personal_id', order_id) if order else order_id
+#         text = f"❌ Заявка #{display_id} отменена."
+
+#     await callback.message.edit_text(text, parse_mode="HTML")
+#     await asyncio.sleep(3)
+#     await callback.bot.send_message(
+#         callback.message.chat.id,
+#         "🎯 Главное меню:",
+#         reply_markup=ReplyKeyboards.main_menu()
+#     )
+
+
+
+
+
+
 @router.callback_query(F.data.startswith(("confirm_order_", "cancel_order_")))
 async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext):
-                                            
     action = "confirm" if callback.data.startswith("confirm") else "cancel"
     order_id = int(callback.data.split("_")[-1])
     order = await db.get_order(order_id)
-    
     if not order or order['user_id'] != callback.from_user.id:
         await callback.answer("❌ Нет прав или заявка не найдена")
         return
-    
     if action == "confirm":
         if not order:
             await callback.message.edit_text("❌ Заявка не найдена")
@@ -669,6 +750,7 @@ async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext)
             asyncio.create_task(
                 request_requisites_with_retries(order_id, user_id, payment_type, callback.bot)
             )
+            await state.clear()  
             return
         else:
             text = (
@@ -681,7 +763,6 @@ async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext)
         order = await db.get_order(order_id)
         display_id = order.get('personal_id', order_id) if order else order_id
         text = f"❌ Заявка #{display_id} отменена."
-
     await callback.message.edit_text(text, parse_mode="HTML")
     await asyncio.sleep(3)
     await callback.bot.send_message(
@@ -689,9 +770,7 @@ async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext)
         "🎯 Главное меню:",
         reply_markup=ReplyKeyboards.main_menu()
     )
-
-
-
+    await state.clear() 
 
 
 

@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from database.models import Database
-from keyboards.inline import Keyboards
+from keyboards.inline import InlineKeyboards
 from keyboards.reply import ReplyKeyboards
 from config import config
 

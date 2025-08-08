@@ -18,6 +18,7 @@ def remove_comments_and_docstrings(source):
     prev_toktype = tokenize.INDENT
     last_lineno = -1
     last_col = 0
+    blank_lines = 0
 
     try:
         tokens = list(tokenize.tokenize(io_obj.readline))
@@ -38,7 +39,16 @@ def remove_comments_and_docstrings(source):
                 if is_triple_quoted_string(token_string):
                     continue
 
-        output_tokens.append(tok)
+        if token_type == tokenize.NEWLINE and prev_toktype == tokenize.DEDENT:
+            blank_lines += 1
+        else:
+            if blank_lines > 0:
+                if prev_toktype == tokenize.OP and token_string == 'def':
+                    output_tokens.extend([tokenize.TokenInfo(tokenize.NEWLINE, '\n', (start_line, 0), (start_line, 0), '\n')] * (3 - min(3, blank_lines)))
+                blank_lines = 0
+
+            output_tokens.append(tok)
+
         prev_toktype = token_type
         last_lineno = end_line
         last_col = end_col

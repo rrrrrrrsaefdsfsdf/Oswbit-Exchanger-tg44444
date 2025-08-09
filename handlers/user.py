@@ -29,6 +29,8 @@ from api.greengo_api import GreengoAPI
 from api.nicepay_api import NicePayAPI
 from api.api_manager import PaymentAPIManager
 
+from helpers import get_mirror_config, get_referral_link, with_mirror_config
+
 logger = logging.getLogger(__name__)
 router = Router()
 logger.info("User router loaded")
@@ -68,22 +70,27 @@ db = Database(config.DATABASE_URL)
 
 
 
-
 async def show_main_menu(message_or_callback, is_callback=False):
-
-
-        
+                                
+    if is_callback:
+        bot = message_or_callback.bot
+    else:
+        bot = message_or_callback.bot
+    
+                                                
+    mirror_config = get_mirror_config(bot)
 
     default_welcome = (
-        f"<b>🥷 Добро пожаловать в {config.EXCHANGE_NAME}, ниндзя!</b>\n"
+        f"<b>🥷 Добро пожаловать в {mirror_config['EXCHANGE_NAME']}, ниндзя!</b>\n"
         f"\nУ нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
         f"Быстро. Дешево. Анонимно.\n\n"
-        f"Оператор: {config.SUPPORT_MANAGER}\n"
-        f"Канал: {config.NEWS_CHANNEL}\n\n"
+        f"Оператор: {mirror_config['SUPPORT_MANAGER']}\n"
+        f"Канал: {mirror_config['NEWS_CHANNEL']}\n\n"
         f"Выберите действие в меню:"
     )
 
     welcome_msg = await db.get_setting("welcome_message", default_welcome)
+    
     if is_callback:
         await message_or_callback.bot.send_message(
             message_or_callback.message.chat.id,
@@ -92,6 +99,7 @@ async def show_main_menu(message_or_callback, is_callback=False):
         )
     else:
         await message_or_callback.answer(welcome_msg, reply_markup=ReplyKeyboards.main_menu())
+
 
 
 
@@ -591,7 +599,7 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
             
             api_response = await payment_api_manager.create_order(
                 amount=total_amount,
-                payment_type=payment_type,
+                payment_type=payment_type, 
                 personal_id=str(order_id),
                 is_sell_order=is_sell_order,
                 wallet=wallet                                             

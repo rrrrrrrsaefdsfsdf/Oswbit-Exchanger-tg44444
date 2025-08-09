@@ -16,13 +16,14 @@ async def schedule_order_deletion(order_id: int, db_path: str):
                 WHERE id = ? AND status = 'waiting'
             ''', (order_id,))
             await conn.commit()
-        logger.info(f"Order {order_id} deleted after 30 minutes")
+            logger.info(f"Order {order_id} deleted after 30 minutes")
     except Exception as e:
         logger.error(f"Error deleting order {order_id}: {e}")
 
 class Database:
-    def __init__(self, db_path: str):
+    def __init__(self, db_path: str, mirror_id: str = None):
         self.db_path = db_path
+        self.mirror_id = mirror_id or config.MIRROR_ID
 
     async def get_commission_percentage(self):
         return await self.get_setting("commission_percentage", float(os.getenv('COMMISSION_PERCENT', '20.0')))
@@ -42,10 +43,12 @@ class Database:
                     referral_code TEXT,
                     referred_by INTEGER,
                     total_operations INTEGER DEFAULT 0,
-                    total_amount REAL DEFAULT 0
+                    total_amount REAL DEFAULT 0,
+                    mirror_id TEXT DEFAULT 'main'
                 )
             ''')
             await self._migrate_users_table(db)
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS orders (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -66,23 +69,29 @@ class Database:
                     requisites TEXT,
                     is_problematic BOOLEAN DEFAULT FALSE,
                     operator_notes TEXT,
-                    personal_id TEXT
+                    personal_id TEXT,
+                    mirror_id TEXT DEFAULT 'main'
                 )
             ''')
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS settings (
                     key TEXT PRIMARY KEY,
-                    value TEXT NOT NULL
+                    value TEXT NOT NULL,
+                    mirror_id TEXT DEFAULT 'main'
                 )
             ''')
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS captcha_sessions (
                     user_id INTEGER PRIMARY KEY,
                     answer TEXT NOT NULL,
                     attempts INTEGER DEFAULT 0,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    mirror_id TEXT DEFAULT 'main'
                 )
             ''')
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS referral_bonuses (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -90,36 +99,59 @@ class Database:
                     amount REAL NOT NULL,
                     description TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    mirror_id TEXT DEFAULT 'main',
                     FOREIGN KEY (user_id) REFERENCES users (user_id)
                 )
             ''')
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS reviews (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     text TEXT NOT NULL,
                     created_at TEXT NOT NULL,
-                    status TEXT DEFAULT 'pending'
+                    status TEXT DEFAULT 'pending',
+                    mirror_id TEXT DEFAULT 'main'
                 )
             ''')
+
+            await self._migrate_mirror_columns(db)
             await db.commit()
 
     async def _migrate_users_table(self, db):
         cursor = await db.execute("PRAGMA table_info(users)")
         columns = await cursor.fetchall()
         column_names = [col[1] for col in columns]
+        
         if 'referral_count' not in column_names:
             await db.execute('ALTER TABLE users ADD COLUMN referral_count INTEGER DEFAULT 0')
-            await db.commit()
+        
+        if 'mirror_id' not in column_names:
+            await db.execute('ALTER TABLE users ADD COLUMN mirror_id TEXT DEFAULT "main"')
+        
+        await db.commit()
+
+    async def _migrate_mirror_columns(self, db):
+        tables_to_migrate = ['orders', 'settings', 'captcha_sessions', 'referral_bonuses', 'reviews']
+        
+        for table in tables_to_migrate:
+            cursor = await db.execute(f"PRAGMA table_info({table})")
+            columns = await cursor.fetchall()
+            column_names = [col[1] for col in columns]
+            
+            if 'mirror_id' not in column_names:
+                await db.execute(f'ALTER TABLE {table} ADD COLUMN mirror_id TEXT DEFAULT "main"')
+        
+        await db.commit()
 
     async def add_user(self, user_id: int, username: str = None,
                       first_name: str = None, last_name: str = None) -> bool:
         async with aiosqlite.connect(self.db_path) as db:
             try:
                 await db.execute('''
-                    INSERT INTO users (user_id, username, first_name, last_name)
-                    VALUES (?, ?, ?, ?)
-                ''', (user_id, username, first_name, last_name))
+                    INSERT INTO users (user_id, username, first_name, last_name, mirror_id)
+                    VALUES (?, ?, ?, ?, ?)
+                ''', (user_id, username, first_name, last_name, self.mirror_id))
                 await db.commit()
                 return True
             except aiosqlite.IntegrityError:
@@ -135,8 +167,11 @@ class Database:
     async def update_user(self, user_id: int, **kwargs):
         if not kwargs:
             return
+        
+        kwargs['mirror_id'] = self.mirror_id
         fields = ', '.join([f"{key} = ?" for key in kwargs.keys()])
         values = list(kwargs.values()) + [user_id]
+        
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute(f'UPDATE users SET {fields} WHERE user_id = ?', values)
             await db.commit()
@@ -146,9 +181,9 @@ class Database:
                           payment_type: str) -> int:
         async with aiosqlite.connect(self.db_path) as db:
             cursor = await db.execute('''
-                INSERT INTO orders (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type))
+                INSERT INTO orders (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, mirror_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, self.mirror_id))
             await db.commit()
             order_id = cursor.lastrowid
             asyncio.create_task(schedule_order_deletion(order_id, self.db_path))
@@ -173,8 +208,8 @@ class Database:
         async with aiosqlite.connect(self.db_path) as db:
             current_time = datetime.now().isoformat()
             cursor = await db.execute(
-                'INSERT INTO reviews (user_id, text, created_at, status) VALUES (?, ?, ?, ?)',
-                (user_id, text, current_time, 'pending')
+                'INSERT INTO reviews (user_id, text, created_at, status, mirror_id) VALUES (?, ?, ?, ?, ?)',
+                (user_id, text, current_time, 'pending', self.mirror_id)
             )
             await db.commit()
             return cursor.lastrowid
@@ -182,8 +217,8 @@ class Database:
     async def get_last_review_time(self, user_id: int):
         async with aiosqlite.connect(self.db_path) as db:
             async with db.execute(
-                'SELECT created_at FROM reviews WHERE user_id = ? ORDER BY created_at DESC LIMIT 1',
-                (user_id,)
+                'SELECT created_at FROM reviews WHERE user_id = ? AND mirror_id = ? ORDER BY created_at DESC LIMIT 1',
+                (user_id, self.mirror_id)
             ) as cursor:
                 row = await cursor.fetchone()
                 if row:
@@ -201,11 +236,13 @@ class Database:
     async def update_order(self, order_id: int, **kwargs):
         if not kwargs:
             return
+
         allowed_fields = [
             'onlypays_id', 'pspware_id', 'nicepay_id', 'greengo_id', 'status', 'requisites',
             'personal_id', 'received_sum', 'note', 'operator_notes',
-            'btc_address', 'completed_at', 'is_problematic'
+            'btc_address', 'completed_at', 'is_problematic', 'mirror_id'
         ]
+
         set_clause = []
         values = []
         for field, value in kwargs.items():
@@ -214,6 +251,7 @@ class Database:
                 values.append(value)
             else:
                 logger.warning(f"Attempt to update forbidden field '{field}' in orders table ignored")
+
         if set_clause:
             values.append(order_id)
             query = f"UPDATE orders SET {', '.join(set_clause)} WHERE id = ?"
@@ -236,19 +274,18 @@ class Database:
                 )
             ''')
             await db.commit()
-            logger.info(f"Turnover database initialized for mirror: {config.MIRROR_ID}")
+        logger.info(f"Turnover database initialized for mirror: {self.mirror_id}")
 
     async def add_turnover_record(self, order_id: int, user_id: int, amount: float, status: str):
         central_db_path = config.CENTRAL_DB_PATH
-        mirror_id = config.MIRROR_ID
         try:
             async with aiosqlite.connect(central_db_path) as db:
                 await db.execute('''
                     INSERT INTO mirror_turnover (mirror_id, order_id, user_id, amount, status)
                     VALUES (?, ?, ?, ?, ?)
-                ''', (mirror_id, order_id, user_id, amount, status))
+                ''', (self.mirror_id, order_id, user_id, amount, status))
                 await db.commit()
-                logger.info(f"Turnover recorded: {mirror_id} - Order {order_id} - {amount} RUB - Status: {status}")
+            logger.info(f"Turnover recorded: {self.mirror_id} - Order {order_id} - {amount} RUB - Status: {status}")
         except Exception as e:
             logger.error(f"Failed to record turnover: {e}")
 
@@ -270,6 +307,7 @@ class Database:
                         WHERE status = 'paid'
                     '''
                     params = ()
+
                 async with db.execute(query, params) as cursor:
                     result = await cursor.fetchone()
                     return {
@@ -319,6 +357,7 @@ class Database:
                         AND created_at >= datetime('now', '-{} days')
                     '''.format(days)
                     params = ()
+
                 async with db.execute(query, params) as cursor:
                     result = await cursor.fetchone()
                     return {
@@ -340,7 +379,7 @@ class Database:
                     amount=order['total_amount'],
                     status="paid"
                 )
-                logger.info(f"Order {order_id} marked as paid and recorded in turnover")
+            logger.info(f"Order {order_id} marked as paid and recorded in turnover")
         except Exception as e:
             logger.error(f"Error marking order as paid: {e}")
 
@@ -355,7 +394,7 @@ class Database:
 
     async def get_setting(self, key: str, default: Any = None) -> Any:
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute('SELECT value FROM settings WHERE key = ?', (key,)) as cursor:
+            async with db.execute('SELECT value FROM settings WHERE key = ? AND mirror_id = ?', (key, self.mirror_id)) as cursor:
                 row = await cursor.fetchone()
                 if row:
                     try:
@@ -369,10 +408,11 @@ class Database:
             value = json.dumps(value)
         else:
             value = str(value)
+
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute('''
-                INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)
-            ''', (key, value))
+                INSERT OR REPLACE INTO settings (key, value, mirror_id) VALUES (?, ?, ?)
+            ''', (key, value, self.mirror_id))
             await db.commit()
 
     async def get_all_users(self) -> List[int]:
@@ -381,24 +421,31 @@ class Database:
                 rows = await cursor.fetchall()
                 return [row[0] for row in rows]
 
+    async def get_users_by_mirror(self, mirror_id: str = None) -> List[int]:
+        target_mirror = mirror_id or self.mirror_id
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute('SELECT user_id FROM users WHERE is_blocked = FALSE AND mirror_id = ?', (target_mirror,)) as cursor:
+                rows = await cursor.fetchall()
+                return [row[0] for row in rows]
+
     async def create_captcha_session(self, user_id: int, answer: str):
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute('''
-                INSERT OR REPLACE INTO captcha_sessions (user_id, answer, attempts)
-                VALUES (?, ?, 0)
-            ''', (user_id, answer))
+                INSERT OR REPLACE INTO captcha_sessions (user_id, answer, attempts, mirror_id)
+                VALUES (?, ?, 0, ?)
+            ''', (user_id, answer, self.mirror_id))
             await db.commit()
 
     async def get_captcha_session(self, user_id: int) -> Optional[Dict]:
         async with aiosqlite.connect(self.db_path) as db:
             db.row_factory = aiosqlite.Row
-            async with db.execute('SELECT * FROM captcha_sessions WHERE user_id = ?', (user_id,)) as cursor:
+            async with db.execute('SELECT * FROM captcha_sessions WHERE user_id = ? AND mirror_id = ?', (user_id, self.mirror_id)) as cursor:
                 row = await cursor.fetchone()
                 return dict(row) if row else None
 
     async def delete_captcha_session(self, user_id: int):
         async with aiosqlite.connect(self.db_path) as db:
-            await db.execute('DELETE FROM captcha_sessions WHERE user_id = ?', (user_id,))
+            await db.execute('DELETE FROM captcha_sessions WHERE user_id = ? AND mirror_id = ?', (user_id, self.mirror_id))
             await db.commit()
 
     async def update_referral_count(self, user_id: int):
@@ -409,13 +456,13 @@ class Database:
                     (user_id,)
                 ) as cursor:
                     count = (await cursor.fetchone())[0]
-                    logger.info(f"Referral bonus for user {user_id}")
-                    await db.execute(
-                        'UPDATE users SET referral_count = ? WHERE user_id = ?',
-                        (count, user_id)
-                    )
-                    await db.commit()
-                    return count
+                logger.info(f"Referral bonus for user {user_id}")
+                await db.execute(
+                    'UPDATE users SET referral_count = ? WHERE user_id = ?',
+                    (count, user_id)
+                )
+                await db.commit()
+                return count
             except:
                 return 0
 
@@ -426,6 +473,7 @@ class Database:
             referral_count = 0
             if result1 and len(result1) > 0:
                 referral_count = result1[0]['count'] if 'count' in result1[0] else result1[0][0]
+            
             referral_balance = 0
             return {
                 'referral_count': referral_count,
@@ -442,9 +490,9 @@ class Database:
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute('''
                 INSERT OR IGNORE INTO referral_bonuses
-                (user_id, amount, created_at)
-                VALUES (?, ?, CURRENT_TIMESTAMP)
-            ''', (user_id, amount))
+                (user_id, amount, created_at, mirror_id)
+                VALUES (?, ?, CURRENT_TIMESTAMP, ?)
+            ''', (user_id, amount, self.mirror_id))
             await db.commit()
 
     async def execute_query(self, query: str, params: tuple = ()) -> List[Dict]:
@@ -457,19 +505,26 @@ class Database:
 
     async def get_statistics(self) -> Dict:
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute('SELECT COUNT(*) FROM users') as cursor:
+            async with db.execute('SELECT COUNT(*) FROM users WHERE mirror_id = ?', (self.mirror_id,)) as cursor:
                 total_users = (await cursor.fetchone())[0]
-            async with db.execute('SELECT COUNT(*) FROM orders') as cursor:
+
+            async with db.execute('SELECT COUNT(*) FROM orders WHERE mirror_id = ?', (self.mirror_id,)) as cursor:
                 total_orders = (await cursor.fetchone())[0]
-            async with db.execute('SELECT COUNT(*) FROM orders WHERE status = "completed"') as cursor:
+
+            async with db.execute('SELECT COUNT(*) FROM orders WHERE status = "completed" AND mirror_id = ?', (self.mirror_id,)) as cursor:
                 completed_orders = (await cursor.fetchone())[0]
-            async with db.execute('SELECT SUM(total_amount) FROM orders WHERE status = "completed"') as cursor:
+
+            async with db.execute('SELECT SUM(total_amount) FROM orders WHERE status = "completed" AND mirror_id = ?', (self.mirror_id,)) as cursor:
                 total_volume = (await cursor.fetchone())[0] or 0
-            async with db.execute('SELECT COUNT(*) FROM orders WHERE DATE(created_at) = DATE("now")') as cursor:
+
+            async with db.execute('SELECT COUNT(*) FROM orders WHERE DATE(created_at) = DATE("now") AND mirror_id = ?', (self.mirror_id,)) as cursor:
                 today_orders = (await cursor.fetchone())[0]
-            async with db.execute('SELECT SUM(total_amount) FROM orders WHERE DATE(created_at) = DATE("now") AND status = "completed"') as cursor:
+
+            async with db.execute('SELECT SUM(total_amount) FROM orders WHERE DATE(created_at) = DATE("now") AND status = "completed" AND mirror_id = ?', (self.mirror_id,)) as cursor:
                 today_volume = (await cursor.fetchone())[0] or 0
+
             completion_rate = (completed_orders / total_orders * 100) if total_orders > 0 else 0
+
             return {
                 'total_users': total_users,
                 'total_orders': total_orders,
@@ -507,3 +562,33 @@ class Database:
             async with db.execute('SELECT * FROM reviews WHERE id = ?', (review_id,)) as cursor:
                 row = await cursor.fetchone()
                 return dict(row) if row else None
+
+    async def get_orders_by_mirror(self, mirror_id: str = None, status: str = None) -> List[Dict]:
+        target_mirror = mirror_id or self.mirror_id
+        async with aiosqlite.connect(self.db_path) as db:
+            db.row_factory = aiosqlite.Row
+            if status:
+                query = 'SELECT * FROM orders WHERE mirror_id = ? AND status = ? ORDER BY created_at DESC'
+                params = (target_mirror, status)
+            else:
+                query = 'SELECT * FROM orders WHERE mirror_id = ? ORDER BY created_at DESC'
+                params = (target_mirror,)
+            
+            async with db.execute(query, params) as cursor:
+                rows = await cursor.fetchall()
+                return [dict(row) for row in rows]
+
+    async def get_reviews_by_mirror(self, mirror_id: str = None, status: str = None) -> List[Dict]:
+        target_mirror = mirror_id or self.mirror_id
+        async with aiosqlite.connect(self.db_path) as db:
+            db.row_factory = aiosqlite.Row
+            if status:
+                query = 'SELECT * FROM reviews WHERE mirror_id = ? AND status = ? ORDER BY created_at DESC'
+                params = (target_mirror, status)
+            else:
+                query = 'SELECT * FROM reviews WHERE mirror_id = ? ORDER BY created_at DESC'
+                params = (target_mirror,)
+            
+            async with db.execute(query, params) as cursor:
+                rows = await cursor.fetchall()
+                return [dict(row) for row in rows]

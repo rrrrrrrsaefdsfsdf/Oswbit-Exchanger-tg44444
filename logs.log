@@ -1,0 +1,196 @@
+2025-08-09 12:28:46,277 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 12:28:46,277 [INFO] __main__ - База данных инициализирована
+2025-08-09 12:28:46,277 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 12:28:46,284 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 12:28:46,288 [ERROR] __main__ - Ошибка создания зеркального бота 1: Router is already attached to <Dispatcher '0x1065a10f0'>
+2025-08-09 12:28:46,288 [INFO] __main__ - Запуск бота: main
+2025-08-09 12:28:46,782 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:28:46,887 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:30:48,625 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 12:30:48,626 [INFO] __main__ - База данных инициализирована
+2025-08-09 12:30:48,626 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 12:30:48,631 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 12:30:48,636 [ERROR] __main__ - Ошибка создания зеркального бота 1: Router is already attached to <Dispatcher '0x112746d10'>
+2025-08-09 12:30:48,637 [INFO] __main__ - Запуск бота: main
+2025-08-09 12:30:49,073 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:30:49,185 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:31:45,471 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 12:31:45,473 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:31:45,473 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 12:31:45,725 [INFO] __main__ - Все задачи завершены
+2025-08-09 12:31:45,728 [INFO] __main__ - Завершение работы программы
+2025-08-09 12:31:48,059 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 12:31:48,059 [INFO] __main__ - База данных инициализирована
+2025-08-09 12:31:48,059 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 12:31:48,065 [INFO] handlers.user - User router loaded
+2025-08-09 12:31:48,067 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 12:31:48,072 [INFO] handlers.user - User router loaded
+2025-08-09 12:31:48,074 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 12:31:48,074 [INFO] __main__ - Запуск бота: main
+2025-08-09 12:31:48,074 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 12:31:48,484 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:31:48,594 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:31:51,131 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:31:51,233 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 12:31:53,791 [INFO] aiogram.event - Update id=897364792 is handled. Duration 371 ms by bot id=7965647514
+2025-08-09 12:34:02,106 [INFO] aiogram.event - Update id=897364793 is handled. Duration 477 ms by bot id=7965647514
+2025-08-09 12:34:03,435 [INFO] aiogram.event - Update id=897364794 is handled. Duration 642 ms by bot id=7965647514
+2025-08-09 12:34:04,963 [INFO] aiogram.event - Update id=897364795 is handled. Duration 414 ms by bot id=7965647514
+2025-08-09 12:34:12,223 [INFO] asyncio - Turnover recorded: main - Order 3 - 6250.0 RUB - Status: created
+2025-08-09 12:34:12,383 [INFO] aiogram.event - Update id=897364796 is handled. Duration 169 ms by bot id=7965647514
+2025-08-09 12:34:14,076 [INFO] aiogram.event - Update id=897364797 is handled. Duration 179 ms by bot id=7965647514
+2025-08-09 12:34:14,079 [INFO] api.api_manager - Вызов create_order для OnlyPays с параметрами: amount=6250, pay_types=card, personal_id=3, wallet=None
+2025-08-09 12:34:14,079 [INFO] api.api_manager - Попытка создания заказа через OnlyPays (тип платежа: card -> card)
+2025-08-09 12:34:21,148 [INFO] api.onlypays_api - OnlyPays create_order response (sum 6250): {'success': False, 'error': 'No available requisites'}
+2025-08-09 12:34:21,149 [WARNING] api.api_manager - OnlyPays не смог создать заказ: No available requisites
+2025-08-09 12:34:21,149 [INFO] api.api_manager - Вызов create_order для PSPWare с параметрами: amount=6250, pay_types=['c2c'], personal_id=3, wallet=None
+2025-08-09 12:34:21,150 [INFO] api.api_manager - Попытка создания заказа через PSPWare (тип платежа: card -> c2c)
+2025-08-09 12:34:21,150 [INFO] api.pspware_api - [PSPWareAPI] POST https://api.pspware.space/merchant/v2/orders Headers: {'X-API-KEY': 'd6e4d661-665d-4220-a635-4d072e56735b', 'Content-Type': 'application/json'} Payload: {'sum': 6250, 'currency': 'RUB', 'order_type': 'PAY-IN', 'pay_types': ['c2c'], 'geos': ['RU'], 'merchant_id': '03d6d735-a2b7-4b75-b5fa-43be40331bf8', 'order_id': '3', 'description': 'Exchange order 3'}
+2025-08-09 12:34:22,070 [INFO] api.pspware_api - [PSPWareAPI] Response status 404 Body: {"detail":"Не удалось найти подходящие реквизиты ни по одному из способов оплаты."}
+2025-08-09 12:34:22,071 [ERROR] api.pspware_api - [PSPWareAPI] Ошибка создания заказа: {'detail': 'Не удалось найти подходящие реквизиты ни по одному из способов оплаты.'}
+2025-08-09 12:34:22,072 [WARNING] api.api_manager - PSPWare не смог создать заказ: Не удалось найти подходящие реквизиты ни по одному из способов оплаты.
+2025-08-09 12:34:22,072 [INFO] api.api_manager - Вызов create_order для Greengo с параметрами: amount=6250, pay_types=card, personal_id=3, wallet=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+2025-08-09 12:34:22,072 [INFO] api.api_manager - Попытка создания заказа через Greengo (тип платежа: card -> card)
+2025-08-09 12:34:22,072 [INFO] api.greengo_api - Создание Greengo ордера: {'payment_method': 'card', 'wallet': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'from_amount': '6250'}
+2025-08-09 12:34:22,599 [ERROR] api.greengo_api - Greengo network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-09 12:34:22,599 [WARNING] api.api_manager - Greengo не смог создать заказ: Network error: Cannot connect to host api.greengo.cc:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')]
+2025-08-09 12:34:22,599 [INFO] api.api_manager - Вызов create_order для NicePay с параметрами: amount=6250, pay_types=sberbank_rub, personal_id=3, wallet=None
+2025-08-09 12:34:22,599 [INFO] api.api_manager - Попытка создания заказа через NicePay (тип платежа: card -> sberbank_rub)
+2025-08-09 12:34:23,213 [INFO] api.nicepay_api - NicePay response: {'status': 'success', 'data': {'payment_id': '9Sl689-7161f5-90fc0d-8ffc3a-8edYyI', 'amount': 625000, 'currency': 'RUB', 'link': 'https://processinglink.io/pay/9Sl689-7161f5-90fc0d-8ffc3a-8edYyI', 'expired': 1754750063}}
+2025-08-09 12:34:23,214 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '3', 'order_id': '3', 'payment_url': 'https://processinglink.io/pay/9Sl689-7161f5-90fc0d-8ffc3a-8edYyI', 'amount': 6250}
+2025-08-09 12:34:29,675 [INFO] aiogram.event - Update id=897364798 is handled. Duration 146 ms by bot id=7965647514
+2025-08-09 12:34:34,927 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 12:34:34,928 [INFO] aiogram.dispatcher - Polling stopped for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 12:34:34,929 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 12:51:10,044 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 12:51:10,044 [INFO] __main__ - База данных инициализирована
+2025-08-09 12:51:10,044 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 12:51:10,054 [INFO] handlers.user - User router loaded
+2025-08-09 12:51:10,056 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 12:51:10,075 [INFO] handlers.user - User router loaded
+2025-08-09 12:51:10,082 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 12:51:10,082 [INFO] __main__ - Запуск бота: main
+2025-08-09 12:51:10,083 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 12:51:10,568 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:51:10,573 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:51:10,680 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 12:51:10,682 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:51:18,456 [INFO] aiogram.event - Update id=182331234 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-09 12:51:18,457 [ERROR] aiogram.event - Cause exception while process update id=182331234 by bot id=8153616825
+AttributeError: type object 'InlineKeyboards' has no attribute 'create_builder'
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/admin.py", line 72, in admin_panel
+    builder = create_main_admin_panel()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/admin.py", line 25, in create_main_admin_panel
+    builder = InlineKeyboards.create_builder()
+AttributeError: type object 'InlineKeyboards' has no attribute 'create_builder'
+2025-08-09 12:51:21,628 [INFO] aiogram.event - Update id=182331235 is not handled. Duration 0 ms by bot id=8153616825
+2025-08-09 12:51:21,628 [ERROR] aiogram.event - Cause exception while process update id=182331235 by bot id=8153616825
+AttributeError: type object 'InlineKeyboards' has no attribute 'create_builder'
+Traceback (most recent call last):
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 27, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 41, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 123, in _wrapped
+    return await self._propagate_event(
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/Users/yunix/Documents/oswaldo/OswBit/middlewares/chat_type.py", line 29, in __call__
+    return await handler(event, data)
+  File "/Users/yunix/Documents/oswaldo/OswBit/.venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/admin.py", line 72, in admin_panel
+    builder = create_main_admin_panel()
+  File "/Users/yunix/Documents/oswaldo/OswBit/handlers/admin.py", line 25, in create_main_admin_panel
+    builder = InlineKeyboards.create_builder()
+AttributeError: type object 'InlineKeyboards' has no attribute 'create_builder'
+2025-08-09 12:55:14,506 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 1] [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2548)
+2025-08-09 12:55:14,507 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-09 12:55:26,056 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-09 12:56:51,162 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 12:56:51,163 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:56:51,164 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 12:57:06,916 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 12:57:06,916 [INFO] __main__ - База данных инициализирована
+2025-08-09 12:57:06,916 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 12:57:06,923 [INFO] handlers.user - User router loaded
+2025-08-09 12:57:06,924 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 12:57:06,930 [INFO] handlers.user - User router loaded
+2025-08-09 12:57:06,932 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 12:57:06,932 [INFO] __main__ - Запуск бота: main
+2025-08-09 12:57:06,932 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 12:57:07,301 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:57:07,374 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 12:57:07,396 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 12:57:07,532 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 12:57:12,591 [INFO] aiogram.event - Update id=182331236 is handled. Duration 487 ms by bot id=8153616825
+2025-08-09 12:57:15,130 [INFO] aiogram.event - Update id=182331237 is handled. Duration 279 ms by bot id=8153616825
+2025-08-09 12:57:45,077 [INFO] aiogram.event - Update id=182331238 is handled. Duration 390 ms by bot id=8153616825
+2025-08-09 12:57:46,640 [INFO] aiogram.event - Update id=182331239 is handled. Duration 119 ms by bot id=8153616825
+2025-08-09 12:57:47,599 [INFO] aiogram.event - Update id=182331240 is handled. Duration 144 ms by bot id=8153616825
+2025-08-09 13:05:57,626 [INFO] aiogram.event - Update id=182331241 is handled. Duration 521 ms by bot id=8153616825
+2025-08-09 13:05:59,430 [INFO] aiogram.event - Update id=182331242 is handled. Duration 153 ms by bot id=8153616825
+2025-08-09 13:06:05,934 [INFO] aiogram.event - Update id=182331243 is handled. Duration 177 ms by bot id=8153616825
+2025-08-09 13:06:10,518 [INFO] aiogram.event - Update id=182331244 is handled. Duration 157 ms by bot id=8153616825
+2025-08-09 13:06:11,537 [INFO] aiogram.event - Update id=182331245 is handled. Duration 149 ms by bot id=8153616825
+2025-08-09 13:06:13,798 [INFO] aiogram.event - Update id=182331246 is handled. Duration 123 ms by bot id=8153616825
+2025-08-09 13:08:35,540 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 13:08:35,542 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 13:08:35,542 [INFO] aiogram.dispatcher - Polling stopped

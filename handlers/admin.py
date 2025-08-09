@@ -14,6 +14,9 @@ from database.models import Database
 from keyboards.reply import ReplyKeyboards
 from config import config
 from api.pspware_api import PSPWareAPI
+from helpers import get_mirror_config, get_config_value, is_admin
+import json
+
 
 
 logger = logging.getLogger(__name__)
@@ -31,6 +34,16 @@ class AdminStates(StatesGroup):
     waiting_for_message_to_user = State()
     waiting_for_block_reason = State()
     waiting_for_order_id = State()
+
+
+
+class MirrorStates(StatesGroup):
+    waiting_for_mirror_name = State()
+    waiting_for_mirror_token = State()
+    waiting_for_mirror_config = State()
+    waiting_for_mirror_id = State()
+
+
 
 def normalize_bool(value):
     if isinstance(value, str):
@@ -72,7 +85,6 @@ def create_main_admin_panel():
     builder = InlineKeyboardBuilder()
     builder.row(
         InlineKeyboardButton(text="📊 Статистика", callback_data="admin_stats"),
-        InlineKeyboardButton(text="📊 Оборот зеркал", callback_data="view_turnover"),
         InlineKeyboardButton(text="⚙️ Настройки", callback_data="admin_settings")
     )
     builder.row(
@@ -86,6 +98,10 @@ def create_main_admin_panel():
     builder.row(
         InlineKeyboardButton(text="📢 Рассылка", callback_data="admin_broadcast_menu"),
         InlineKeyboardButton(text="🛠 Система", callback_data="admin_system_menu")
+    )
+    builder.row(
+        InlineKeyboardButton(text="📊 Оборот зеркал", callback_data="view_turnover"),
+        InlineKeyboardButton(text="🪞 Зеркала", callback_data="admin_mirrors_menu")                
     )
     return builder
 
@@ -190,6 +206,31 @@ def create_broadcast_panel():
     )
     return builder
 
+
+
+
+def create_mirror_management_panel():
+    builder = InlineKeyboardBuilder()
+    builder.row(
+        InlineKeyboardButton(text="📊 Статистика зеркал", callback_data="admin_mirrors_stats"),
+        InlineKeyboardButton(text="📋 Список зеркал", callback_data="admin_mirrors_list")
+    )
+    builder.row(
+        InlineKeyboardButton(text="➕ Создать зеркало", callback_data="admin_mirrors_create"),
+        InlineKeyboardButton(text="⚙️ Настройки зеркал", callback_data="admin_mirrors_settings")
+    )
+    builder.row(
+        InlineKeyboardButton(text="🔄 Обновить токены", callback_data="admin_mirrors_update"),
+        InlineKeyboardButton(text="🗑️ Удалить зеркало", callback_data="admin_mirrors_delete")
+    )
+    builder.row(
+        InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main_panel")
+    )
+    return builder
+
+
+
+
 @router.message(Command("admin"))
 async def admin_panel_handler(message: Message, state: FSMContext):
     if not await is_admin_in_chat(message.from_user.id, message.chat.id):
@@ -281,6 +322,41 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 InlineKeyboardButton(text="◶️ Назад", callback_data="admin_main_panel")
             )
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+
+        elif action.startswith("view_turnover"):
+            try:
+                                                 
+                all_mirrors_stats = await db.get_all_mirrors_turnover()
+                
+                text = "📊 <b>Оборот по зеркалам</b>\n\n"
+                
+                if not all_mirrors_stats:
+                    text += "❌ Нет данных по оборотам"
+                else:
+                    total_global = 0
+                    for mirror_stat in all_mirrors_stats:
+                        mirror_id = mirror_stat['mirror_id']
+                        amount = mirror_stat['total'] 
+                        orders = mirror_stat['orders']
+                        total_global += amount
+                        
+                        text += f"🪞 <b>{mirror_id}</b>:\n"
+                        text += f"💰 {amount:,.0f} ₽ ({orders} заявок)\n\n"
+                    
+                    text += f"💎 <b>Общий оборот:</b> {total_global:,.0f} ₽"
+                
+                builder = InlineKeyboardBuilder()
+                builder.row(
+                    InlineKeyboardButton(text="🔄 Обновить", callback_data="view_turnover"),
+                    InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main_panel")
+                )
+                await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+            except Exception as e:
+                await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
+
+
+
 
         elif action == "settings":
             commission_percentage = await db.get_setting("commission_percentage", float(os.getenv('COMMISSION_PERCENT', '20.0')))
@@ -403,6 +479,222 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
             except Exception as e:
                 await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
+
+        elif action == "mirrors_menu":
+            builder = create_mirror_management_panel()
+            text = "🪞 <b>Управление зеркалами</b>\n\nВыберите действие:"
+            await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+        elif action == "mirrors_stats":
+            try:
+                all_mirrors_stats = await db.get_all_mirrors_turnover()
+                
+                text = "📊 <b>Статистика по зеркалам:</b>\n\n"
+                
+                if not all_mirrors_stats:
+                    text += "❌ Нет данных по оборотам зеркал"
+                else:
+                    total_amount = 0
+                    total_orders = 0
+                    
+                    for mirror_stat in all_mirrors_stats:
+                        mirror_id = mirror_stat['mirror_id']
+                        amount = mirror_stat['total']
+                        orders = mirror_stat['orders']
+                        
+                        total_amount += amount
+                        total_orders += orders
+                        
+                        text += f"🪞 <b>{mirror_id}</b>:\n"
+                        text += f"  💰 Оборот: {amount:,.0f} ₽\n"
+                        text += f"  📋 Заявок: {orders}\n\n"
+                    
+                    text += f"📈 <b>Общий оборот:</b> {total_amount:,.0f} ₽\n"
+                    text += f"📊 <b>Всего заявок:</b> {total_orders}"
+                
+                builder = InlineKeyboardBuilder()
+                builder.row(
+                    InlineKeyboardButton(text="🔄 Обновить", callback_data="admin_mirrors_stats"),
+                    InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu")
+                )
+                await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+            except Exception as e:
+                await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
+
+        elif action == "mirrors_list":
+            try:
+                text = "📋 <b>Список зеркал:</b>\n\n"
+                
+                              
+                text += f"🔹 <b>main (основной)</b>:\n"
+                text += f"  📱 @{config.BOT_USERNAME}\n"
+                text += f"  🏢 {config.EXCHANGE_NAME}\n"
+                text += f"  👨‍💼 {config.SUPPORT_MANAGER}\n\n"
+                
+                                 
+                if config.MIRROR_BOT_TOKENS:
+                    for i, token in enumerate(config.MIRROR_BOT_TOKENS):
+                        mirror_id = f"mirror_{i+1}"
+                        mirror_config = config.get_mirror_config(mirror_id)
+                        
+                        text += f"🔹 <b>{mirror_id}</b>:\n"
+                        text += f"  📱 @{mirror_config.get('BOT_USERNAME', 'Не настроен')}\n"
+                        text += f"  🏢 {mirror_config.get('EXCHANGE_NAME', 'Не настроен')}\n"
+                        text += f"  👨‍💼 {mirror_config.get('SUPPORT_MANAGER', 'Не настроен')}\n\n"
+                else:
+                    text += "❌ Зеркальные боты не настроены"
+                
+                builder = InlineKeyboardBuilder()
+                builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+                await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+            except Exception as e:
+                await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
+
+        elif action == "mirrors_create":
+            text = """
+🔧 <b>Создание нового зеркала</b>
+
+Для создания зеркала выполните следующие шаги:
+
+1️⃣ Создайте нового бота через @BotFather
+2️⃣ Получите токен бота
+3️⃣ Добавьте токен в переменные окружения:
+   <code>MIRROR_BOT_TOKENS=токен1,токен2,новый_токен</code>
+
+4️⃣ Настройте параметры зеркала в .env:
+   <code>MIRROR_X_BOT_USERNAME=имя_бота
+MIRROR_X_EXCHANGE_NAME=название
+MIRROR_X_SUPPORT_MANAGER=@поддержка
+MIRROR_X_NEWS_CHANNEL=@канал</code>
+   где X - номер зеркала
+
+5️⃣ Перезапустите бота
+
+📝 <b>Пример для зеркала #3:</b>
+<code>MIRROR_3_BOT_USERNAME=MyExchanger3_bot
+MIRROR_3_EXCHANGE_NAME=My Exchanger 3
+MIRROR_3_SUPPORT_MANAGER=@support3
+MIRROR_3_NEWS_CHANNEL=@news3</code>
+"""
+            
+            builder = InlineKeyboardBuilder()
+            builder.row(InlineKeyboardButton(text="📋 Проверить конфигурацию", callback_data="admin_mirrors_check"))
+            builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+            await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+        elif action == "mirrors_check":
+            try:
+                text = "🔍 <b>Проверка конфигурации зеркал:</b>\n\n"
+                
+                              
+                text += f"🔹 <b>Основной бот:</b>\n"
+                text += f"  {'✅' if config.BOT_TOKEN else '❌'} Токен: {'Настроен' if config.BOT_TOKEN else 'Не настроен'}\n"
+                text += f"  ✅ Username: {config.BOT_USERNAME}\n\n"
+                
+                                 
+                if config.MIRROR_BOT_TOKENS:
+                    text += f"🪞 <b>Зеркальные боты:</b> {len(config.MIRROR_BOT_TOKENS)}\n\n"
+                    
+                    for i, token in enumerate(config.MIRROR_BOT_TOKENS):
+                        mirror_id = f"mirror_{i+1}"
+                        mirror_config = config.get_mirror_config(mirror_id)
+                        
+                        text += f"🔹 <b>Зеркало #{i+1}:</b>\n"
+                        text += f"  {'✅' if token else '❌'} Токен: {'Настроен' if token else 'Не настроен'}\n"
+                        text += f"  {'✅' if mirror_config.get('BOT_USERNAME') else '❌'} Username: {mirror_config.get('BOT_USERNAME', 'Не настроен')}\n"
+                        text += f"  {'✅' if mirror_config.get('EXCHANGE_NAME') else '❌'} Название: {mirror_config.get('EXCHANGE_NAME', 'Не настроено')}\n\n"
+                else:
+                    text += "❌ <b>Зеркальные боты не настроены</b>\n"
+                    text += "Добавьте MIRROR_BOT_TOKENS в .env файл"
+                
+                builder = InlineKeyboardBuilder()
+                builder.row(
+                    InlineKeyboardButton(text="🔄 Обновить", callback_data="admin_mirrors_check"),
+                    InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_create")
+                )
+                await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+            except Exception as e:
+                await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
+
+        elif action == "mirrors_settings":
+            text = """
+⚙️ <b>Настройки зеркал</b>
+
+Для настройки зеркал используйте следующие переменные в .env:
+
+🔧 <b>Основные настройки зеркала X:</b>
+• <code>MIRROR_X_BOT_USERNAME</code> - имя бота
+• <code>MIRROR_X_EXCHANGE_NAME</code> - название обменника
+• <code>MIRROR_X_SUPPORT_CHAT</code> - чат поддержки
+• <code>MIRROR_X_SUPPORT_MANAGER</code> - менеджер поддержки
+• <code>MIRROR_X_NEWS_CHANNEL</code> - канал новостей
+• <code>MIRROR_X_REVIEWS_CHANNEL</code> - канал отзывов
+
+🆔 <b>ID чатов для зеркала X:</b>
+• <code>MIRROR_X_ADMIN_USER_ID</code> - ID администратора
+• <code>MIRROR_X_ADMIN_CHAT_ID</code> - ID админ чата
+• <code>MIRROR_X_OPERATOR_CHAT_ID</code> - ID чата операторов
+• <code>MIRROR_X_REVIEWS_CHANNEL_ID</code> - ID канала отзывов
+
+💡 <i>Если параметр не указан, используется значение основного бота.</i>
+"""
+            
+            builder = InlineKeyboardBuilder()
+            builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+            await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+        elif action == "mirrors_update":
+            text = """
+🔄 <b>Обновление токенов зеркал</b>
+
+Для обновления токенов зеркальных ботов:
+
+1️⃣ Остановите бота
+2️⃣ Отредактируйте .env файл:
+   <code>MIRROR_BOT_TOKENS=токен1,токен2,токен3</code>
+3️⃣ Запустите бота заново
+
+⚠️ <b>Внимание:</b>
+• Токены должны быть разделены запятыми
+• Пробелы не допускаются
+• Каждый токен должен быть валидным
+• После изменения требуется перезапуск
+
+📝 <b>Текущие токены:</b> {count}
+""".format(count=len(config.MIRROR_BOT_TOKENS) if config.MIRROR_BOT_TOKENS else 0)
+            
+            builder = InlineKeyboardBuilder()
+            builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+            await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+        elif action == "mirrors_delete":
+            text = """
+🗑️ <b>Удаление зеркала</b>
+
+Для удаления зеркального бота:
+
+1️⃣ Остановите всех ботов
+2️⃣ Удалите токен из MIRROR_BOT_TOKENS в .env
+3️⃣ Удалите соответствующие настройки:
+   - MIRROR_X_BOT_USERNAME
+   - MIRROR_X_EXCHANGE_NAME
+   - и другие параметры зеркала
+4️⃣ Запустите бота заново
+
+⚠️ <b>Внимание:</b>
+• Данные пользователей зеркала останутся в БД
+• Заявки зеркала также сохранятся
+• Рекомендуется сделать бэкап перед удалением
+
+❗ <i>После удаления зеркала его нельзя будет восстановить без повторной настройки.</i>
+"""
+            
+            builder = InlineKeyboardBuilder()
+            builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+            await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+
+
 
         elif action == "cleanup_db":
             try:
@@ -613,7 +905,10 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
         elif action in ["toggle_captcha", "change_percentage", "change_limits", "change_welcome",
                         "find_user", "message_user", "block_user", "unblock_user",
                         "add_admin", "remove_admin", "add_operator", "remove_operator",
-                        "staff_list", "broadcast_all", "user_stats", "recent_users"]:
+                        "staff_list", "broadcast_all", "user_stats", "recent_users",
+                        "mirrors_stats", "mirrors_list", "mirrors_create", "mirrors_check",
+                        "mirrors_settings", "mirrors_update", "mirrors_delete"]:
+
             await handle_settings_and_management(callback, state, action)
 
         else:
@@ -1343,7 +1638,7 @@ async def view_turnover_stats(callback: CallbackQuery):
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📈 Детальная статистика", callback_data="detailed_turnover")],
         [InlineKeyboardButton(text="🔄 Обновить", callback_data="view_turnover")],
-        [InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main")]
+        [InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main_panel")]
     ])
     
     await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")

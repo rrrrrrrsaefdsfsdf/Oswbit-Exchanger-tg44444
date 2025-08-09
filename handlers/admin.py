@@ -19,6 +19,22 @@ import json
 
 
 
+
+import platform
+
+def format_size(bytes_size):
+                                                        
+    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+        if bytes_size < 1024:
+            return f"{bytes_size:.1f} {unit}"
+        bytes_size /= 1024
+    return f"{bytes_size:.1f} PB"
+
+
+
+
+
+
 logger = logging.getLogger(__name__)
 router = Router()
 db = Database(config.DATABASE_URL)
@@ -183,8 +199,7 @@ def create_system_panel():
         InlineKeyboardButton(text="📋 Логи", callback_data="admin_view_logs")
     )
     builder.row(
-        InlineKeyboardButton(text="🧹 Очистить БД", callback_data="admin_cleanup_db"),
-        InlineKeyboardButton(text="🔄 Обновить статистику", callback_data="admin_refresh_stats")
+        InlineKeyboardButton(text="🧹 Очистить БД", callback_data="admin_cleanup_db")
     )
     builder.row(
         InlineKeyboardButton(text="◶️ Назад", callback_data="admin_main_panel")
@@ -432,23 +447,39 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             text = "🛠 <b>Системные функции</b>\n\nВыберите действие:"
             await callback.message.edit_text(text, reply_markup=create_system_panel().as_markup(), parse_mode="HTML")
 
+
+
         elif action == "system_info":
             try:
+                                            
                 process = psutil.Process(os.getpid())
-                memory_info = process.memory_info()
-                cpu_percent = process.cpu_percent()
-                
-                db_size = os.path.getsize(db.db_path) if os.path.exists(db.db_path) else 0
-                
+                mem_info = process.memory_info()
+                cpu_usage_proc = process.cpu_percent(interval=0.5)
+
+                                      
+                cpu_usage_sys = psutil.cpu_percent(interval=0.5)
+                ram = psutil.virtual_memory()
+                uptime_seconds = (datetime.now() - datetime.fromtimestamp(psutil.boot_time())).total_seconds()
+                uptime = str(timedelta(seconds=int(uptime_seconds)))
+
+                                    
+                db_size = 0
+                if hasattr(db, "db_path") and db.db_path and os.path.exists(db.db_path):
+                    db_size = os.path.getsize(db.db_path)
+
+                                          
                 text = (
                     f"📊 <b>Системная информация</b>\n\n"
-                    f"💾 Использование памяти: {memory_info.rss / 1024 / 1024:.1f} MB\n"
-                    f"🖥 Нагрузка CPU: {cpu_percent:.1f}%\n"
-                    f"💾 Размер БД: {db_size / 1024 / 1024:.1f} MB\n"
-                    f"🕐 Время работы: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n"
-                    f"🔄 Обновлено: {datetime.now().strftime('%H:%M:%S')}"
+                    f"🌐 ОС: {platform.system()} {platform.release()} ({platform.machine()})\n"
+                    f"🕐 Аптайм системы: {uptime}\n\n"
+                    f"🖥 CPU процесса: {cpu_usage_proc:.1f}%\n"
+                    f"🖥 CPU системы: {cpu_usage_sys:.1f}%\n"
+                    f"💾 Память процесса: {format_size(mem_info.rss)}\n"
+                    f"💾 Используется ОЗУ: {ram.percent}% из {format_size(ram.total)}\n"
+                    f"📂 Размер БД: {format_size(db_size)}\n\n"
+                    f"🕐 Время сервера: {datetime.now().strftime('%d.%m.%Y %H:%M:%S')}\n"
                 )
-                
+
                 builder = InlineKeyboardBuilder()
                 builder.row(
                     InlineKeyboardButton(text="🔄 Обновить", callback_data="admin_system_info"),
@@ -549,33 +580,30 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
             except Exception as e:
                 await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
-
+     
+     
         elif action == "mirrors_create":
-            text = """
-🔧 <b>Создание нового зеркала</b>
+            text = (
+                "🔧 <b>Создаём новое зеркало</b>\n\n"
+                "1️⃣ Создай нового бота через @BotFather.\n"
+                "   Отправь команду <code>/newbot</code> и следуй инструкциям.\n\n"
+                "2️⃣ Скопируй токен бота.\n\n"
+                "3️⃣ Добавь его в переменные окружения:\n"
+                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,новый_токен</code>\n\n"
+                "4️⃣ В файле <code>.env</code> пропиши данные зеркала:\n"
+                "   <code>MIRROR_X_BOT_USERNAME=имя_бота</code>\n"
+                "   <code>MIRROR_X_EXCHANGE_NAME=название</code>\n"
+                "   <code>MIRROR_X_SUPPORT_MANAGER=@поддержка</code>\n"
+                "   <code>MIRROR_X_NEWS_CHANNEL=@канал</code>\n"
+                "   X — это номер зеркала (например, 3).\n\n"
+                "5️⃣ Перезапусти бота.\n\n"
+                "📝 Пример для зеркала №3:\n"
+                "   <code>MIRROR_3_BOT_USERNAME=MyExchanger3_bot</code>\n"
+                "   <code>MIRROR_3_EXCHANGE_NAME=My Exchanger 3</code>\n"
+                "   <code>MIRROR_3_SUPPORT_MANAGER=@support3</code>\n"
+                "   <code>MIRROR_3_NEWS_CHANNEL=@news3</code>\n"
+            )
 
-Для создания зеркала выполните следующие шаги:
-
-1️⃣ Создайте нового бота через @BotFather
-2️⃣ Получите токен бота
-3️⃣ Добавьте токен в переменные окружения:
-   <code>MIRROR_BOT_TOKENS=токен1,токен2,новый_токен</code>
-
-4️⃣ Настройте параметры зеркала в .env:
-   <code>MIRROR_X_BOT_USERNAME=имя_бота
-MIRROR_X_EXCHANGE_NAME=название
-MIRROR_X_SUPPORT_MANAGER=@поддержка
-MIRROR_X_NEWS_CHANNEL=@канал</code>
-   где X - номер зеркала
-
-5️⃣ Перезапустите бота
-
-📝 <b>Пример для зеркала #3:</b>
-<code>MIRROR_3_BOT_USERNAME=MyExchanger3_bot
-MIRROR_3_EXCHANGE_NAME=My Exchanger 3
-MIRROR_3_SUPPORT_MANAGER=@support3
-MIRROR_3_NEWS_CHANNEL=@news3</code>
-"""
             
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="📋 Проверить конфигурацию", callback_data="admin_mirrors_check"))
@@ -616,78 +644,74 @@ MIRROR_3_NEWS_CHANNEL=@news3</code>
             except Exception as e:
                 await callback.answer(f"❌ Ошибка: {e}", show_alert=True)
 
+
         elif action == "mirrors_settings":
-            text = """
-⚙️ <b>Настройки зеркал</b>
+            text = (
+                "⚙️ <b>Настройки зеркал</b>\n\n"
+                "Используй эти переменные в файле <code>.env</code>, чтобы настроить зеркало X.\n\n"
+                
+                "🔧 <b>Основные параметры:</b>\n"
+                "• <code>MIRROR_X_BOT_USERNAME</code> — имя бота\n"
+                "• <code>MIRROR_X_EXCHANGE_NAME</code> — название обменника\n"
+                "• <code>MIRROR_X_SUPPORT_CHAT</code> — чат поддержки\n"
+                "• <code>MIRROR_X_SUPPORT_MANAGER</code> — менеджер поддержки\n"
+                "• <code>MIRROR_X_NEWS_CHANNEL</code> — канал новостей\n"
+                "• <code>MIRROR_X_REVIEWS_CHANNEL</code> — канал отзывов\n\n"
+                
+                "🆔 <b>ID чатов:</b>\n"
+                "• <code>MIRROR_X_ADMIN_USER_ID</code> — ID администратора\n"
+                "• <code>MIRROR_X_ADMIN_CHAT_ID</code> — ID админ-чата\n"
+                "• <code>MIRROR_X_OPERATOR_CHAT_ID</code> — ID чата операторов\n"
+                "• <code>MIRROR_X_REVIEWS_CHANNEL_ID</code> — ID канала отзывов\n\n"
+                
+                "💡 Если параметр не указан — используется значение из основного бота.\n"
+            )
 
-Для настройки зеркал используйте следующие переменные в .env:
-
-🔧 <b>Основные настройки зеркала X:</b>
-• <code>MIRROR_X_BOT_USERNAME</code> - имя бота
-• <code>MIRROR_X_EXCHANGE_NAME</code> - название обменника
-• <code>MIRROR_X_SUPPORT_CHAT</code> - чат поддержки
-• <code>MIRROR_X_SUPPORT_MANAGER</code> - менеджер поддержки
-• <code>MIRROR_X_NEWS_CHANNEL</code> - канал новостей
-• <code>MIRROR_X_REVIEWS_CHANNEL</code> - канал отзывов
-
-🆔 <b>ID чатов для зеркала X:</b>
-• <code>MIRROR_X_ADMIN_USER_ID</code> - ID администратора
-• <code>MIRROR_X_ADMIN_CHAT_ID</code> - ID админ чата
-• <code>MIRROR_X_OPERATOR_CHAT_ID</code> - ID чата операторов
-• <code>MIRROR_X_REVIEWS_CHANNEL_ID</code> - ID канала отзывов
-
-💡 <i>Если параметр не указан, используется значение основного бота.</i>
-"""
             
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
-
+    
+    
         elif action == "mirrors_update":
-            text = """
-🔄 <b>Обновление токенов зеркал</b>
-
-Для обновления токенов зеркальных ботов:
-
-1️⃣ Остановите бота
-2️⃣ Отредактируйте .env файл:
-   <code>MIRROR_BOT_TOKENS=токен1,токен2,токен3</code>
-3️⃣ Запустите бота заново
-
-⚠️ <b>Внимание:</b>
-• Токены должны быть разделены запятыми
-• Пробелы не допускаются
-• Каждый токен должен быть валидным
-• После изменения требуется перезапуск
-
-📝 <b>Текущие токены:</b> {count}
-""".format(count=len(config.MIRROR_BOT_TOKENS) if config.MIRROR_BOT_TOKENS else 0)
+            text = (
+                "🔄 <b>Обновление токенов зеркал</b>\n\n"
+                "1️⃣ Останови бота.\n"
+                "2️⃣ В файле <code>.env</code> измени строку:\n"
+                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,токен3</code>\n"
+                "   (пиши токены через запятую, без пробелов)\n"
+                "3️⃣ Запусти бота снова.\n\n"
+                "⚠️ <b>Важно:</b>\n"
+                "• Разделяй токены только запятой\n"
+                "• Без пробелов между токенами\n"
+                "• Каждый токен должен быть рабочим\n"
+                "• После изменения нужен перезапуск\n\n"
+                f"📝 <b>Текущие токены:</b> {len(config.MIRROR_BOT_TOKENS) if config.MIRROR_BOT_TOKENS else 0}\n"
+            )
             
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+
 
         elif action == "mirrors_delete":
-            text = """
-🗑️ <b>Удаление зеркала</b>
+            text = (
+                "🗑️ <b>Удаление зеркала</b>\n\n"
+                "1️⃣ Останови всех ботов.\n"
+                "2️⃣ Удали токен зеркала из <code>MIRROR_BOT_TOKENS</code> в .env.\n"
+                "3️⃣ Убери параметры зеркала:\n"
+                "   - <code>MIRROR_X_BOT_USERNAME</code>\n"
+                "   - <code>MIRROR_X_EXCHANGE_NAME</code>\n"
+                "   - и другие связанные переменные\n"
+                "4️⃣ Запусти бота заново.\n\n"
+                "⚠️ <b>Важно:</b>\n"
+                "• Данные пользователей этого зеркала сохранятся в базе.\n"
+                "• Все заявки тоже сохранятся.\n"
+                "• Перед удалением желательно сделать бэкап.\n\n"
+                "❗ <i>После удаления вернуть зеркало можно только через повторную настройку.</i>\n"
+            )
 
-Для удаления зеркального бота:
-
-1️⃣ Остановите всех ботов
-2️⃣ Удалите токен из MIRROR_BOT_TOKENS в .env
-3️⃣ Удалите соответствующие настройки:
-   - MIRROR_X_BOT_USERNAME
-   - MIRROR_X_EXCHANGE_NAME
-   - и другие параметры зеркала
-4️⃣ Запустите бота заново
-
-⚠️ <b>Внимание:</b>
-• Данные пользователей зеркала останутся в БД
-• Заявки зеркала также сохранятся
-• Рекомендуется сделать бэкап перед удалением
-
-❗ <i>После удаления зеркала его нельзя будет восстановить без повторной настройки.</i>
-"""
             
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
@@ -1515,36 +1539,84 @@ async def find_user_by_username(username: str) -> int:
                 return row[0] if row else None
     except:
         return None
+    
+
+
+
+
+import html
+from aiogram.types import FSInputFile
+
+
 
 @router.message(Command("get_log"))
 async def get_log_command(message: Message):
     if not await is_admin_extended(message.from_user.id):
         return
-    
+
     try:
-        parts = message.text.split()
+        parts = message.text.strip().split()
         if len(parts) != 2:
-            await message.answer("❌ Использование: /get_log filename.log")
+            await message.answer(
+                "❌ <b>Как использовать:</b>\n"
+                "<code>/get_log filename.log</code>",
+                parse_mode="HTML"
+            )
             return
-        
+
         filename = parts[1]
         if not filename.endswith('.log'):
             filename += '.log'
-        
+
         if not os.path.exists(filename):
-            await message.answer("❌ Файл не найден")
+            await message.answer(f"❌ Файл <b>{html.escape(filename)}</b> не найден.", parse_mode="HTML")
             return
-        
-        with open(filename, 'r', encoding='utf-8') as f:
+
+                            
+        file_size = os.path.getsize(filename)
+        last_modified = datetime.fromtimestamp(os.path.getmtime(filename)).strftime('%d.%m.%Y %H:%M')
+        size_mb = file_size / 1024 / 1024
+
+                                                                   
+        with open(filename, encoding='utf-8', errors='replace') as f:
             content = f.read()
-        
-        if len(content) > 4000:
-            content = "...\n" + content[-4000:]
-        
-        await message.answer(f"📋 <b>Лог файл: {filename}</b>\n\n<code>{content}</code>", parse_mode="HTML")
-        
+
+        if len(content) > 3800:
+            preview = "...\n" + content[-3800:]
+        else:
+            preview = content
+
+                                                
+        preview = html.escape(preview)
+
+                         
+        head = (
+            f"📋 <b>Лог-файл: {html.escape(filename)}</b>\n"
+            f"🗂️ Размер: {size_mb:.2f} MB\n"
+            f"🕑 Обновлён: {last_modified}\n"
+        )
+
+        if file_size > 4096:                                             
+            await message.answer(
+                f"{head}\n"
+                f"Показаны последние строки:\n\n"
+                f"<code>{preview}</code>\n\n",
+                parse_mode="HTML"
+            )
+            await message.answer_document(FSInputFile(filename))
+        else:
+            await message.answer(
+                f"{head}\n"
+                f"<code>{preview}</code>",
+                parse_mode="HTML"
+            )
+
     except Exception as e:
-        await message.answer(f"❌ Ошибка чтения лога: {e}")
+        await message.answer(
+            f"❌ <b>Ошибка при чтении лога:</b>\n<code>{html.escape(str(e))}</code>",
+            parse_mode="HTML"
+        )
+
 
 @router.callback_query(F.data.startswith("review_"))
 async def review_moderation(callback: CallbackQuery):

@@ -1,4 +1,6 @@
 import logging
+import ssl
+import aiohttp
 from typing import List, Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
@@ -26,16 +28,15 @@ class PaymentAPIManager:
             api_name = api_config['name']
             pay_type_mapping = api_config.get('pay_type_mapping', self.nicepay_methods if api_name == 'NicePay' else {})
             mapped_payment_type = pay_type_mapping.get(payment_type, payment_type)
-            
             logger.info(f"Вызов create_order для {api_name} с параметрами: amount={amount}, pay_types={[mapped_payment_type] if api_name == 'PSPWare' else mapped_payment_type}, personal_id={personal_id}, wallet={'None' if api_name != 'Greengo' else wallet}")
-            
+
             try:
                 if is_sell_order and api_name != 'OnlyPays':
                     logger.debug(f"Пропуск {api_name} для продажи")
                     continue
-                    
+
                 logger.info(f"Попытка создания заказа через {api_name} (тип платежа: {payment_type} -> {mapped_payment_type})")
-                
+
                 if api_name == 'Greengo':
                     wallet_address = wallet if wallet and wallet.startswith(('bc1', '1', '3', '0x')) else ''
                     response = await api.create_order(
@@ -67,7 +68,7 @@ class PaymentAPIManager:
                         payment_type=mapped_payment_type,
                         personal_id=personal_id
                     )
-                    
+
                 if response.get('success'):
                     response['api_name'] = api_name
                     if api_name == 'Greengo':
@@ -90,11 +91,10 @@ class PaymentAPIManager:
                     return response
                 else:
                     logger.warning(f"{api_name} не смог создать заказ: {response.get('error')}")
-                
             except Exception as e:
                 logger.error(f"Ошибка при создании заказа через {api_name}: {e}")
                 response = {'success': False, 'error': str(e), 'api_name': api_name}
-            
+
         logger.error("Все платежные API не сработали")
         return {'success': False, 'error': 'Все платежные API не сработали', 'api_name': 'None'}
 
@@ -103,7 +103,7 @@ class PaymentAPIManager:
         if not api_config:
             logger.error(f"API {api_name} не найдено")
             return {'success': False, 'error': f"API {api_name} не найдено"}
-        
+
         try:
             if api_name == 'Greengo':
                 response = await api_config['api'].get_order_status(order_id)
@@ -123,7 +123,7 @@ class PaymentAPIManager:
         if not api_config:
             logger.error(f"API {api_name} не найдено")
             return {'success': False, 'error': f"API {api_name} не найдено"}
-        
+
         try:
             if api_name == 'Greengo':
                 response = await api_config['api'].cancel_single_order(order_id)

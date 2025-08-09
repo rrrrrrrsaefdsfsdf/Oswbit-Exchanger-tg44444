@@ -1,5 +1,6 @@
 import aiohttp
 import logging
+import ssl
 from config import config
 
 logger = logging.getLogger(__name__)
@@ -30,9 +31,15 @@ class PSPWareAPI:
             payload.pop("pay_types", None)
             payload.pop("geos", None)
             payload["bank"] = "any-bank"
+
         logger.info(f"[PSPWareAPI] POST {url} Headers: {self.headers} Payload: {payload}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.post(url, json=payload, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")
@@ -83,7 +90,12 @@ class PSPWareAPI:
         payload = {"address": address, "sum": amount}
         logger.info(f"[PSPWareAPI] POST {url} Headers: {self.headers} Payload: {payload}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.post(url, json=payload, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")
@@ -112,7 +124,12 @@ class PSPWareAPI:
         url = f"{self.base_url}/orders/{order_id}"
         logger.info(f"[PSPWareAPI] GET {url} Headers: {self.headers}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.get(url, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")
@@ -145,7 +162,12 @@ class PSPWareAPI:
         url = f"{self.base_url}/orders/{order_id}/cancel"
         logger.info(f"[PSPWareAPI] POST {url} Headers: {self.headers}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.post(url, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")
@@ -163,7 +185,12 @@ class PSPWareAPI:
         url = f"{self.base_url}/merchant/me"
         logger.info(f"[PSPWareAPI] GET {url} Headers: {self.headers}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.get(url, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")
@@ -190,7 +217,12 @@ class PSPWareAPI:
         url = f"{self.base_url}/health"
         logger.info(f"[PSPWareAPI] GET {url} Headers: {self.headers}")
         try:
-            async with aiohttp.ClientSession() as session:
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            
+            async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.get(url, headers=self.headers) as response:
                     text_resp = await response.text()
                     logger.info(f"[PSPWareAPI] Response status {response.status} Body: {text_resp}")

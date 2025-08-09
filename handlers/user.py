@@ -499,9 +499,10 @@ async def address_input_handler(message: Message, state: FSMContext):
                      
 
 
-
 async def create_exchange_order(user_id: int, state: FSMContext) -> int:
+    
     data = await state.get_data()
+    
     order_id = await db.create_order(
         user_id=user_id,
         amount_rub=data["rub_amount"],
@@ -509,8 +510,17 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
         btc_address=data["address"],
         rate=data["rate"],
         total_amount=data["total_amount"],
-        payment_type=data["payment_type"]                                        
+        payment_type=data["payment_type"]
     )
+    
+    # Записываем создание заказа в общий оборот
+    await db.add_turnover_record(
+        order_id=order_id,
+        user_id=user_id,
+        amount=data["total_amount"],
+        status="created"
+    )
+    
     return order_id
 
 
@@ -631,7 +641,7 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
                     f"• Переведите точную сумму\n"
                     f"• После оплаты ожидайте подтверждения\n"
                     f"• Bitcoin будет отправлен автоматически\n\n"
-                    f"⏰ Заявка действительна 10 минут",
+                    f"⏰ Заявка действительна 30 минут",
                     parse_mode="HTML",
                     reply_markup=ReplyKeyboards.order_menu(is_nicepay=(api_name == 'NicePay'))
                 )
@@ -971,7 +981,7 @@ async def check_status_handler(message: Message):
                 await message.answer(
                     f"⏳ Заявка #{display_id} в обработке\n\n"
                     f"Ожидаем поступления платежа...\n"
-                    f"Заявка действительна 10 минут.",
+                    f"Заявка действительна 30 минут.",
                     reply_markup=ReplyKeyboards.order_menu(),
                     parse_mode="HTML"
                 )

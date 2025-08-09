@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import aiohttp
+import ssl
 from config import config
 
 logger = logging.getLogger(__name__)
@@ -11,16 +12,16 @@ class NicePayAPI:
         self.secret = config.NICEPAY_MERCHANT_TOKEN_KEY
         self.base_url = "https://nicepay.io/public/api/payment"
 
-
-
-
     async def _make_request(self, url: str, params: dict, retries: int = 3, delay: int = 5) -> dict:
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
-        connector = aiohttp.TCPConnector(verify_ssl=False)
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
+        connector = aiohttp.TCPConnector(ssl=ssl_context)
+        
         for attempt in range(1, retries + 1):
             try:
                 logger.debug(f"Attempt {attempt} to {url} with params: {params}")
-    
                 async with aiohttp.ClientSession(connector=connector) as session:
                     async with session.post(url, json=params, headers=headers) as resp:
                         logger.debug(f"Response status: {resp.status}")
@@ -54,8 +55,7 @@ class NicePayAPI:
                 return {"success": False, "error": str(e)}
         return {"success": False, "error": f"Failed after {retries} attempts"}
 
-    async def create_payment(self, merchant_order_id: str, amount: int, currency: str = "RUB",
-                            method: str = "sbp_rub", description: str = "") -> dict:
+    async def create_payment(self, merchant_order_id: str, amount: int, currency: str = "RUB", method: str = "sbp_rub", description: str = "") -> dict:
         url = self.base_url
         params = {
             "merchant_id": self.merchant_id,
@@ -69,4 +69,3 @@ class NicePayAPI:
         }
         logger.debug(f"Creating payment with params: {params}")
         return await self._make_request(url, params)
-

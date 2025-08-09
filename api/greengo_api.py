@@ -15,9 +15,9 @@ class GreengoAPI:
         }
 
     async def _make_request(self, method: str, url: str, data: Dict[str, Any] = None) -> Dict[str, Any]:
-                                                               
         try:
-            async with aiohttp.ClientSession() as session:
+            timeout = aiohttp.ClientTimeout(total=30)  # Добавлен таймаут
+            async with aiohttp.ClientSession(timeout=timeout) as session:
                 if method.upper() == "GET":
                     async with session.get(url, headers=self.headers) as response:
                         if response.status != 200:
@@ -46,18 +46,8 @@ class GreengoAPI:
             logger.error(f"Greengo unexpected error: {e}")
             return {"success": False, "error": str(e)}
 
+    # Остальные методы остаются такими же, как у вас
     async def create_order(self, payment_method: str, wallet: str, from_amount: str) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-           
         url = f"{self.base_url}/order/create"
         data = {
             "payment_method": payment_method,
@@ -68,7 +58,6 @@ class GreengoAPI:
         logger.info(f"Создание Greengo ордера: {data}")
         response = await self._make_request("POST", url, data)
         
-                               
         if response.get("response") == "success" and "items" in response:
             if response["items"]:
                 item = response["items"][0]
@@ -83,7 +72,6 @@ class GreengoAPI:
                     "order_status": item.get("order_status"),
                     "created_at": item.get("created_at"),
                     "updated_at": item.get("updated_at"),
-                                                           
                     "requisite": item.get("wallet_payment", ""),
                     "owner": "Greengo Payment",
                     "bank": "Greengo Exchange"
@@ -96,15 +84,8 @@ class GreengoAPI:
             return {"success": False, "error": f"Неожиданный формат ответа: {response}"}
 
     async def get_directions(self) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-           
         url = f"{self.base_url}/directions"
         logger.info("Получение направлений Greengo")
-        
         response = await self._make_request("GET", url)
         
         if isinstance(response, list):
@@ -118,26 +99,15 @@ class GreengoAPI:
             return {"success": False, "error": f"Неожиданный формат ответа: {response}"}
 
     async def check_order(self, order_ids: List[str]) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-           
         url = f"{self.base_url}/order/check"
         data = {"order_id": order_ids}
         
         logger.info(f"Проверка статуса Greengo ордеров: {order_ids}")
         response = await self._make_request("POST", url, data)
         
-                               
         if response.get("result") == "true" and "data" in response and "orders" in response["data"]:
             orders = response["data"]["orders"]
             if orders:
-                                                                         
                 order = orders[0]
                 return {
                     "success": True,
@@ -150,7 +120,7 @@ class GreengoAPI:
                     "order_status": order.get("order_status"),
                     "created_at": order.get("created_at"),
                     "updated_at": order.get("updated_at"),
-                    "all_orders": orders                                    
+                    "all_orders": orders
                 }
             else:
                 return {"success": False, "error": "Ордера не найдены"}
@@ -160,22 +130,12 @@ class GreengoAPI:
             return {"success": False, "error": f"Неожиданный формат ответа: {response}"}
 
     async def cancel_order(self, order_ids: List[str]) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-           
         url = f"{self.base_url}/order/cancel"
         data = {"order_id": order_ids}
         
         logger.info(f"Отмена Greengo ордеров: {order_ids}")
         response = await self._make_request("POST", url, data)
         
-                               
         if response.get("result") == "true" and "data" in response and "cancel" in response["data"]:
             canceled_orders = response["data"]["cancel"]
             return {
@@ -189,31 +149,12 @@ class GreengoAPI:
             return {"success": False, "error": f"Неожиданный формат ответа: {response}"}
 
     async def get_order_status(self, order_id: str) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-           
         return await self.check_order([order_id])
 
     async def cancel_single_order(self, order_id: str) -> Dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-           
         return await self.cancel_order([order_id])
 
     async def health_check(self) -> Dict[str, Any]:
-                                            
         try:
             response = await self.get_directions()
             if response.get("success"):

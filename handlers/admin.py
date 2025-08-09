@@ -72,6 +72,7 @@ def create_main_admin_panel():
     builder = InlineKeyboardBuilder()
     builder.row(
         InlineKeyboardButton(text="📊 Статистика", callback_data="admin_stats"),
+        InlineKeyboardButton(text="📊 Оборот зеркал", callback_data="view_turnover"),
         InlineKeyboardButton(text="⚙️ Настройки", callback_data="admin_settings")
     )
     builder.row(
@@ -1303,3 +1304,76 @@ async def review_moderation(callback: CallbackQuery):
 
 
 
+
+
+# Добавить в admin.py эти функции:
+
+from aiogram import F
+from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+
+@router.callback_query(F.data == "view_turnover")
+async def view_turnover_stats(callback: CallbackQuery):
+    if not await is_admin_extended(callback.from_user.id):
+        await callback.answer("❌ Нет прав", show_alert=True)
+        return
+    
+    # Получаем статистику
+    total_stats = await db.get_total_turnover_by_mirror()
+    today_stats = await db.get_turnover_by_period(1)
+    week_stats = await db.get_turnover_by_period(7)
+    month_stats = await db.get_turnover_by_period(30)
+    mirrors_stats = await db.get_all_mirrors_turnover()
+    
+    text = f"📊 <b>СТАТИСТИКА ОБОРОТА</b>\n\n"
+    text += f"🔥 <b>ОБЩИЙ ОБОРОТ ВСЕХ ЗЕРКАЛ:</b>\n"
+    text += f"💰 Всего: {total_stats['total_amount']:,.0f} ₽\n"
+    text += f"📋 Заказов: {total_stats['total_orders']}\n\n"
+    
+    text += f"📅 <b>ПО ПЕРИОДАМ:</b>\n"
+    text += f"🌅 Сегодня: {today_stats['total_amount']:,.0f} ₽ ({today_stats['total_orders']} заказов)\n"
+    text += f"📅 Неделя: {week_stats['total_amount']:,.0f} ₽ ({week_stats['total_orders']} заказов)\n"
+    text += f"📊 Месяц: {month_stats['total_amount']:,.0f} ₽ ({month_stats['total_orders']} заказов)\n\n"
+    
+    if mirrors_stats:
+        text += f"🪞 <b>ПО ЗЕРКАЛАМ:</b>\n"
+        for mirror in mirrors_stats:
+            text += f"• {mirror['mirror_id']}: {mirror['total']:,.0f} ₽ ({mirror['orders']} заказов)\n"
+    
+    # Создаем кнопки для детального просмотра
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="📈 Детальная статистика", callback_data="detailed_turnover")],
+        [InlineKeyboardButton(text="🔄 Обновить", callback_data="view_turnover")],
+        [InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main")]
+    ])
+    
+    await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
+
+@router.callback_query(F.data == "detailed_turnover")
+async def detailed_turnover_stats(callback: CallbackQuery):
+    if not await is_admin_extended(callback.from_user.id):
+        await callback.answer("❌ Нет прав", show_alert=True)
+        return
+    
+    current_mirror = config.MIRROR_ID
+    current_stats = await db.get_total_turnover_by_mirror(current_mirror)
+    
+    text = f"📊 <b>ДЕТАЛЬНАЯ СТАТИСТИКА</b>\n\n"
+    text += f"🪞 <b>ТЕКУЩЕЕ ЗЕРКАЛО: {current_mirror}</b>\n"
+    text += f"💰 Оборот: {current_stats['total_amount']:,.0f} ₽\n"
+    text += f"📋 Заказов: {current_stats['total_orders']}\n\n"
+    
+    # Статистика по периодам для текущего зеркала
+    today = await db.get_turnover_by_period(1, current_mirror)
+    week = await db.get_turnover_by_period(7, current_mirror)
+    month = await db.get_turnover_by_period(30, current_mirror)
+    
+    text += f"📅 <b>ПО ПЕРИОДАМ (текущее зеркало):</b>\n"
+    text += f"🌅 Сегодня: {today['total_amount']:,.0f} ₽\n"
+    text += f"📅 Неделя: {week['total_amount']:,.0f} ₽\n"
+    text += f"📊 Месяц: {month['total_amount']:,.0f} ₽\n"
+    
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="◀️ К общей статистике", callback_data="view_turnover")]
+    ])
+    
+    await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")

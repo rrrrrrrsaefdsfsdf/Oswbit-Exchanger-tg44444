@@ -239,9 +239,158 @@ def create_mirror_management_panel():
         InlineKeyboardButton(text="🗑️ Удалить зеркало", callback_data="admin_mirrors_delete")
     )
     builder.row(
+        InlineKeyboardButton(text="📝 Сообщения", callback_data="admin_messages_menu"),
         InlineKeyboardButton(text="◀️ Назад", callback_data="admin_main_panel")
     )
     return builder
+
+
+
+
+
+
+
+
+
+@router.callback_query(F.data == "admin_messages_menu")
+async def admin_messages_menu_handler(callback: CallbackQuery):
+    if not await is_admin_extended(callback.from_user.id):
+        await callback.answer("❌ Нет прав", show_alert=True)
+        return
+    
+    text = "📝 <b>Управление сообщениями</b>\n\nВыберите действие:"
+    
+    builder = InlineKeyboardBuilder()
+    builder.row(InlineKeyboardButton(text="✏️ Изменить приветствие", callback_data="admin_messages_welcome"))
+    builder.row(InlineKeyboardButton(text="📋 Просмотр текущих", callback_data="admin_messages_view"))
+    builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
+    
+    await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+@router.callback_query(F.data.startswith("admin_messages"))
+async def admin_messages_handler(callback: CallbackQuery, state: FSMContext):
+    if not await is_admin_extended(callback.from_user.id):
+        await callback.answer("❌ Нет прав", show_alert=True)
+        return
+    
+    action = callback.data.split("_")[-1]
+    
+    if action == "welcome":
+        mirrors_info = "🔧 <b>Изменение приветственного сообщения</b>\n\n"
+        mirrors_info += "📱 <b>Основной бот:</b>\n"
+        main_config = config.get_mirror_config("main")
+        current_welcome = main_config.get('WELCOME_MESSAGE', 'Не задано')
+        if len(str(current_welcome)) > 100:
+            current_welcome = current_welcome[:100] + "..."
+        mirrors_info += f"Текущее: {current_welcome}\n\n"
+        
+        if config.MIRROR_BOT_TOKENS:
+            for i in range(len(config.MIRROR_BOT_TOKENS)):
+                mirror_id = f"mirror_{i+1}"
+                mirror_config = config.get_mirror_config(mirror_id)
+                current_welcome = mirror_config.get('WELCOME_MESSAGE', 'Использует основное')
+                if len(str(current_welcome)) > 100:
+                    current_welcome = current_welcome[:100] + "..."
+                mirrors_info += f"🪞 <b>Зеркало {i+1}:</b>\n"
+                mirrors_info += f"Текущее: {current_welcome}\n\n"
+        
+        builder = InlineKeyboardBuilder()
+        builder.row(InlineKeyboardButton(text="✏️ Основной бот", callback_data="admin_edit_welcome_main"))
+        
+        for i in range(len(config.MIRROR_BOT_TOKENS)):
+            builder.row(InlineKeyboardButton(text=f"✏️ Зеркало {i+1}", callback_data=f"admin_edit_welcome_mirror_{i+1}"))
+        
+        builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_messages_menu"))
+        
+        await callback.message.edit_text(mirrors_info, reply_markup=builder.as_markup(), parse_mode="HTML")
+    
+    elif action == "view":
+        text = "📋 <b>Текущие приветственные сообщения:</b>\n\n"
+        
+        # Основной бот
+        main_config = config.get_mirror_config("main")
+        text += f"📱 <b>Основной бот:</b>\n{main_config.get('WELCOME_MESSAGE', 'Не задано')}\n\n"
+        
+        # Зеркала
+        for i in range(len(config.MIRROR_BOT_TOKENS)):
+            mirror_id = f"mirror_{i+1}"
+            mirror_config = config.get_mirror_config(mirror_id)
+            text += f"🪞 <b>Зеркало {i+1}:</b>\n{mirror_config.get('WELCOME_MESSAGE', 'Использует основное')}\n\n"
+        
+        builder = InlineKeyboardBuilder()
+        builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_messages_menu"))
+        
+        await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+@router.callback_query(F.data.startswith("admin_edit_welcome"))
+async def admin_edit_welcome_handler(callback: CallbackQuery, state: FSMContext):
+    if not await is_admin_extended(callback.from_user.id):
+        await callback.answer("❌ Нет прав", show_alert=True)
+        return
+    
+    parts = callback.data.split("_")
+    mirror_type = parts[3]  # main или mirror
+    mirror_num = parts[4] if len(parts) > 4 else None
+    
+    if mirror_type == "main":
+        mirror_id = "main"
+        bot_name = "Основной бот"
+    else:
+        mirror_id = f"mirror_{mirror_num}"
+        bot_name = f"Зеркало {mirror_num}"
+    
+    await state.update_data(editing_welcome=mirror_id)
+    await state.set_state(AdminStates.waiting_for_welcome_message)
+    
+    current_message = config.get_config_value(mirror_id, 'WELCOME_MESSAGE', '')
+    
+    text = (f"✏️ <b>Редактирование приветствия - {bot_name}</b>\n\n"
+            f"<b>Текущее сообщение:</b>\n{current_message}\n\n"
+            f"<b>Доступные переменные:</b>\n"
+            f"• <code>{{exchange_name}}</code> - название обменника\n"
+            f"• <code>{{support_manager}}</code> - менеджер поддержки\n"
+            f"• <code>{{news_channel}}</code> - канал новостей\n"
+            f"• <code>{{support_chat}}</code> - чат поддержки\n"
+            f"• <code>{{reviews_channel}}</code> - канал отзывов\n\n"
+            f"Отправьте новое приветственное сообщение:")
+    
+    builder = InlineKeyboardBuilder()
+    builder.row(InlineKeyboardButton(text="❌ Отмена", callback_data="admin_messages_welcome"))
+    
+    await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
+
+@router.message(AdminStates.waiting_for_welcome_message)
+async def process_welcome_message(message: Message, state: FSMContext):
+    if not await is_admin_extended(message.from_user.id):
+        return
+    
+    data = await state.get_data()
+    mirror_id = data.get('editing_welcome')
+    new_message = message.text.strip()
+    
+    # Сохранение в базу данных
+    await db.save_config_value(mirror_id, 'WELCOME_MESSAGE', new_message)
+    
+    # Обновляем конфигурацию в памяти
+    if mirror_id == "main":
+        config.WELCOME_MESSAGE = new_message
+    else:
+        if mirror_id not in config.MIRROR_CONFIGS:
+            config.MIRROR_CONFIGS[mirror_id] = {}
+        config.MIRROR_CONFIGS[mirror_id]['WELCOME_MESSAGE'] = new_message
+    
+    await state.clear()
+    
+    bot_name = "Основной бот" if mirror_id == "main" else f"Зеркало {mirror_id.split('_')[1]}"
+    
+    await message.answer(
+        f"✅ <b>Приветственное сообщение для {bot_name} обновлено!</b>\n\n"
+        f"<b>Новое сообщение:</b>\n{new_message}",
+        reply_markup=create_main_admin_panel().as_markup(),
+        parse_mode="HTML"
+    )
+
+
 
 
 

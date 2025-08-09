@@ -115,6 +115,21 @@ class Database:
                 )
             ''')
 
+
+            await db.execute('''
+                CREATE TABLE IF NOT EXISTS bot_configs (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    mirror_id TEXT NOT NULL,
+                    config_key TEXT NOT NULL,
+                    config_value TEXT NOT NULL,
+                    updated_at TEXT DEFAULT (datetime('now')),
+                    UNIQUE(mirror_id, config_key)
+                )
+            ''')
+
+
+
+
             await self._migrate_mirror_columns(db)
             await db.commit()
 
@@ -592,3 +607,36 @@ class Database:
             async with db.execute(query, params) as cursor:
                 rows = await cursor.fetchall()
                 return [dict(row) for row in rows]
+
+
+
+
+
+
+async def get_config_value(self, mirror_id: str, key: str, default=None):
+    """Получение значения конфигурации из БД"""
+    try:
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute(
+                'SELECT config_value FROM bot_configs WHERE mirror_id = ? AND config_key = ?', 
+                (mirror_id, key)
+            ) as cursor:
+                result = await cursor.fetchone()
+                return result[0] if result else default
+    except Exception as e:
+        logger.error(f"Error getting config value: {e}")
+        return default
+
+async def save_config_value(self, mirror_id: str, key: str, value: str):
+    """Сохранение значения конфигурации в БД"""
+    try:
+        async with aiosqlite.connect(self.db_path) as db:
+            await db.execute('''
+                INSERT OR REPLACE INTO bot_configs (mirror_id, config_key, config_value, updated_at)
+                VALUES (?, ?, ?, datetime('now'))
+            ''', (mirror_id, key, value))
+            await db.commit()
+            logger.info(f"Config saved: {mirror_id}.{key} = {value[:50]}...")
+    except Exception as e:
+        logger.error(f"Error saving config value: {e}")
+        raise

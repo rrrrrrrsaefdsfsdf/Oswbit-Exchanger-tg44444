@@ -332,3 +332,188 @@ AttributeError: type object 'InlineKeyboards' has no attribute 'create_builder'
 2025-08-09 16:47:30,213 [WARNING] aiogram.dispatcher - Received SIGINT signal
 2025-08-09 16:47:30,214 [INFO] aiogram.dispatcher - Polling stopped for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
 2025-08-09 16:47:30,214 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 21:45:29,223 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 21:45:29,223 [INFO] __main__ - База данных инициализирована
+2025-08-09 21:45:29,223 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 21:45:29,232 [INFO] handlers.user - User router loaded
+2025-08-09 21:45:29,234 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 21:45:29,239 [INFO] handlers.user - User router loaded
+2025-08-09 21:45:29,241 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 21:45:29,241 [INFO] __main__ - Запуск бота: main
+2025-08-09 21:45:29,241 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 21:45:29,707 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:45:29,736 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:45:29,800 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 21:45:29,833 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:45:41,817 [INFO] aiogram.event - Update id=182331306 is handled. Duration 584 ms by bot id=8153616825
+2025-08-09 21:45:48,030 [INFO] aiogram.event - Update id=182331307 is handled. Duration 245 ms by bot id=8153616825
+2025-08-09 21:45:57,104 [INFO] aiogram.event - Update id=182331308 is handled. Duration 260 ms by bot id=8153616825
+2025-08-09 21:46:07,740 [INFO] aiogram.event - Update id=182331309 is handled. Duration 156 ms by bot id=8153616825
+2025-08-09 21:46:09,872 [INFO] aiogram.event - Update id=182331310 is handled. Duration 163 ms by bot id=8153616825
+2025-08-09 21:52:12,941 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 21:52:12,944 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:52:12,944 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 21:52:22,844 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 21:52:22,844 [INFO] __main__ - База данных инициализирована
+2025-08-09 21:52:22,844 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 21:52:22,851 [INFO] handlers.user - User router loaded
+2025-08-09 21:52:22,853 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 21:52:22,858 [INFO] handlers.user - User router loaded
+2025-08-09 21:52:22,860 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 21:52:22,860 [INFO] __main__ - Запуск бота: main
+2025-08-09 21:52:22,861 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 21:52:23,314 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:52:23,342 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:52:23,405 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 21:52:23,442 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:52:28,813 [INFO] aiogram.event - Update id=182331311 is handled. Duration 407 ms by bot id=8153616825
+2025-08-09 21:52:31,526 [INFO] aiogram.event - Update id=182331312 is handled. Duration 175 ms by bot id=8153616825
+2025-08-09 21:52:40,743 [INFO] aiogram.event - Update id=897364800 is handled. Duration 419 ms by bot id=7965647514
+2025-08-09 21:54:30,202 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 21:54:30,203 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:54:30,204 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 21:54:33,158 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 21:54:33,158 [INFO] __main__ - База данных инициализирована
+2025-08-09 21:54:33,158 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 21:54:33,164 [INFO] handlers.user - User router loaded
+2025-08-09 21:54:33,165 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 21:54:33,171 [INFO] handlers.user - User router loaded
+2025-08-09 21:54:33,173 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 21:54:33,173 [INFO] __main__ - Запуск бота: main
+2025-08-09 21:54:33,173 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 21:54:33,568 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:54:33,573 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:54:33,668 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 21:54:33,671 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:54:37,965 [INFO] aiogram.event - Update id=897364801 is handled. Duration 444 ms by bot id=7965647514
+2025-08-09 21:54:41,097 [INFO] aiogram.event - Update id=182331313 is handled. Duration 411 ms by bot id=8153616825
+2025-08-09 21:54:42,913 [INFO] aiogram.event - Update id=182331314 is handled. Duration 129 ms by bot id=8153616825
+2025-08-09 21:56:11,190 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 21:56:11,193 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:56:11,193 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 21:56:14,888 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 21:56:14,888 [INFO] __main__ - База данных инициализирована
+2025-08-09 21:56:14,888 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 21:56:14,896 [INFO] handlers.user - User router loaded
+2025-08-09 21:56:14,898 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 21:56:14,904 [INFO] handlers.user - User router loaded
+2025-08-09 21:56:14,905 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 21:56:14,905 [INFO] __main__ - Запуск бота: main
+2025-08-09 21:56:14,906 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 21:56:15,296 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:56:15,320 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:56:15,393 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 21:56:15,411 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:56:19,960 [INFO] aiogram.event - Update id=182331315 is handled. Duration 442 ms by bot id=8153616825
+2025-08-09 21:56:25,202 [INFO] aiogram.event - Update id=897364802 is handled. Duration 446 ms by bot id=7965647514
+2025-08-09 21:56:43,291 [INFO] aiogram.event - Update id=182331316 is handled. Duration 453 ms by bot id=8153616825
+2025-08-09 21:56:45,716 [INFO] aiogram.event - Update id=182331317 is handled. Duration 169 ms by bot id=8153616825
+2025-08-09 21:56:48,762 [INFO] aiogram.event - Update id=182331318 is handled. Duration 207 ms by bot id=8153616825
+2025-08-09 21:56:49,833 [INFO] aiogram.event - Update id=182331319 is handled. Duration 107 ms by bot id=8153616825
+2025-08-09 21:59:48,886 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 21:59:48,887 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:59:48,888 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 21:59:51,918 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 21:59:51,918 [INFO] __main__ - База данных инициализирована
+2025-08-09 21:59:51,918 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 21:59:51,925 [INFO] handlers.user - User router loaded
+2025-08-09 21:59:51,927 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 21:59:51,932 [INFO] handlers.user - User router loaded
+2025-08-09 21:59:51,934 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 21:59:51,934 [INFO] __main__ - Запуск бота: main
+2025-08-09 21:59:51,934 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 21:59:52,340 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:59:52,347 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 21:59:52,437 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 21:59:52,442 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 21:59:59,774 [INFO] aiogram.event - Update id=182331320 is handled. Duration 412 ms by bot id=8153616825
+2025-08-09 22:00:01,949 [INFO] aiogram.event - Update id=182331321 is handled. Duration 242 ms by bot id=8153616825
+2025-08-09 22:00:03,499 [INFO] aiogram.event - Update id=182331322 is handled. Duration 278 ms by bot id=8153616825
+2025-08-09 22:00:04,477 [INFO] aiogram.event - Update id=182331323 is handled. Duration 154 ms by bot id=8153616825
+2025-08-09 22:00:05,806 [INFO] aiogram.event - Update id=182331324 is handled. Duration 139 ms by bot id=8153616825
+2025-08-09 22:00:07,109 [INFO] aiogram.event - Update id=182331325 is handled. Duration 107 ms by bot id=8153616825
+2025-08-09 22:00:17,891 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 22:00:17,893 [INFO] aiogram.dispatcher - Polling stopped for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:00:17,893 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 22:02:48,594 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 22:02:48,595 [INFO] __main__ - База данных инициализирована
+2025-08-09 22:02:48,595 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 22:02:48,602 [INFO] handlers.user - User router loaded
+2025-08-09 22:02:48,604 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 22:02:48,610 [INFO] handlers.user - User router loaded
+2025-08-09 22:02:48,611 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 22:02:48,612 [INFO] __main__ - Запуск бота: main
+2025-08-09 22:02:48,612 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 22:02:49,099 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:02:49,107 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:02:49,198 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:02:49,212 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:02:53,395 [INFO] aiogram.event - Update id=182331326 is handled. Duration 427 ms by bot id=8153616825
+2025-08-09 22:02:55,645 [INFO] aiogram.event - Update id=182331327 is handled. Duration 165 ms by bot id=8153616825
+2025-08-09 22:02:59,078 [INFO] aiogram.event - Update id=182331328 is handled. Duration 155 ms by bot id=8153616825
+2025-08-09 22:03:16,490 [INFO] aiogram.event - Update id=182331329 is handled. Duration 372 ms by bot id=8153616825
+2025-08-09 22:04:56,313 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 22:04:56,316 [INFO] aiogram.dispatcher - Polling stopped for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:04:56,317 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 22:04:59,527 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 22:04:59,527 [INFO] __main__ - База данных инициализирована
+2025-08-09 22:04:59,527 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 22:04:59,535 [INFO] handlers.user - User router loaded
+2025-08-09 22:04:59,536 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 22:04:59,542 [INFO] handlers.user - User router loaded
+2025-08-09 22:04:59,543 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 22:04:59,543 [INFO] __main__ - Запуск бота: main
+2025-08-09 22:04:59,544 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 22:04:59,923 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:04:59,926 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:05:00,014 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:05:00,017 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:05:02,838 [INFO] aiogram.event - Update id=182331330 is handled. Duration 494 ms by bot id=8153616825
+2025-08-09 22:05:05,776 [INFO] aiogram.event - Update id=182331331 is handled. Duration 176 ms by bot id=8153616825
+2025-08-09 22:05:07,628 [INFO] aiogram.event - Update id=182331332 is handled. Duration 210 ms by bot id=8153616825
+2025-08-09 22:05:08,736 [INFO] aiogram.event - Update id=182331333 is handled. Duration 106 ms by bot id=8153616825
+2025-08-09 22:08:20,663 [INFO] aiogram.event - Update id=182331334 is handled. Duration 471 ms by bot id=8153616825
+2025-08-09 22:08:34,605 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 22:08:34,608 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:08:34,608 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 22:08:37,850 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 22:08:37,850 [INFO] __main__ - База данных инициализирована
+2025-08-09 22:08:37,850 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 22:08:37,857 [INFO] handlers.user - User router loaded
+2025-08-09 22:08:37,859 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 22:08:37,865 [INFO] handlers.user - User router loaded
+2025-08-09 22:08:37,867 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 22:08:37,867 [INFO] __main__ - Запуск бота: main
+2025-08-09 22:08:37,867 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 22:08:38,272 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:08:38,296 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:08:38,367 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:08:38,392 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:08:41,013 [INFO] aiogram.event - Update id=182331335 is handled. Duration 409 ms by bot id=8153616825
+2025-08-09 22:08:43,178 [INFO] aiogram.event - Update id=182331336 is handled. Duration 155 ms by bot id=8153616825
+2025-08-09 22:08:45,256 [INFO] aiogram.event - Update id=182331337 is handled. Duration 266 ms by bot id=8153616825
+2025-08-09 22:08:46,232 [INFO] aiogram.event - Update id=182331338 is handled. Duration 125 ms by bot id=8153616825
+2025-08-09 22:09:54,209 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 22:09:54,209 [INFO] __main__ - База данных инициализирована
+2025-08-09 22:09:54,210 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 22:09:54,217 [INFO] handlers.user - User router loaded
+2025-08-09 22:09:54,218 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 22:09:54,224 [INFO] handlers.user - User router loaded
+2025-08-09 22:09:54,225 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 22:09:54,225 [INFO] __main__ - Запуск бота: main
+2025-08-09 22:09:54,226 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 22:09:54,661 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:09:54,683 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:09:54,759 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:09:54,779 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:10:18,790 [INFO] aiogram.event - Update id=182331339 is handled. Duration 475 ms by bot id=8153616825
+2025-08-09 22:10:20,711 [INFO] aiogram.event - Update id=182331340 is handled. Duration 145 ms by bot id=8153616825
+2025-08-09 22:12:38,697 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 54] Connection reset by peer
+2025-08-09 22:12:38,751 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8153616825)
+2025-08-09 22:12:38,751 [ERROR] aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 54] Connection reset by peer
+2025-08-09 22:12:38,751 [WARNING] aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7965647514)
+2025-08-09 22:12:50,207 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 8153616825)
+2025-08-09 22:12:50,263 [INFO] aiogram.dispatcher - Connection established (tryings = 1, bot id = 7965647514)
+2025-08-09 22:13:10,104 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 22:13:10,106 [INFO] aiogram.dispatcher - Polling stopped for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:13:10,107 [INFO] aiogram.dispatcher - Polling stopped

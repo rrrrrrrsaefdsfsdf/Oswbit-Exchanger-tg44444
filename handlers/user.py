@@ -69,36 +69,51 @@ db = Database(config.DATABASE_URL)
 
 
 
-
 async def show_main_menu(message_or_callback, is_callback=False):
-                                
     if is_callback:
         bot = message_or_callback.bot
+        chat_id = message_or_callback.message.chat.id
     else:
         bot = message_or_callback.bot
+        chat_id = message_or_callback.chat.id
     
-                                                
-    mirror_config = get_mirror_config(bot)
-
-    default_welcome = (
-        f"<b>🥷 Добро пожаловать в {mirror_config['EXCHANGE_NAME']}, ниндзя!</b>\n"
-        f"\nУ нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
-        f"Быстро. Дешево. Анонимно.\n\n"
-        f"Оператор: {mirror_config['SUPPORT_MANAGER']}\n"
-        f"Канал: {mirror_config['NEWS_CHANNEL']}\n\n"
-        f"Выберите действие в меню:"
+    # Получаем mirror_id из бота
+    mirror_id = getattr(bot, 'mirror_id', 'main')
+    mirror_config = config.get_mirror_config(mirror_id)
+    
+    # Получаем кастомное приветствие из БД или используем из конфига
+    try:
+        custom_welcome = await db.get_config_value(mirror_id, 'WELCOME_MESSAGE')
+        if custom_welcome:
+            welcome_template = custom_welcome
+        else:
+            welcome_template = mirror_config.get('WELCOME_MESSAGE', config.WELCOME_MESSAGE)
+    except:
+        # Если БД недоступна, используем из конфига
+        welcome_template = mirror_config.get('WELCOME_MESSAGE', config.WELCOME_MESSAGE)
+    
+    # Форматируем приветствие с актуальными данными
+    welcome_msg = welcome_template.format(
+        exchange_name=mirror_config.get('EXCHANGE_NAME', config.EXCHANGE_NAME),
+        support_manager=mirror_config.get('SUPPORT_MANAGER', config.SUPPORT_MANAGER),
+        news_channel=mirror_config.get('NEWS_CHANNEL', config.NEWS_CHANNEL),
+        support_chat=mirror_config.get('SUPPORT_CHAT', config.SUPPORT_CHAT),
+        reviews_channel=mirror_config.get('REVIEWS_CHANNEL', config.REVIEWS_CHANNEL)
     )
-
-    welcome_msg = await db.get_setting("welcome_message", default_welcome)
     
     if is_callback:
         await message_or_callback.bot.send_message(
-            message_or_callback.message.chat.id,
+            chat_id,
             welcome_msg,
-            reply_markup=ReplyKeyboards.main_menu()
+            reply_markup=ReplyKeyboards.main_menu(),
+            parse_mode="HTML"
         )
     else:
-        await message_or_callback.answer(welcome_msg, reply_markup=ReplyKeyboards.main_menu())
+        await message_or_callback.answer(
+            welcome_msg, 
+            reply_markup=ReplyKeyboards.main_menu(),
+            parse_mode="HTML"
+        )
 
 
 
@@ -692,23 +707,7 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
     return False
 
 
-
-
-
-
-
-                                                                                
-                                                                                   
-                                            
-                                                                             
-                                                  
-                                          
     
-                                                                
-                                                                   
-                
-    
-                             
 
 
 

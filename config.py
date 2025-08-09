@@ -8,13 +8,23 @@ class Config:
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     BOT_MODE = os.getenv("BOT_MODE", 'polling')
     
-                             
+    # Токены зеркальных ботов
     MIRROR_BOT_TOKENS = []
     
-                                      
+    # Конфигурации зеркал
     MIRROR_CONFIGS = {}
+
+    # Приветственное сообщение по умолчанию
+    WELCOME_MESSAGE = os.getenv("WELCOME_MESSAGE", 
+        "<b>🥷 Добро пожаловать в {exchange_name}, ниндзя!</b>\n\n"
+        "У нас ты можешь купить Bitcoin по лучшему курсу.\n\n"
+        "Быстро. Дешево. Анонимно.\n\n"
+        "Оператор: {support_manager}\n"
+        "Канал: {news_channel}\n\n"
+        "Выберите действие в меню:"
+    )
     
-                                       
+    # API ключи для платежных систем
     ONLYPAYS_API_ID = os.getenv("ONLYPAYS_API_ID")
     ONLYPAYS_SECRET_KEY = os.getenv("ONLYPAYS_SECRET_KEY")
     ONLYPAYS_PAYMENT_KEY = os.getenv("ONLYPAYS_PAYMENT_KEY")
@@ -27,7 +37,7 @@ class Config:
     NICEPAY_MERCHANT_KEY = os.getenv("NICEPAY_MERCHANT_KEY")
     NICEPAY_MERCHANT_TOKEN_KEY = os.getenv("NICEPAY_MERCHANT_TOKEN_KEY")
     
-                     
+    # Настройки БД
     DATABASE_URL = os.getenv("DATABASE_URL", "oswaldo_exchanger.db")
     MIRROR_ID = os.getenv("MIRROR_ID", "main_mirror")
     CENTRAL_DB_PATH = os.getenv("CENTRAL_DB_PATH", "oborot.db")
@@ -36,7 +46,7 @@ class Config:
     MIN_AMOUNT = int(os.getenv("MIN_AMOUNT", 2000))
     MAX_AMOUNT = int(os.getenv("MAX_AMOUNT", 100000))
     
-                                             
+    # Административные настройки
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
     ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", 0))
     OPERATOR_CHAT_ID = int(os.getenv("OPERATOR_CHAT_ID", 0))
@@ -50,12 +60,17 @@ class Config:
     REVIEWS_CHANNEL = os.getenv("REVIEWS_CHANNEL", "@")
     
     def __init__(self):
-                                        
+        # Обрабатываем приветственное сообщение основного бота
+        self.WELCOME_MESSAGE = self._parse_welcome_message(self.WELCOME_MESSAGE)
         self._parse_mirror_tokens()
         self._parse_mirror_configs()
     
+    def _parse_welcome_message(self, message):
+        """Обработка переносов строк в приветственном сообщении"""
+        return message.replace('\\n', '\n') if message else ""
+    
     def _parse_mirror_tokens(self):
-                                              
+        """Парсинг токенов зеркальных ботов из переменных окружения"""
         mirror_tokens = os.getenv("MIRROR_BOT_TOKENS", "")
         if mirror_tokens.strip():
             self.MIRROR_BOT_TOKENS = [
@@ -65,26 +80,29 @@ class Config:
             ]
     
     def _parse_mirror_configs(self):
-                                             
-                                            
+        """Парсинг конфигураций зеркальных ботов"""
+        # Загружаем базовые конфигурации из JSON
         mirror_configs_json = os.getenv("MIRROR_CONFIGS", "{}")
         try:
             self.MIRROR_CONFIGS = json.loads(mirror_configs_json)
         except json.JSONDecodeError:
             self.MIRROR_CONFIGS = {}
         
-                                                           
+        # Создаем/обновляем конфигурации для каждого зеркала
         for i in range(len(self.MIRROR_BOT_TOKENS)):
             mirror_key = f"mirror_{i+1}"
             
-                                                                               
+            # Получаем приветственное сообщение для зеркала
+            welcome_msg = os.getenv(f"MIRROR_{i+1}_WELCOME_MESSAGE", self.WELCOME_MESSAGE)
+            
+            # Создаем конфигурацию если её нет
             if mirror_key not in self.MIRROR_CONFIGS:
                 self.MIRROR_CONFIGS[mirror_key] = {}
             
-                                                         
+            # Получаем существующую конфигурацию
             mirror_config = self.MIRROR_CONFIGS[mirror_key]
             
-                                            
+            # Обновляем конфигурацию
             mirror_config.update({
                 'BOT_USERNAME': os.getenv(f"MIRROR_{i+1}_BOT_USERNAME", self.BOT_USERNAME),
                 'EXCHANGE_NAME': os.getenv(f"MIRROR_{i+1}_EXCHANGE_NAME", self.EXCHANGE_NAME),
@@ -93,15 +111,18 @@ class Config:
                 'NEWS_CHANNEL': os.getenv(f"MIRROR_{i+1}_NEWS_CHANNEL", self.NEWS_CHANNEL),
                 'REVIEWS_CHANNEL': os.getenv(f"MIRROR_{i+1}_REVIEWS_CHANNEL", self.REVIEWS_CHANNEL),
                 
-                                                      
+                # Административные ID
                 'ADMIN_USER_ID': int(os.getenv(f"MIRROR_{i+1}_ADMIN_USER_ID", self.ADMIN_USER_ID)),
                 'ADMIN_CHAT_ID': int(os.getenv(f"MIRROR_{i+1}_ADMIN_CHAT_ID", self.ADMIN_CHAT_ID)),
                 'OPERATOR_CHAT_ID': int(os.getenv(f"MIRROR_{i+1}_OPERATOR_CHAT_ID", self.OPERATOR_CHAT_ID)),
                 'REVIEWS_CHANNEL_ID': int(os.getenv(f"MIRROR_{i+1}_REVIEWS_CHANNEL_ID", self.REVIEWS_CHANNEL_ID)),
+                
+                # Приветственное сообщение с обработкой переносов строк
+                'WELCOME_MESSAGE': self._parse_welcome_message(welcome_msg),
             })
     
     def get_mirror_config(self, mirror_id):
-                                                           
+        """Получение конфигурации для определенного зеркала или основного бота"""
         if mirror_id == "main":
             return {
                 'BOT_USERNAME': self.BOT_USERNAME,
@@ -114,33 +135,34 @@ class Config:
                 'ADMIN_CHAT_ID': self.ADMIN_CHAT_ID,
                 'OPERATOR_CHAT_ID': self.OPERATOR_CHAT_ID,
                 'REVIEWS_CHANNEL_ID': self.REVIEWS_CHANNEL_ID,
+                'WELCOME_MESSAGE': self.WELCOME_MESSAGE,
             }
         
         return self.MIRROR_CONFIGS.get(mirror_id, {})
     
     def get_config_value(self, mirror_id, key, default=None):
-                                                                    
+        """Получение значения конфигурации для определенного ключа"""
         mirror_config = self.get_mirror_config(mirror_id)
         return mirror_config.get(key, getattr(self, key, default))
     
     def get_all_bot_tokens(self):
-                                                                    
+        """Получение всех токенов ботов (основного + зеркал)"""
         tokens = [self.BOT_TOKEN] if self.BOT_TOKEN else []
         tokens.extend(self.MIRROR_BOT_TOKENS)
         return tokens
     
     def get_mirror_count(self):
-                                                    
+        """Получение количества зеркальных ботов"""
         return len(self.MIRROR_BOT_TOKENS)
     
     def is_mirror_enabled(self):
-                                                    
+        """Проверка включены ли зеркальные боты"""
         return len(self.MIRROR_BOT_TOKENS) > 0
 
-                                
+# Создание экземпляра конфигурации
 config = Config()
 
-                                                     
+# Функция для получения текущей конфигурации
 def get_current_config(mirror_id="main"):
-                                                    
+    """Получение текущей конфигурации для указанного бота"""
     return config.get_mirror_config(mirror_id)

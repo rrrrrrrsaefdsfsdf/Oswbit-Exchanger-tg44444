@@ -39,8 +39,8 @@ async def init_database():
         db = Database(config.DATABASE_URL)
         await db.init_db()
         await db.init_turnover_db()
-        logger.info(f"Bot started with MIRROR_ID: {config.MIRROR_ID}")  # Убираем .config
-        logger.info(f"Oborot DB: {config.CENTRAL_DB_PATH}")    # Убираем .config
+        logger.info(f"Bot started with MIRROR_ID: {config.MIRROR_ID}")                   
+        logger.info(f"Oborot DB: {config.CENTRAL_DB_PATH}")                     
 
     except Exception as e:
         logger.error(f"Ошибка инициализации базы данных: {e}")

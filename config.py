@@ -21,9 +21,9 @@ class Config:
     
     DATABASE_URL = os.getenv("DATABASE_URL", "oswaldo_exchanger.db")
     
-    # Добавляем новые параметры для системы оборота
-    MIRROR_ID = os.getenv("MIRROR_ID", "main_mirror")  # Уникальный ID зеркала
-    CENTRAL_DB_PATH = os.getenv("CENTRAL_DB_PATH", "oborot.db")  # Общая база оборота
+                                                   
+    MIRROR_ID = os.getenv("MIRROR_ID", "main_mirror")                         
+    CENTRAL_DB_PATH = os.getenv("CENTRAL_DB_PATH", "oborot.db")                      
     
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
     ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", 0))

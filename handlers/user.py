@@ -513,7 +513,7 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
         payment_type=data["payment_type"]
     )
     
-    # Записываем создание заказа в общий оборот
+                                               
     await db.add_turnover_record(
         order_id=order_id,
         user_id=user_id,

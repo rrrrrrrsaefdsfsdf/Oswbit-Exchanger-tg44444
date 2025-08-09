@@ -91,8 +91,8 @@ class InlineKeyboards:
             crypto_upper = crypto.upper()
             if crypto_upper == "BTC":
                 amounts = ["0.001", "0.01", "0.1", "0.5", "1", "5"]
-            elif crypto_upper in ["LTC", "XMR"]:
-                amounts = ["0.1", "1", "5", "10", "50", "100"]
+                                                  
+                                                                
             else:
                 amounts = ["100", "500", "1000", "5000", "10000", "50000"]
             currency_symbol = crypto_upper

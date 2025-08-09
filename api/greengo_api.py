@@ -16,7 +16,7 @@ class GreengoAPI:
 
     async def _make_request(self, method: str, url: str, data: Dict[str, Any] = None) -> Dict[str, Any]:
         try:
-            timeout = aiohttp.ClientTimeout(total=30)  # Добавлен таймаут
+            timeout = aiohttp.ClientTimeout(total=30)                    
             async with aiohttp.ClientSession(timeout=timeout) as session:
                 if method.upper() == "GET":
                     async with session.get(url, headers=self.headers) as response:
@@ -46,7 +46,7 @@ class GreengoAPI:
             logger.error(f"Greengo unexpected error: {e}")
             return {"success": False, "error": str(e)}
 
-    # Остальные методы остаются такими же, как у вас
+                                                    
     async def create_order(self, payment_method: str, wallet: str, from_amount: str) -> Dict[str, Any]:
         url = f"{self.base_url}/order/create"
         data = {

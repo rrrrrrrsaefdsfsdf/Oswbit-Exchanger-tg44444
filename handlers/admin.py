@@ -1306,7 +1306,7 @@ async def review_moderation(callback: CallbackQuery):
 
 
 
-# Добавить в admin.py эти функции:
+                                  
 
 from aiogram import F
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
@@ -1317,7 +1317,7 @@ async def view_turnover_stats(callback: CallbackQuery):
         await callback.answer("❌ Нет прав", show_alert=True)
         return
     
-    # Получаем статистику
+                         
     total_stats = await db.get_total_turnover_by_mirror()
     today_stats = await db.get_turnover_by_period(1)
     week_stats = await db.get_turnover_by_period(7)
@@ -1339,7 +1339,7 @@ async def view_turnover_stats(callback: CallbackQuery):
         for mirror in mirrors_stats:
             text += f"• {mirror['mirror_id']}: {mirror['total']:,.0f} ₽ ({mirror['orders']} заказов)\n"
     
-    # Создаем кнопки для детального просмотра
+                                             
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📈 Детальная статистика", callback_data="detailed_turnover")],
         [InlineKeyboardButton(text="🔄 Обновить", callback_data="view_turnover")],
@@ -1362,7 +1362,7 @@ async def detailed_turnover_stats(callback: CallbackQuery):
     text += f"💰 Оборот: {current_stats['total_amount']:,.0f} ₽\n"
     text += f"📋 Заказов: {current_stats['total_orders']}\n\n"
     
-    # Статистика по периодам для текущего зеркала
+                                                 
     today = await db.get_turnover_by_period(1, current_mirror)
     week = await db.get_turnover_by_period(7, current_mirror)
     month = await db.get_turnover_by_period(30, current_mirror)

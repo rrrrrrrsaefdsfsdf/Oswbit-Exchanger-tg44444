@@ -34,8 +34,6 @@ def is_operator_chat(chat_id: int) -> bool:
 def can_handle_orders(user_id: int, chat_id: int) -> bool:
     return (is_operator(user_id) or is_admin(user_id)) and is_operator_chat(chat_id)
 
-
-
 async def notify_operators_new_order(bot, order: dict):
     display_id = order.get('personal_id', order.get('id', 'N/A'))
     chat_id = config.OPERATOR_CHAT_ID
@@ -43,14 +41,14 @@ async def notify_operators_new_order(bot, order: dict):
     try:
         text = (
             f"📥 <b>НОВАЯ ЗАЯВКА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"
-            f"💰 Сумма заявки: {order.get('total_amount', 0):,.0f} ₽\n"
-            f"₿ К отправке: {order.get('amount_btc', 0):.8f} BTC\n"
-            f"📍 Адрес: <code>{order.get('btc_address', 'N/A')}</code>\n\n"
-            f"⏰ Создана: {order.get('created_at', 'N/A')}\n"
-            f"📱 Тип: {order.get('payment_type', 'N/A')}\n\n"
-            f"⚡ <b>Требуется обработка заявки</b>"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"\
+            f"💰 Сумма заявки: {order.get('total_amount', 0):,.0f} ₽\n"\
+            f"₿ К отправке: {order.get('amount_btc', 0):.8f} BTC\n"\
+            f"📍 Адрес: <code>{order.get('btc_address', 'N/A')}</code>\n\n"\
+            f"⏰ Создана: {order.get('created_at', 'N/A')}\n"\
+            f"📱 Тип: {order.get('payment_type', 'N/A')}\n\n"\
+            f"⚡ <b>Требуется обработка заявки</b>"\
         )
         builder = InlineKeyboardBuilder()
         builder.row(
@@ -71,8 +69,6 @@ async def notify_operators_new_order(bot, order: dict):
     except Exception as e:
         logger.error(f"notify_operators_new_order: ошибка отправки уведомления заявки #{display_id}: {e}", exc_info=True)
 
-
-
 async def notify_operators_paid_order(bot, order: dict, received_sum: float = None):
     try:
         display_id = order.get('personal_id', order['id'])
@@ -80,15 +76,15 @@ async def notify_operators_paid_order(bot, order: dict, received_sum: float = No
             received_sum = order.get('total_amount', 0)
         text = (
             f"💰 <b>ЗАЯВКА ОПЛАЧЕНА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"
-            f"💵 Получено: {received_sum:,.0f} ₽\n"
-            f"💰 Сумма заявки: {order['total_amount']:,.0f} ₽\n"
-            f"₿ К отправке: {order['amount_btc']:.8f} BTC\n"
-            f"📍 Адрес: <code>{order['btc_address']}</code>\n\n"
-            f"⏰ Создана: {order.get('created_at', 'N/A')}\n"
-            f"📱 Тип: {order.get('payment_type', 'N/A')}\n\n"
-            f"🎯 <b>Требуется отправка Bitcoin!</b>"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"\
+            f"💵 Получено: {received_sum:,.0f} ₽\n"\
+            f"💰 Сумма заявки: {order['total_amount']:,.0f} ₽\n"\
+            f"₿ К отправке: {order['amount_btc']:.8f} BTC\n"\
+            f"📍 Адрес: <code>{order['btc_address']}</code>\n\n"\
+            f"⏰ Создана: {order.get('created_at', 'N/A')}\n"\
+            f"📱 Тип: {order.get('payment_type', 'N/A')}\n\n"\
+            f"🎯 <b>Требуется отправка Bitcoin!</b>"\
         )
         builder = InlineKeyboardBuilder()
         builder.row(
@@ -128,12 +124,12 @@ async def notify_operators_error_order(bot, order: dict, error_message: str):
         display_id = order.get('personal_id', order['id'])
         text = (
             f"⚠️ <b>ОШИБКА В ЗАЯВКЕ</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"
-            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"
-            f"❌ Ошибка: {error_message}\n\n"
-            f"⏰ Создана: {order.get('created_at', 'N/A')}\n\n"
-            f"🔧 <b>Требуется вмешательство!</b>"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Клиент ID: {order.get('user_id', 'N/A')}\n"\
+            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"\
+            f"❌ Ошибка: {error_message}\n\n"\
+            f"⏰ Создана: {order.get('created_at', 'N/A')}\n\n"\
+            f"🔧 <b>Требуется вмешательство!</b>"\
         )
         builder = InlineKeyboardBuilder()
         builder.row(
@@ -167,12 +163,12 @@ async def notify_client_payment_received(bot, order: dict):
         display_id = order.get('personal_id', order['id'])
         text = (
             f"✅ <b>Платеж получен!</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"
-            f"₿ К получению: {order['amount_btc']:.8f} BTC\n\n"
-            f"🔄 <b>Обрабатываем заявку...</b>\n"
-            f"Bitcoin будет отправлен на ваш адрес в течение 1 часа.\n\n"
-            f"📱 Вы получите уведомление о завершении."
+            f"🆔 Заявка: #{display_id}\n"\
+            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"\
+            f"₿ К получению: {order['amount_btc']:.8f} BTC\n\n"\
+            f"🔄 <b>Обрабатываем заявку...</b>\n"\
+            f"Bitcoin будет отправлен на ваш адрес в течение 1 часа.\n\n"\
+            f"📱 Вы получите уведомление о завершении."\
         )
         await bot.send_message(
             order['user_id'],
@@ -189,10 +185,10 @@ async def notify_client_order_cancelled(bot, order: dict):
         display_id = order.get('personal_id', order['id'])
         text = (
             f"❌ <b>Заявка отменена</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n\n"
-            f"Причина: Превышено время ожидания оплаты\n\n"
-            f"Создайте новую заявку для обмена."
+            f"🆔 Заявка: #{display_id}\n"\
+            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n\n"\
+            f"Причина: Превышено время ожидания оплаты\n\n"\
+            f"Создайте новую заявку для обмена."\
         )
         await bot.send_message(
             order['user_id'],
@@ -209,12 +205,12 @@ async def notify_client_order_completed(bot, order: dict):
         display_id = order.get('personal_id', order['id'])
         text = (
             f"🎉 <b>Заявка завершена!</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"₿ Отправлено: {order['amount_btc']:.8f} BTC\n"
-            f"📍 На адрес: <code>{order['btc_address']}</code>\n\n"
-            f"✅ <b>Bitcoin успешно отправлен!</b>\n"
-            f"Проверьте ваш кошелек.\n\n"
-            f"Спасибо за использование {config.EXCHANGE_NAME}!"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"₿ Отправлено: {order['amount_btc']:.8f} BTC\n"\
+            f"📍 На адрес: <code>{order['btc_address']}</code>\n\n"\
+            f"✅ <b>Bitcoin успешно отправлен!</b>\n"\
+            f"Проверьте ваш кошелек.\n\n"\
+            f"Спасибо за использование {config.EXCHANGE_NAME}!"\
         )
         await bot.send_message(
             order['user_id'],
@@ -225,7 +221,6 @@ async def notify_client_order_completed(bot, order: dict):
         logger.info(f"Клиенту {order['user_id']} отправлено уведомление о завершении заявки #{display_id}")
     except Exception as e:
         logger.error(f"Ошибка при уведомлении клиента о завершении заявки: {e}")
-
 
 @router.callback_query(F.data.startswith("op_sent_"))
 async def operator_sent_handler(callback: CallbackQuery):
@@ -240,12 +235,12 @@ async def operator_sent_handler(callback: CallbackQuery):
         display_id = order.get('personal_id', order_id)
         text_client = (
             f"🎉 <b>Заявка завершена!</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"₿ Отправлено: {order['amount_btc']:.8f} BTC\n"
-            f"📍 На адрес: <code>{order['btc_address']}</code>\n\n"
-            f"✅ <b>Bitcoin успешно отправлен!</b>\n"
-            f"Проверьте ваш кошелек.\n\n"
-            f"Спасибо за использование {config.EXCHANGE_NAME}!"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"₿ Отправлено: {order['amount_btc']:.8f} BTC\n"\
+            f"📍 На адрес: <code>{order['btc_address']}</code>\n\n"\
+            f"✅ <b>Bitcoin успешно отправлен!</b>\n"\
+            f"Проверьте ваш кошелек.\n\n"\
+            f"Спасибо за использование {config.EXCHANGE_NAME}!"\
         )
         await callback.bot.send_message(
             order['user_id'],
@@ -255,10 +250,10 @@ async def operator_sent_handler(callback: CallbackQuery):
         )
         await callback.message.edit_text(
             f"✅ <b>ЗАЯВКА ЗАВЕРШЕНА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время завершения: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"💎 Bitcoin отправлен клиенту!"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время завершения: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
+            f"💎 Bitcoin отправлен клиенту!"\
         )
         await callback.answer("✅ Заявка отмечена как завершенная")
         logger.info(f"Заявка #{display_id} отмечена как завершенная оператором {callback.from_user.id}")
@@ -280,9 +275,9 @@ async def operator_mark_paid_handler(callback: CallbackQuery):
         await notify_client_payment_received(callback.bot, order)
         await callback.message.edit_text(
             f"✅ <b>ЗАЯВКА ПОМЕЧЕНА КАК ОПЛАЧЕННАЯ</b>\n\n"
-            f"🆔 Заявка: #{order.get('personal_id', order_id)}\n"
-            f"👤 Пометил: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"
+            f"🆔 Заявка: #{order.get('personal_id', order_id)}\n"\
+            f"👤 Пометил: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"\
         )
         await callback.answer("Заявка отмечена как оплаченная")
         logger.info(f"Заявка #{order_id} отмечена как оплаченная оператором {callback.from_user.id}")
@@ -303,17 +298,17 @@ async def operator_problem_handler(callback: CallbackQuery):
         display_id = order.get('personal_id', order_id) if order else order_id
         admin_text = (
             f"⚠️ <b>ПРОБЛЕМНАЯ ЗАЯВКА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Оператор: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"❗ Требуется вмешательство администратора"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Оператор: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
+            f"❗ Требуется вмешательство администратора"\
         )
         await callback.bot.send_message(config.ADMIN_CHAT_ID, admin_text, parse_mode="HTML")
         await callback.message.edit_text(
             f"⚠️ <b>ЗАЯВКА ОТМЕЧЕНА КАК ПРОБЛЕМНАЯ</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Оператор: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Оператор: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
             f"📨 Администратор уведомлен",
             parse_mode="HTML"
         )
@@ -361,17 +356,17 @@ async def operator_details_handler(callback: CallbackQuery):
         display_id = order.get('personal_id', order_id)
         text = (
             f"📋 <b>ДЕТАЛИ ЗАЯВКИ #{display_id}</b>\n\n"
-            f"🆔 ID: {order['id']}\n"
-            f"🔗 OnlyPays ID: {order.get('onlypays_id', 'N/A')}\n"
-            f"👤 Пользователь: {order['user_id']}\n"
-            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"
-            f"₿ Bitcoin: {order['amount_btc']:.8f} BTC\n"
-            f"💱 Курс: {order.get('rate', 0):,.0f} ₽\n"
-            f"📱 Тип оплаты: {order.get('payment_type', 'N/A')}\n"
-            f"📊 Статус: {order.get('status', 'N/A')}\n"
-            f"⏰ Создана: {order.get('created_at', 'N/A')}\n\n"
-            f"₿ <b>BTC адрес:</b>\n<code>{order.get('btc_address', 'N/A')}</code>\n\n"
-            f"💳 <b>Реквизиты:</b>\n{order.get('requisites', 'N/A')}"
+            f"🆔 ID: {order['id']}\n"\
+            f"🔗 OnlyPays ID: {order.get('onlypays_id', 'N/A')}\n"\
+            f"👤 Пользователь: {order['user_id']}\n"\
+            f"💰 Сумма: {order['total_amount']:,.0f} ₽\n"\
+            f"₿ Bitcoin: {order['amount_btc']:.8f} BTC\n"\
+            f"💱 Курс: {order.get('rate', 0):,.0f} ₽\n"\
+            f"📱 Тип оплаты: {order.get('payment_type', 'N/A')}\n"\
+            f"📊 Статус: {order.get('status', 'N/A')}\n"\
+            f"⏰ Создана: {order.get('created_at', 'N/A')}\n\n"\
+            f"₿ <b>BTC адрес:</b>\n<code>{order.get('btc_address', 'N/A')}</code>\n\n"\
+            f"💳 <b>Реквизиты:</b>\n{order.get('requisites', 'N/A')}"\
         )
         await callback.answer()
         await callback.bot.send_message(
@@ -399,9 +394,9 @@ async def operator_cancel_handler(callback: CallbackQuery):
         display_id = order.get('personal_id', order_id) if order else order_id
         await callback.message.edit_text(
             f"❌ <b>ЗАЯВКА ОТМЕНЕНА</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Отменил: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Отменил: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
             f"📨 Клиент уведомлен",
             parse_mode="HTML"
         )
@@ -430,10 +425,10 @@ async def note_input_handler(message: Message, state: FSMContext):
         display_id = order.get('personal_id', order_id) if order else order_id
         admin_text = (
             f"📝 <b>ЗАМЕТКА К ЗАЯВКЕ</b>\n\n"
-            f"🆔 Заявка: #{display_id}\n"
-            f"👤 Оператор: @{message.from_user.username or message.from_user.first_name}\n"
-            f"📝 Заметка: {note_text}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"
+            f"🆔 Заявка: #{display_id}\n"\
+            f"👤 Оператор: @{message.from_user.username or message.from_user.first_name}\n"\
+            f"📝 Заметка: {note_text}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"\
         )
         await message.bot.send_message(
             config.ADMIN_CHAT_ID,
@@ -457,8 +452,4 @@ async def note_input_handler(message: Message, state: FSMContext):
         logger.error(f"Ошибка при сохранении заметки: {e}")
         await message.answer("❌ Ошибка сохранения заметки")
     await state.clear()
-
-
-
-
 

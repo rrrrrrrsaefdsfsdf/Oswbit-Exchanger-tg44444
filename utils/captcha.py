@@ -13,7 +13,7 @@ class CaptchaGenerator:
         font_path = os.path.join(os.path.dirname(__file__), 'arialblackcyrit_italic.ttf')
         image = ImageCaptcha(width=200, height=80, fonts=[font_path])
      
-        
+        \
         data = image.generate(text)
         
         image_buffer = io.BytesIO()

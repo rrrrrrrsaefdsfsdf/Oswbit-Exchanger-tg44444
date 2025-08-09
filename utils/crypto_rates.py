@@ -4,7 +4,7 @@ from typing import Dict
 
 import aiohttp
 
-
+\
 @classmethod
 async def get_crypto_rates(cls) -> Dict[str, float]:
                           

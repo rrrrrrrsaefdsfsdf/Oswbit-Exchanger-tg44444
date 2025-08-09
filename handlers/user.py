@@ -44,7 +44,7 @@ pspware_api = PSPWareAPI()
 greengo_api = GreengoAPI()
 nicepay_api = NicePayAPI()
 
-                                                     
+\
 payment_api_manager = PaymentAPIManager([
     {"api": onlypays_api, "name": "OnlyPays"},
     {"api": pspware_api, "name": "PSPWare", "pay_type_mapping": {"card": "c2c", "sbp": "sbp"}},
@@ -52,9 +52,9 @@ payment_api_manager = PaymentAPIManager([
     {"api": nicepay_api, "name": "NicePay", "pay_type_mapping": {"card": "sberbank_rub", "sbp": "sbp_rub"}}
 ])
 
-
-
-                                                                     
+\
+\
+\
 class ExchangeStates(StatesGroup):
     waiting_for_amount = State()
     waiting_for_btc_address = State()
@@ -66,9 +66,9 @@ class ExchangeStates(StatesGroup):
 
 db = Database(config.DATABASE_URL)
 
-
-
-
+\
+\
+\
 async def show_main_menu(message_or_callback, is_callback=False):
     if is_callback:
         bot = message_or_callback.bot
@@ -77,11 +77,10 @@ async def show_main_menu(message_or_callback, is_callback=False):
         bot = message_or_callback.bot
         chat_id = message_or_callback.chat.id
     
-    # Получаем mirror_id из бота
     mirror_id = getattr(bot, 'mirror_id', 'main')
     mirror_config = config.get_mirror_config(mirror_id)
     
-    # Получаем кастомное приветствие из БД или используем из конфига
+    \
     try:
         custom_welcome = await db.get_config_value(mirror_id, 'WELCOME_MESSAGE')
         if custom_welcome:
@@ -89,10 +88,9 @@ async def show_main_menu(message_or_callback, is_callback=False):
         else:
             welcome_template = mirror_config.get('WELCOME_MESSAGE', config.WELCOME_MESSAGE)
     except:
-        # Если БД недоступна, используем из конфига
+                                                   
         welcome_template = mirror_config.get('WELCOME_MESSAGE', config.WELCOME_MESSAGE)
     
-    # Форматируем приветствие с актуальными данными
     welcome_msg = welcome_template.format(
         exchange_name=mirror_config.get('EXCHANGE_NAME', config.EXCHANGE_NAME),
         support_manager=mirror_config.get('SUPPORT_MANAGER', config.SUPPORT_MANAGER),
@@ -114,11 +112,6 @@ async def show_main_menu(message_or_callback, is_callback=False):
             reply_markup=ReplyKeyboards.main_menu(),
             parse_mode="HTML"
         )
-
-
-
-
-
 
 @router.message(CommandStart())
 async def start_handler(message: Message, state: FSMContext):
@@ -178,8 +171,8 @@ async def captcha_handler(message: Message, state: FSMContext):
                 await message.bot.send_message(
                     referral_user_id,
                     f"🎉 По вашей ссылке зарегистрировался новый пользователь!\n"
-                    f"👤 {message.from_user.first_name}\n"
-                    f"💰 Вам начислен бонус за приглашение!"
+                    f"👤 {message.from_user.first_name}\n"\
+                    f"💰 Вам начислен бонус за приглашение!"\
                 )
             except:
                 pass
@@ -223,7 +216,6 @@ async def buy_handler(message: Message, state: FSMContext):
         reply_markup=InlineKeyboards.buy_crypto_selection()
     )
 
-
 @router.callback_query(F.data.startswith("buy_"))
 async def buy_crypto_selected(callback: CallbackQuery, state: FSMContext):
     if callback.data == "buy_main_menu":
@@ -240,9 +232,9 @@ async def buy_crypto_selected(callback: CallbackQuery, state: FSMContext):
         btc_rate = await BitcoinAPI.get_btc_rate()
         text = (
             f"💰 <b>Покупка Bitcoin\n\n"
-            f"📊 Текущий курс: {btc_rate:,.0f} ₽\n"
-            f"\n💱Обмен: от {config.MIN_AMOUNT:,.0f} RUB до {config.MAX_AMOUNT:,.0f} RUB</b>\n\n"
-            f"Введите сумму в рублях или BTC (в BTC вводить через точку, например 0.001):"
+            f"📊 Текущий курс: {btc_rate:,.0f} ₽\n"\
+            f"\n💱Обмен: от {config.MIN_AMOUNT:,.0f} RUB до {config.MAX_AMOUNT:,.0f} RUB</b>\n\n"\
+            f"Введите сумму в рублях или BTC (в BTC вводить через точку, например 0.001):"\
         )
         await callback.message.edit_text(
             text,
@@ -250,12 +242,6 @@ async def buy_crypto_selected(callback: CallbackQuery, state: FSMContext):
             parse_mode="HTML"
         )
         await state.set_state(ExchangeStates.waiting_for_amount)
-
-
-
-
-
-
 
 @router.callback_query(F.data.startswith("amount_"))
 async def amount_selected(callback: CallbackQuery, state: FSMContext):
@@ -281,7 +267,6 @@ async def back_to_buy_selection(callback: CallbackQuery, state: FSMContext):
         text,
         reply_markup=InlineKeyboards.buy_crypto_selection()
     )
-
 
 @router.message(ExchangeStates.waiting_for_amount)
 async def manual_amount_input(message: Message, state: FSMContext):
@@ -326,11 +311,6 @@ async def manual_amount_input(message: Message, state: FSMContext):
         logger.error(f"Error parsing amount: {message.text}, error: {e}")
         await message.answer("❌ Введите корректное число (например, 5000 или 5000.50)")
 
-
-
-
-
-
 async def process_amount_and_show_calculation(callback: CallbackQuery, state: FSMContext,
                                             crypto: str, direction: str, amount: float):
     btc_rate = await BitcoinAPI.get_btc_rate()
@@ -354,11 +334,11 @@ async def process_amount_and_show_calculation(callback: CallbackQuery, state: FS
     operation_text = "Покупка" if direction == "rub_to_crypto" else "Продажа"
     text = (
         f"📊 <b>{operation_text} Bitcoin</b>\n\n"
-        f"💱 Курс: {btc_rate:,.0f} ₽\n"
-        f"💰 Сумма: {rub_amount:,.0f} ₽\n"
-        f"₿ Получите: {crypto_amount:.8f} BTC\n\n"
-        f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"
-        f"Введите ваш Bitcoin адрес:"
+        f"💱 Курс: {btc_rate:,.0f} ₽\n"\
+        f"💰 Сумма: {rub_amount:,.0f} ₽\n"\
+        f"₿ Получите: {crypto_amount:.8f} BTC\n\n"\
+        f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"\
+        f"Введите ваш Bitcoin адрес:"\
     )
     await callback.message.edit_text(text, parse_mode="HTML")
     await state.set_state(ExchangeStates.waiting_for_address)
@@ -389,19 +369,14 @@ async def process_amount_and_show_calculation_for_message(message: Message, stat
     operation_text = "Покупка" if direction == "rub_to_crypto" else "Продажа"
     text = (
         f"📊 <b>{operation_text} Bitcoin</b>\n\n"
-        f"💱 Курс: {btc_rate:,.0f} ₽\n"
-        f"💰 Сумма: {rub_amount:,.0f} ₽\n"
-        f"₿ Получите: {crypto_amount:.8f} BTC\n\n"
-        f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"
-        f"Введите ваш Bitcoin адрес:"
+        f"💱 Курс: {btc_rate:,.0f} ₽\n"\
+        f"💰 Сумма: {rub_amount:,.0f} ₽\n"\
+        f"₿ Получите: {crypto_amount:.8f} BTC\n\n"\
+        f"💸 <b>Итого: {total_amount:,.0f} ₽</b>\n\n"\
+        f"Введите ваш Bitcoin адрес:"\
     )
     await message.answer(text, parse_mode="HTML")
     await state.set_state(ExchangeStates.waiting_for_address)
-
-
-
-
-
 
 @router.callback_query(F.data.startswith("payment_"))
 async def payment_method_selected(callback: CallbackQuery, state: FSMContext):
@@ -426,24 +401,16 @@ async def payment_method_selected(callback: CallbackQuery, state: FSMContext):
     if direction == "rub_to_crypto":
         text = (
             f"₿ <b>Введите ваш Bitcoin адрес</b>\n\n"
-            f"Убедитесь, что адрес указан правильно!\n"
-            f"Bitcoin будет отправлен именно на этот адрес."
+            f"Убедитесь, что адрес указан правильно!\n"\
+            f"Bitcoin будет отправлен именно на этот адрес."\
         )
     else:
         text = (
             f"💳 <b>Введите реквизиты для получения</b>\n\n"
-            f"{'Номер карты' if payment_type == 'card' else 'Номер телефона для СБП'}:"
+            f"{'Номер карты' if payment_type == 'card' else 'Номер телефона для СБП'}:"\
         )
     await callback.message.edit_text(text, parse_mode="HTML")
     await state.set_state(ExchangeStates.waiting_for_address)
-
-
-
-
-
-
-
-
 
 @router.message(ExchangeStates.waiting_for_btc_address)
 async def btc_address_handler(message: Message, state: FSMContext):
@@ -466,12 +433,12 @@ async def btc_address_handler(message: Message, state: FSMContext):
     total_amount = rub_amount / (1 - COMMISSION_PERCENT / 100)
     text = (
         f"📊 <b>Предварительный расчет:</b>\n\n"
-        f"💱 Курс BTC: {btc_rate:,.0f} ₽\n"
-        f"💰 Сумма к обмену: {rub_amount:,.0f} ₽\n"
-        f"₿ Получите Bitcoin: {btc_amount:.8f} BTC\n\n"
-        f"💸 <b>К оплате: {total_amount:,.0f} ₽</b>\n\n"
-        f"₿ Bitcoin адрес:\n<code>{btc_address}</code>\n\n"
-        f"Выберите способ оплаты:"
+        f"💱 Курс BTC: {btc_rate:,.0f} ₽\n"\
+        f"💰 Сумма к обмену: {rub_amount:,.0f} ₽\n"\
+        f"₿ Получите Bitcoin: {btc_amount:.8f} BTC\n\n"\
+        f"💸 <b>К оплате: {total_amount:,.0f} ₽</b>\n\n"\
+        f"₿ Bitcoin адрес:\n<code>{btc_address}</code>\n\n"\
+        f"Выберите способ оплаты:"\
     )
     await state.update_data(
         btc_address=btc_address,
@@ -481,9 +448,6 @@ async def btc_address_handler(message: Message, state: FSMContext):
         total_amount=total_amount
     )
     await message.answer(text, reply_markup=ReplyKeyboards.payment_methods(), parse_mode="HTML")
-
-
-
 
 @router.message(ExchangeStates.waiting_for_address)
 async def address_input_handler(message: Message, state: FSMContext):
@@ -503,25 +467,6 @@ async def address_input_handler(message: Message, state: FSMContext):
     order_id = await create_exchange_order(message.from_user.id, state)
     await show_order_confirmation(message, state, order_id)
 
-
-
-
-
-
-                                                                          
-                                   
-                                       
-                          
-                                        
-                                           
-                                      
-                            
-                                            
-                                           
-       
-                     
-
-
 async def create_exchange_order(user_id: int, state: FSMContext) -> int:
     
     data = await state.get_data()
@@ -536,7 +481,7 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
         payment_type=data["payment_type"]
     )
     
-                                               
+    \
     await db.add_turnover_record(
         order_id=order_id,
         user_id=user_id,
@@ -546,12 +491,6 @@ async def create_exchange_order(user_id: int, state: FSMContext) -> int:
     
     return order_id
 
-
-
-
-
-
-
 async def show_order_confirmation(message: Message, state: FSMContext, order_id: int):
     data = await state.get_data()
     order = await db.get_order(order_id)
@@ -559,12 +498,12 @@ async def show_order_confirmation(message: Message, state: FSMContext, order_id:
     operation_text = "Покупка" if data["direction"] == "rub_to_crypto" else "Продажа"
     text = (
         f"✅ <b>Заявка создана!</b>\n\n"
-        f"📋 <b>{operation_text} Bitcoin</b>\n"
-        f"💰 Сумма: {data['rub_amount']:,.0f} ₽\n"
-        f"₿ Количество: {data['crypto_amount']:.8f} BTC\n"
-        f"💸 К {'оплате' if data['direction'] == 'rub_to_crypto' else 'получению'}: {data['total_amount']:,.0f} ₽\n\n"
-        f"📝 Адрес/Реквизиты:\n<code>{data['address']}</code>\n\n"
-        f"Подтвердите создание заявки:"
+        f"📋 <b>{operation_text} Bitcoin</b>\n"\
+        f"💰 Сумма: {data['rub_amount']:,.0f} ₽\n"\
+        f"₿ Количество: {data['crypto_amount']:.8f} BTC\n"\
+        f"💸 К {'оплате' if data['direction'] == 'rub_to_crypto' else 'получению'}: {data['total_amount']:,.0f} ₽\n\n"\
+        f"📝 Адрес/Реквизиты:\n<code>{data['address']}</code>\n\n"\
+        f"Подтвердите создание заявки:"\
     )
     
     await message.answer(
@@ -573,16 +512,6 @@ async def show_order_confirmation(message: Message, state: FSMContext, order_id:
         parse_mode="HTML"
     )
                          
-
-
-
-
-
-
-
-
-
-
 async def request_requisites_with_retries(order_id: int, user_id: int, payment_type: str, bot, max_attempts=3, delay_sec=60):
     order = await db.get_order(order_id)
     if not order:
@@ -609,7 +538,6 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
                         await db.update_order(order_id, status='error_requisites')
                         return False
             
-                                                                  
             wallet = order.get('btc_address') if not is_sell_order else None
             
             api_response = await payment_api_manager.create_order(
@@ -624,20 +552,20 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
                 payment_data = api_response['data']
                 api_name = api_response.get('api_name')
                 
-                                                           
+                \
                 if api_name == 'NicePay':
                     logger.debug(f"Payment data for NicePay: {payment_data}")
                     requisites_text = (
                         f"🔗 <b>Ссылка для оплаты:</b> {payment_data['payment_url']}\n"
-                        f"💳 Тип платежа: {'Карта' if payment_type == 'card' else 'СБП'}\n"
-                        f"📋 ID транзакции: {payment_data['id']}"
+                        f"💳 Тип платежа: {'Карта' if payment_type == 'card' else 'СБП'}\n"\
+                        f"📋 ID транзакции: {payment_data['id']}"\
                     )
                     
                 else:
                     requisites_text = (
                         f"{'💳 Карта' if payment_type == 'card' else '📱 Телефон'}: {payment_data['requisite']}\n"
-                        f"👤 Получатель: {payment_data['owner']}\n"
-                        f"🏛 Банк: {payment_data['bank']}"
+                        f"👤 Получатель: {payment_data['owner']}\n"\
+                        f"🏛 Банк: {payment_data['bank']}"\
                     )
                 
                 update_data = {
@@ -658,12 +586,12 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
                 await bot.send_message(
                     user_id,
                     f"💳 <b>Ваша заявка #{payment_data['id']} подтверждена!</b>\n\n"
-                    f"💰 К оплате: <b>{total_amount:,.0f} ₽</b>\n\n"
-                    f"📋 <b>Реквизиты для оплаты:</b>\n{requisites_text}\n\n"
-                    f"⚠️ <b>Важно:</b>\n"
-                    f"• Переведите точную сумму\n"
-                    f"• После оплаты ожидайте подтверждения\n"
-                    f"• Bitcoin будет отправлен автоматически\n\n"
+                    f"💰 К оплате: <b>{total_amount:,.0f} ₽</b>\n\n"\
+                    f"📋 <b>Реквизиты для оплаты:</b>\n{requisites_text}\n\n"\
+                    f"⚠️ <b>Важно:</b>\n"\
+                    f"• Переведите точную сумму\n"\
+                    f"• После оплаты ожидайте подтверждения\n"\
+                    f"• Bitcoin будет отправлен автоматически\n\n"\
                     f"⏰ Заявка действительна 30 минут",
                     parse_mode="HTML",
                     reply_markup=ReplyKeyboards.order_menu(is_nicepay=(api_name == 'NicePay'))
@@ -706,14 +634,6 @@ async def request_requisites_with_retries(order_id: int, user_id: int, payment_t
     )
     return False
 
-
-    
-
-
-
-
-
-
 @router.callback_query(F.data.startswith(("confirm_order_", "cancel_order_")))
 async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext):
     action = "confirm" if callback.data.startswith("confirm") else "cancel"
@@ -740,8 +660,8 @@ async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext)
         else:
             text = (
                 f"✅ <b>Заявка #{order.get('personal_id', order_id)} подтверждена!</b>\n\n"
-                f"Ожидайте реквизиты для оплаты.\n"
-                f"Время обработки: 5-15 минут."
+                f"Ожидайте реквизиты для оплаты.\n"\
+                f"Время обработки: 5-15 минут."\
             )
     else:
         await db.update_order(order_id, status='cancelled')
@@ -757,13 +677,6 @@ async def order_confirmation_handler(callback: CallbackQuery, state: FSMContext)
     )
     await state.clear() 
 
-
-
-
-
-
-
-                                                                              
 @router.message(F.text.in_(["💳 Банковская карта", "📱 СБП"]))
 async def payment_method_handler(message: Message, state: FSMContext):
     logger.info(f"payment_method_handler вызывается для пользователя {message.from_user.id} с текстом: {message.text}")
@@ -771,7 +684,7 @@ async def payment_method_handler(message: Message, state: FSMContext):
     payment_type = "card" if "карта" in message.text else "sbp"
     data = await state.get_data()
 
-                                                 
+    \
     rub_amount = data.get('rub_amount')
     btc_amount = data.get('btc_amount')
     btc_rate = data.get('btc_rate')
@@ -802,11 +715,11 @@ async def payment_method_handler(message: Message, state: FSMContext):
     )
     logger.info(f"Заказ создан с ID {order_id}")
 
-                                    
+    \
     order = await db.get_order(order_id)
     logger.debug(f"Данные заказа из БД: {order}")
 
-                                                      
+    \
     try:
         logger.info(f"Попытка отправить уведомление операторам о новой заявке {order_id}")
         await notify_operators_new_order(message.bot, order)
@@ -814,7 +727,6 @@ async def payment_method_handler(message: Message, state: FSMContext):
     except Exception as e:
         logger.error(f"Ошибка при отправке уведомления операторам о новой заявке: {e}")
 
-                                       
     is_sell_order = not order.get('btc_address')
     logger.info(f"Создаём платёжный заказ в API. is_sell_order={is_sell_order}, order_id={order_id}")
 
@@ -835,24 +747,23 @@ async def payment_method_handler(message: Message, state: FSMContext):
         payment_data = api_response['data']
         api_name = api_response.get('api_name')
         
-                                                    
-                                            
+        \
+\
         if api_name == 'NicePay':
             requisites_text = (
                 f"🔗 <b>Ссылка для оплаты:</b> {payment_data['payment_url']}\n"
-                f"💳 Тип платежа: {'Карта' if payment_type == 'card' else 'СБП'}\n"
-                f"📋 ID транзакции: {payment_data['id']}"
+                f"💳 Тип платежа: {'Карта' if payment_type == 'card' else 'СБП'}\n"\
+                f"📋 ID транзакции: {payment_data['id']}"\
             )
             reply_markup = ReplyKeyboards.main_menu()                                   
         else:
             requisites_text = (
                 f"{'💳 Карта' if payment_type == 'card' else '📱 Телефон'}: {payment_data['requisite']}\n"
-                f"👤 Получатель: {payment_data['owner']}\n"
-                f"🏛 Банк: {payment_data['bank']}"
+                f"👤 Получатель: {payment_data['owner']}\n"\
+                f"🏛 Банк: {payment_data['bank']}"\
             )
             reply_markup = ReplyKeyboards.order_menu(is_nicepay=False)                              
         
-                                                     
         update_data = {
             'requisites': requisites_text,
             'personal_id': payment_data['id'],
@@ -875,16 +786,16 @@ async def payment_method_handler(message: Message, state: FSMContext):
 
         text = (
             f"💳 <b>Заявка #{payment_data['id']} создана!</b>\n\n"
-            f"💰 Сумма к обмену: {rub_amount:,.0f} ₽\n"
-            f"₿ Получите: {btc_amount:.8f} BTC\n"
-            f"💸 К оплате: <b>{total_amount:,.0f} ₽</b>\n\n"
-            f"📋 <b>Реквизиты для оплаты:</b>\n"
-            f"{requisites_text}\n\n"
-            f"⚠️ <b>Важно:</b>\n"
-            f"• Переведите точную сумму\n"
-            f"• После оплаты ожидайте подтверждения\n"
-            f"• Bitcoin будет отправлен автоматически\n\n"
-            f"⏰ Заявка действительна 30 минут"
+            f"💰 Сумма к обмену: {rub_amount:,.0f} ₽\n"\
+            f"₿ Получите: {btc_amount:.8f} BTC\n"\
+            f"💸 К оплате: <b>{total_amount:,.0f} ₽</b>\n\n"\
+            f"📋 <b>Реквизиты для оплаты:</b>\n"\
+            f"{requisites_text}\n\n"\
+            f"⚠️ <b>Важно:</b>\n"\
+            f"• Переведите точную сумму\n"\
+            f"• После оплаты ожидайте подтверждения\n"\
+            f"• Bitcoin будет отправлен автоматически\n\n"\
+            f"⏰ Заявка действительна 30 минут"\
         )
 
         try:
@@ -902,13 +813,6 @@ async def payment_method_handler(message: Message, state: FSMContext):
 
     await state.clear()
 
-
-
-
-
-
-
-
 @router.message(F.text == "🔄 Проверить статус")
 async def check_status_handler(message: Message):
     orders = await db.get_user_orders(message.from_user.id, 1)
@@ -922,11 +826,11 @@ async def check_status_handler(message: Message):
     order = orders[0]
     display_id = order.get('personal_id', order['id'])
     
-                                                      
+    \
     if order.get('nicepay_id'):
         await message.answer(
             f"📋 Статус заявки #{display_id}: ⏳ В обработке\n\n"
-            f"Для заявок статус обновляется автоматически.\n"
+            f"Для заявок статус обновляется автоматически.\n"\
             f"Вы получите уведомление при изменении статуса.",
             reply_markup=ReplyKeyboards.main_menu()
         )
@@ -961,7 +865,7 @@ async def check_status_handler(message: Message):
                     'received_sum': status_data.get('received_sum', order['total_amount'])
                 }
                 
-                                                               
+                \
                 if order.get('onlypays_id'):
                     await process_onlypays_webhook(webhook_data, message.bot)
                 elif order.get('pspware_id'):
@@ -971,7 +875,7 @@ async def check_status_handler(message: Message):
                 
                 await message.answer(
                     f"✅ <b>Заявка #{display_id} оплачена!</b>\n\n"
-                    f"Платеж получен и обрабатывается.\n"
+                    f"Платеж получен и обрабатывается.\n"\
                     f"Bitcoin будет отправлен в течение 1 часа.",
                     reply_markup=ReplyKeyboards.main_menu(),
                     parse_mode="HTML"
@@ -987,7 +891,7 @@ async def check_status_handler(message: Message):
             else:
                 await message.answer(
                     f"⏳ Заявка #{display_id} в обработке\n\n"
-                    f"Ожидаем поступления платежа...\n"
+                    f"Ожидаем поступления платежа...\n"\
                     f"Заявка действительна 30 минут.",
                     reply_markup=ReplyKeyboards.order_menu(),
                     parse_mode="HTML"
@@ -1014,30 +918,25 @@ async def check_status_handler(message: Message):
             reply_markup=ReplyKeyboards.main_menu()
         )
 
-
-
-
-
-
 @router.message(F.text == "О сервисе ℹ️")
 async def about_handler(message: Message):
     btc_rate = await BitcoinAPI.get_btc_rate()
     COMMISSION_PERCENT = await db.get_commission_percentage()
     text = (
         f"👑 {config.EXCHANGE_NAME} 👑\n\n"
-        f"🔷 НАШИ ПРИОРИТЕТЫ 🔷\n"
-        f"🔸 100% ГАРАНТИИ\n"
-        f"🔸 БЫСТРЫЙ ОБМЕН\n"
-        f"🔸 НАДЕЖНЫЙ СЕРВИС\n"
-        f"🔸 КАЧЕСТВЕННАЯ РАБОТА\n"
-        f"🔸 АНОНИМНЫЙ ОБМЕН\n\n"
-        f"🔷 НАШИ КОНТАКТЫ 🔷\n"
-        f"⚙️ ОПЕРАТОР Тех.поддержка ➖ {config.SUPPORT_MANAGER}\n"
-        f"📣 НОВОСТНОЙ КАНАЛ ➖ {config.NEWS_CHANNEL}\n\n"
-        f"━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
-        f"💱 Текущий курс BTC: {btc_rate:,.0f} ₽\n"
-        f"🏛 Комиссия сервиса: {COMMISSION_PERCENT}%\n\n"
-        f"💰 Лимиты: {config.MIN_AMOUNT:,} - {config.MAX_AMOUNT:,} ₽"
+        f"🔷 НАШИ ПРИОРИТЕТЫ 🔷\n"\
+        f"🔸 100% ГАРАНТИИ\n"\
+        f"🔸 БЫСТРЫЙ ОБМЕН\n"\
+        f"🔸 НАДЕЖНЫЙ СЕРВИС\n"\
+        f"🔸 КАЧЕСТВЕННАЯ РАБОТА\n"\
+        f"🔸 АНОНИМНЫЙ ОБМЕН\n\n"\
+        f"🔷 НАШИ КОНТАКТЫ 🔷\n"\
+        f"⚙️ ОПЕРАТОР Тех.поддержка ➖ {config.SUPPORT_MANAGER}\n"\
+        f"📣 НОВОСТНОЙ КАНАЛ ➖ {config.NEWS_CHANNEL}\n\n"\
+        f"━━━━━━━━━━━━━━━━━━━━━━━━\n\n"\
+        f"💱 Текущий курс BTC: {btc_rate:,.0f} ₽\n"\
+        f"🏛 Комиссия сервиса: {COMMISSION_PERCENT}%\n\n"\
+        f"💰 Лимиты: {config.MIN_AMOUNT:,} - {config.MAX_AMOUNT:,} ₽"\
     )
     await message.answer(text, reply_markup=ReplyKeyboards.main_menu(), parse_mode="HTML")
 
@@ -1055,7 +954,7 @@ async def calculator_handler(message: Message, state: FSMContext):
 async def review_handler(message: Message, state: FSMContext):
     await message.answer(
         "📝 <b>Оставить отзыв</b>\n\n"
-        "Напишите ваш отзыв о работе сервиса.\n"
+        "Напишите ваш отзыв о работе сервиса.\n"\
         "Мы ценим любую обратную связь!",
         reply_markup=ReplyKeyboards.back_to_main(),
         parse_mode="HTML"
@@ -1066,7 +965,7 @@ async def review_handler(message: Message, state: FSMContext):
 async def how_to_exchange_handler(message: Message):
     text = (
         "📘 <b>Как сделать обмен?</b>\n\n"
-        "📹 Видео-инструкция: \n\n"
+        "📹 Видео-инструкция: \n\n"\
     )
     await message.answer(text, reply_markup=ReplyKeyboards.main_menu(), parse_mode="HTML")
 
@@ -1092,17 +991,17 @@ async def referral_handler(message: Message):
         stats = await db.get_referral_stats(message.from_user.id)
         text = (
             f"👥 <b>Реферальная программа</b>\n\n"
-            f"🎁 <b>Ваши бонусы:</b>\n"
-            f"• За каждого друга: 100 ₽\n"
-            f"• От каждой сделки друга: 2%\n\n"
-            f"📊 <b>Ваша статистика:</b>\n"
-            f"👤 Приглашено друзей: {stats['referral_count']} чел.\n"
-            f"💰 Заработано бонусов: {stats['referral_balance']} ₽\n\n"
-            f"🔗 <b>Ваша реферальная ссылка:</b>\n"
-            f"<code>https://t.me/{config.BOT_USERNAME}?start=r-{message.from_user.id}</code>\n\n"
-            f"📤 <b>Отправьте эту ссылку друзьям!</b>\n"
-            f"Когда они зарегистрируются и сделают обмен, "
-            f"вы получите бонусы!"
+            f"🎁 <b>Ваши бонусы:</b>\n"\
+            f"• За каждого друга: 100 ₽\n"\
+            f"• От каждой сделки друга: 2%\n\n"\
+            f"📊 <b>Ваша статистика:</b>\n"\
+            f"👤 Приглашено друзей: {stats['referral_count']} чел.\n"\
+            f"💰 Заработано бонусов: {stats['referral_balance']} ₽\n\n"\
+            f"🔗 <b>Ваша реферальная ссылка:</b>\n"\
+            f"<code>https://t.me/{config.BOT_USERNAME}?start=r-{message.from_user.id}</code>\n\n"\
+            f"📤 <b>Отправьте эту ссылку друзьям!</b>\n"\
+            f"Когда они зарегистрируются и сделают обмен, "\
+            f"вы получите бонусы!"\
         )
         builder = InlineKeyboardBuilder()
         builder.row(
@@ -1141,9 +1040,9 @@ async def rub_to_btc_handler(message: Message, state: FSMContext):
     max_amount = await db.get_setting("max_amount", config.MAX_AMOUNT)
     text = (
         f"💰 <b>Обмен рублей на Bitcoin</b>\n\n"
-        f"Введите сумму в рублях:\n\n"
-        f"Минимум: {min_amount:,} ₽\n"
-        f"Максимум: {max_amount:,} ₽"
+        f"Введите сумму в рублях:\n\n"\
+        f"Минимум: {min_amount:,} ₽\n"\
+        f"Максимум: {max_amount:,} ₽"\
     )
     await message.answer(text, reply_markup=ReplyKeyboards.back_to_main(), parse_mode="HTML")
     await state.set_state(ExchangeStates.waiting_for_amount)
@@ -1152,10 +1051,15 @@ async def rub_to_btc_handler(message: Message, state: FSMContext):
 async def btc_to_rub_handler(message: Message, state: FSMContext):
     text = (
         f"₿ <b>Обмен Bitcoin на рубли</b>\n\n"
-        f"Введите количество Bitcoin:"
+        f"Введите количество Bitcoin:"\
     )
     await message.answer(text, reply_markup=ReplyKeyboards.back_to_main(), parse_mode="HTML")
     await state.set_state(ExchangeStates.waiting_for_amount)
+
+
+
+from datetime import datetime, timedelta
+import re
 
 @router.message(F.text == "📊 Мои заявки")
 async def my_orders_handler(message: Message):
@@ -1174,17 +1078,93 @@ async def my_orders_handler(message: Message):
             'cancelled': '❌',
             'problem': '⚠️'
         }
+        
         text = "📋 <b>Ваши последние заявки:</b>\n\n"
+        
         for order in orders:
             emoji = status_emoji_map.get(order['status'], '❓')
             display_id = order.get('personal_id', order['id'])
+            
+            # Расчет оставшегося времени для заявок в статусе 'waiting'
+            time_info = ""
+            if order['status'] == 'waiting':
+                try:
+                    created_at_str = order['created_at']
+                    print(f"DEBUG: Обрабатываем заявку {order['id']}, created_at: {created_at_str}")
+                    
+                    # Очищаем строку от лишних символов
+                    created_at_str = str(created_at_str).strip()
+                    
+                    # Пробуем разные способы парсинга
+                    created_at = None
+                    
+                    # Способ 1: стандартный формат YYYY-MM-DD HH:MM:SS
+                    if re.match(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', created_at_str):
+                        created_at = datetime.strptime(created_at_str, '%Y-%m-%d %H:%M:%S')
+                    
+                    # Способ 2: только дата и время без секунд
+                    elif re.match(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}', created_at_str):
+                        created_at = datetime.strptime(created_at_str, '%Y-%m-%d %H:%M')
+                    
+                    # Способ 3: ISO формат
+                    elif 'T' in created_at_str:
+                        created_at_str = created_at_str.replace('T', ' ').replace('Z', '')
+                        created_at = datetime.fromisoformat(created_at_str)
+                    
+                    # Способ 4: попытка автопарсинга
+                    else:
+                        try:
+                            created_at = datetime.fromisoformat(created_at_str[:19])
+                        except:
+                            created_at = datetime.strptime(created_at_str[:16], '%Y-%m-%d %H:%M')
+                    
+                    if created_at:
+                        current_time = datetime.now()
+                        elapsed_time = current_time - created_at
+                        
+                        print(f"DEBUG: Заявка {order['id']}")
+                        print(f"DEBUG: Время создания: {created_at}")
+                        print(f"DEBUG: Текущее время: {current_time}")
+                        print(f"DEBUG: Прошло времени: {elapsed_time}")
+                        
+                        # 30 минут = 1800 секунд
+                        deletion_time = timedelta(minutes=30)
+                        remaining_time = deletion_time - elapsed_time
+                        
+                        print(f"DEBUG: Осталось времени: {remaining_time}")
+                        print(f"DEBUG: Общее кол-во секунд: {remaining_time.total_seconds()}")
+                        
+                        if remaining_time.total_seconds() > 0:
+                            total_seconds = int(remaining_time.total_seconds())
+                            minutes = total_seconds // 60
+                            seconds = total_seconds % 60
+                            time_info = f"⏰ Осталось: {minutes:02d}:{seconds:02d}\n"
+                            print(f"DEBUG: Показываем время: {time_info.strip()}")
+                        else:
+                            time_info = "⚠️ Время истекло\n"
+                            print("DEBUG: Время истекло")
+                    else:
+                        time_info = "⚠️ Ошибка времени\n"
+                        print("DEBUG: Не удалось распарсить время")
+                        
+                except Exception as e:
+                    print(f"ERROR: Ошибка обработки времени для заявки {order['id']}: {e}")
+                    print(f"ERROR: Тип created_at: {type(order['created_at'])}")
+                    print(f"ERROR: Значение created_at: {repr(order['created_at'])}")
+                    time_info = ""
+            
             text += (
                 f"{emoji} Заявка #{display_id}\n"
                 f"💰 {order['total_amount']:,.0f} ₽\n"
                 f"Статус: {order['status']}\n"
+                f"{time_info}"
                 f"📅 {order['created_at'][:16]}\n\n"
             )
+    
     await message.answer(text, reply_markup=ReplyKeyboards.main_menu(), parse_mode="HTML")
+
+
+
 
 @router.message(F.text == "📈 Курсы валют")
 async def rates_handler(message: Message):
@@ -1192,14 +1172,14 @@ async def rates_handler(message: Message):
         btc_rate = await BitcoinAPI.get_btc_rate()
         text = (
             f"📈 <b>Актуальные курсы</b>\n\n"
-            f"₿ Bitcoin: {btc_rate:,.0f} ₽\n\n"
-            f"💡 Курсы обновляются каждые 5 минут"
+            f"₿ Bitcoin: {btc_rate:,.0f} ₽\n\n"\
+            f"💡 Курсы обновляются каждые 5 минут"\
         )
     except:
         text = (
             f"📈 <b>Актуальные курсы</b>\n\n"
-            f"❌ Ошибка получения курса\n\n"
-            f"💡 Попробуйте позже"
+            f"❌ Ошибка получения курса\n\n"\
+            f"💡 Попробуйте позже"\
         )
     await message.answer(text, reply_markup=ReplyKeyboards.main_menu(), parse_mode="HTML")
 
@@ -1259,8 +1239,8 @@ async def contact_handler(message: Message, state: FSMContext):
         user = await db.get_user(user_id)
         review_text = (
             f"📝 <b>Новый отзыв</b>\n\n"
-            f"📅 {current_time.strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"💬 <b>Текст:</b>\n{message.text}"
+            f"📅 {current_time.strftime('%d.%m.%Y %H:%M')}\n\n"\
+            f"💬 <b>Текст:</b>\n{message.text}"\
         )
         review_id = await db.save_review(user_id, message.text)
         if config.ADMIN_CHAT_ID:
@@ -1289,25 +1269,19 @@ async def contact_handler(message: Message, state: FSMContext):
         )
     await state.clear()
 
-
-
-
-
-
-
 from aiogram.types import ReplyKeyboardRemove
 
-                         
-                                                  
-                                                                                                
-                
-
-                                              
-                                                
-                               
-                                                                                                            
-
-
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 @router.message(F.text == "❌ Отменить заявку")
 async def cancel_order_handler(message: Message):
     orders = await db.get_user_orders(message.from_user.id, 1)
@@ -1332,16 +1306,6 @@ async def cancel_order_handler(message: Message):
         reply_markup=ReplyKeyboards.main_menu()                                  
     )
 
-
-
-
-
-
-
-
-
-
-
 @router.message(ExchangeStates.waiting_for_note)
 async def note_handler(message: Message, state: FSMContext):
     if message.text == "◶️ Главное меню":
@@ -1360,8 +1324,8 @@ async def note_handler(message: Message, state: FSMContext):
         await db.update_order(order_id, note=message.text)
         text = (
             f"📝 <b>Заметка добавлена к заявке #{display_id}</b>\n\n"
-            f"💬 Текст: {message.text}\n\n"
-            f"🔧 Заявка помечена как проблемная и ожидает решения."
+            f"💬 Текст: {message.text}\n\n"\
+            f"🔧 Заявка помечена как проблемная и ожидает решения."\
         )
         await message.answer(
             text,
@@ -1389,9 +1353,9 @@ async def operator_handle_handler(callback: CallbackQuery):
         await db.update_order(order_id, status='processing')
         text = (
             f"🔧 <b>Обработка заявки #{display_id}</b>\n\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
-            f"Заявка взята в обработку."
+            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
+            f"Заявка взята в обработку."\
         )
         await callback.message.edit_text(
             text,
@@ -1413,8 +1377,8 @@ async def review_approve_handler(callback: CallbackQuery):
         await db.update_review(review_id, status='approved')
         text = (
             f"✅ <b>Отзыв #{review_id} одобрен</b>\n\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"
+            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"\
         )
         await callback.message.edit_text(
             text,
@@ -1438,8 +1402,8 @@ async def review_reject_handler(callback: CallbackQuery):
         await db.update_review(review_id, status='rejected')
         text = (
             f"❌ <b>Отзыв #{review_id} отклонен</b>\n\n"
-            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"
-            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"
+            f"👤 Обработал: @{callback.from_user.username or callback.from_user.first_name}\n"\
+            f"⏰ Время: {datetime.now().strftime('%d.%m.%Y %H:%M')}"\
         )
         await callback.message.edit_text(
             text,
@@ -1548,10 +1512,10 @@ async def admin_stats_handler(message: Message):
         total_volume_rub = await db.get_total_volume_rub()
         text = (
             f"📊 <b>Статистика сервиса</b>\n\n"
-            f"👥 Пользователей: {total_users:,}\n"
-            f"📋 Всего заявок: {total_orders:,}\n"
-            f"✅ Завершенных заявок: {completed_orders:,}\n"
-            f"💰 Общий объем: {total_volume_rub:,.0f} ₽"
+            f"👥 Пользователей: {total_users:,}\n"\
+            f"📋 Всего заявок: {total_orders:,}\n"\
+            f"✅ Завершенных заявок: {completed_orders:,}\n"\
+            f"💰 Общий объем: {total_volume_rub:,.0f} ₽"\
         )
         await message.answer(
             text,
@@ -1564,9 +1528,6 @@ async def admin_stats_handler(message: Message):
             "❌ Ошибка получения статистики",
             reply_markup=ReplyKeyboards.main_menu()
         )
-
-
-
 
 @router.message(Command("health"), F.from_user.id.in_(config.ADMIN_USER_ID))
 async def health_check_handler(message: Message):
@@ -1591,12 +1552,6 @@ async def health_check_handler(message: Message):
             "❌ Ошибка при проверке состояния сервиса",
             reply_markup=ReplyKeyboards.main_menu()
         )
-
-
-
-
-
-
 
 async def process_pspware_webhook(webhook_data: dict, bot):
     try:
@@ -1661,11 +1616,6 @@ async def process_greengo_webhook(webhook_data: dict, bot):
     except Exception as e:
         logger.error(f"Greengo webhook processing error: {e}")
 
-
-
-
-
-
 async def process_nicepay_webhook(webhook_data: dict, bot):
     try:
         order_id = webhook_data.get('merchantOrderId')
@@ -1699,12 +1649,6 @@ async def process_nicepay_webhook(webhook_data: dict, bot):
     except Exception as e:
         logger.error(f"NicePay webhook processing error: {e}")
 
-
-
-
-
-
-
 async def process_onlypays_webhook(webhook_data: dict, bot):
     try:
         order_id = webhook_data.get('personal_id')
@@ -1737,6 +1681,4 @@ async def process_onlypays_webhook(webhook_data: dict, bot):
             logger.info(f"Заявка #{updated_order.get('personal_id', order_id)} отменена")
     except Exception as e:
         logger.error(f"Ошибка обработки OnlyPays webhook: {e}")
-
-
 

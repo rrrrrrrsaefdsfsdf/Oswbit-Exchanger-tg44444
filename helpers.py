@@ -134,7 +134,6 @@ def get_referral_link(bot, user_id: int):
     bot_username = get_config_value(bot, 'BOT_USERNAME')
     return f"https://t.me/{bot_username}?start=r-{user_id}"
 
-                                                              
 def with_mirror_config(func):
 \
 \
@@ -158,10 +157,9 @@ def with_mirror_config(func):
     
     return wrapper
 
-                                                   
 class CommonConfig:
                                                   
-    
+    \
     @staticmethod
     def get_min_amount():
         return config.MIN_AMOUNT

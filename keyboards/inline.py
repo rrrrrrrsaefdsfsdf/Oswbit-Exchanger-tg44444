@@ -92,7 +92,6 @@ class InlineKeyboards:
             if crypto_upper == "BTC":
                 amounts = ["0.001", "0.01", "0.1", "0.5", "1", "5"]
                                                   
-                                                                
             else:
                 amounts = ["100", "500", "1000", "5000", "10000", "50000"]
             currency_symbol = crypto_upper

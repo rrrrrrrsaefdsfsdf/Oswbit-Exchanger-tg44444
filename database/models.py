@@ -28,6 +28,49 @@ class Database:
     async def get_commission_percentage(self):
         return await self.get_setting("commission_percentage", float(os.getenv('COMMISSION_PERCENT', '20.0')))
 
+
+
+
+    async def get_order_remaining_time(self, order_id: int) -> Optional[Dict]:
+        """Получает оставшееся время до удаления заявки"""
+        order = await self.get_order(order_id)
+        if not order or order['status'] != 'waiting':
+            return None
+        
+        try:
+            from datetime import datetime, timedelta
+            created_at = datetime.fromisoformat(order['created_at'])
+            current_time = datetime.now()
+            elapsed_time = current_time - created_at
+            
+            deletion_time = timedelta(minutes=30)  # 30 минут как в schedule_order_deletion
+            remaining_time = deletion_time - elapsed_time
+            
+            if remaining_time.total_seconds() > 0:
+                total_seconds = int(remaining_time.total_seconds())
+                minutes = total_seconds // 60
+                seconds = total_seconds % 60
+                return {
+                    'minutes': minutes,
+                    'seconds': seconds,
+                    'total_seconds': total_seconds,
+                    'formatted': f"{minutes:02d}:{seconds:02d}"
+                }
+            else:
+                return {
+                    'minutes': 0,
+                    'seconds': 0,
+                    'total_seconds': 0,
+                    'formatted': "Просрочена"
+                }
+        except Exception as e:
+            logger.error(f"Error calculating remaining time for order {order_id}: {e}")
+            return None
+
+
+
+
+
     async def init_db(self):
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute('''
@@ -104,6 +147,10 @@ class Database:
                 )
             ''')
 
+
+
+
+
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS reviews (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -115,7 +162,7 @@ class Database:
                 )
             ''')
 
-
+            \
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS bot_configs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -127,9 +174,13 @@ class Database:
                 )
             ''')
 
+ 
+ 
 
 
 
+
+ 
             await self._migrate_mirror_columns(db)
             await db.commit()
 
@@ -145,6 +196,9 @@ class Database:
             await db.execute('ALTER TABLE users ADD COLUMN mirror_id TEXT DEFAULT "main"')
         
         await db.commit()
+
+
+
 
     async def _migrate_mirror_columns(self, db):
         tables_to_migrate = ['orders', 'settings', 'captcha_sessions', 'referral_bonuses', 'reviews']
@@ -195,10 +249,11 @@ class Database:
                           btc_address: str, rate: float, total_amount: float,
                           payment_type: str) -> int:
         async with aiosqlite.connect(self.db_path) as db:
+
             cursor = await db.execute('''
-                INSERT INTO orders (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, mirror_id)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, self.mirror_id))
+                INSERT INTO orders (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, mirror_id, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (user_id, amount_rub, amount_btc, btc_address, rate, total_amount, payment_type, self.mirror_id, datetime.now().isoformat()))
             await db.commit()
             order_id = cursor.lastrowid
             asyncio.create_task(schedule_order_deletion(order_id, self.db_path))
@@ -607,11 +662,6 @@ class Database:
             async with db.execute(query, params) as cursor:
                 rows = await cursor.fetchall()
                 return [dict(row) for row in rows]
-
-
-
-
-
 
 async def get_config_value(self, mirror_id: str, key: str, default=None):
     """Получение значения конфигурации из БД"""

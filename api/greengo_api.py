@@ -46,7 +46,6 @@ class GreengoAPI:
             logger.error(f"Greengo unexpected error: {e}")
             return {"success": False, "error": str(e)}
 
-                                                    
     async def create_order(self, payment_method: str, wallet: str, from_amount: str) -> Dict[str, Any]:
         url = f"{self.base_url}/order/create"
         data = {

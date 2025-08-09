@@ -37,27 +37,27 @@ async def create_bot_instance(token, mirror_id):
     bot = Bot(token=token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher()
     
-                                                        
-                                                             
+    \
+\
     import importlib
     
-                                       
+    \
     admin_module = importlib.reload(admin)
     user_module = importlib.reload(user)
     operator_module = importlib.reload(operator)
     calculator_module = importlib.reload(calculator)
     
-                             
+    \
     dp.include_router(admin_module.router)
     dp.include_router(user_module.router)
     dp.include_router(operator_module.router)
     dp.include_router(calculator_module.router)
     
-                          
+    \
     dp.message.middleware(PrivateChatMiddleware())
     dp.callback_query.middleware(PrivateChatMiddleware())
     
-                                    
+    \
     bot.mirror_id = mirror_id
     bot.mirror_config = config.get_mirror_config(mirror_id)
     
@@ -84,7 +84,7 @@ async def run_polling():
     
     tasks = []
     
-                  
+    \
     try:
         main_bot, main_dp = await create_bot_instance(config.BOT_TOKEN, "main")
         tasks.append(asyncio.create_task(
@@ -96,7 +96,6 @@ async def run_polling():
         logger.error(f"Ошибка создания основного бота: {e}")
         raise
     
-                                        
     if hasattr(config, 'MIRROR_BOT_TOKENS') and config.MIRROR_BOT_TOKENS:
         for i, mirror_token in enumerate(config.MIRROR_BOT_TOKENS):
             mirror_token = mirror_token.strip()
@@ -113,7 +112,6 @@ async def run_polling():
                     logger.error(f"Ошибка создания зеркального бота {i+1}: {e}")
                     continue
     
-                                    
     try:
         await asyncio.gather(*tasks, return_exceptions=True)
     except KeyboardInterrupt:

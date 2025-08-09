@@ -948,3 +948,19 @@ AttributeError: 'Database' object has no attribute 'get_order_remaining_time'
 2025-08-09 22:40:07,143 [INFO] api.api_manager - Успешное создание заказа через NicePay: {'id': '3', 'order_id': '3', 'payment_url': 'https://processinglink.io/pay/7rG689-7a4176-facdbb-c81b5b-015TTI', 'amount': 6250}
 2025-08-09 22:40:09,441 [INFO] aiogram.event - Update id=182331403 is handled. Duration 129 ms by bot id=8153616825
 2025-08-09 22:40:10,930 [INFO] aiogram.event - Update id=182331404 is handled. Duration 233 ms by bot id=8153616825
+2025-08-09 22:47:56,287 [WARNING] aiogram.dispatcher - Received SIGINT signal
+2025-08-09 22:47:56,288 [INFO] aiogram.dispatcher - Polling stopped for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'
+2025-08-09 22:47:56,288 [INFO] aiogram.dispatcher - Polling stopped
+2025-08-09 22:49:14,612 [INFO] asyncio - Turnover database initialized for mirror: main
+2025-08-09 22:49:14,612 [INFO] __main__ - База данных инициализирована
+2025-08-09 22:49:14,612 [INFO] __main__ - Oborot DB: oborot.db
+2025-08-09 22:49:14,619 [INFO] handlers.user - User router loaded
+2025-08-09 22:49:14,621 [INFO] __main__ - Основной бот запущен с MIRROR_ID: main
+2025-08-09 22:49:14,627 [INFO] handlers.user - User router loaded
+2025-08-09 22:49:14,629 [INFO] __main__ - Зеркальный бот mirror_1 добавлен в очередь запуска
+2025-08-09 22:49:14,629 [INFO] __main__ - Запуск бота: main
+2025-08-09 22:49:14,629 [INFO] __main__ - Запуск бота: mirror_1
+2025-08-09 22:49:15,098 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:49:15,115 [INFO] aiogram.dispatcher - Start polling
+2025-08-09 22:49:15,192 [INFO] aiogram.dispatcher - Run polling for bot @swhsbsnsnnjssjsj_robot id=7965647514 - 'testbitbit'
+2025-08-09 22:49:15,215 [INFO] aiogram.dispatcher - Run polling for bot @OswaldoExchanger_bot id=8153616825 - 'DarkBit'

@@ -9,12 +9,12 @@ from utils.bitcoin import BitcoinAPI
 from database.models import Database
 from config import config
 
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
 logger = logging.getLogger(__name__)
 router = Router()
 
@@ -97,9 +97,9 @@ async def calculator_pair_selected(callback: CallbackQuery, state: FSMContext):
     
     text = (
         f"💱 <b>{from_currency.upper()}-{to_currency.upper()}</b>\n\n"
-        f"📊 Курс: {rate_text}\n\n"\
-        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"\
-        f"Или введите произвольную сумму"\
+        f"📊 Курс: {rate_text}\n\n"
+        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"
+        f"Или введите произвольную сумму"
     )
     
     try:
@@ -167,9 +167,9 @@ async def calculate_and_show_result(callback: CallbackQuery, state: FSMContext, 
     
     text = (
         f"🧮 <b>Результат расчета</b>\n\n"
-        f"💱 <b>{from_currency.upper()} → {to_currency.upper()}</b>\n\n"\
-        f"📊 {from_formatted} = <b>{to_formatted}</b>\n\n"\
-        f"💸 <b>Итого к оплате: {total_amount:,.0f} ₽</b>"\
+        f"💱 <b>{from_currency.upper()} → {to_currency.upper()}</b>\n\n"
+        f"📊 {from_formatted} = <b>{to_formatted}</b>\n\n"
+        f"💸 <b>Итого к оплате: {total_amount:,.0f} ₽</b>"
     )
     
     try:
@@ -212,9 +212,9 @@ async def calculate_and_show_result_for_message(message: Message, state: FSMCont
     
     text = (
         f"🧮 <b>Результат расчета</b>\n\n"
-        f"💱 <b>{from_currency.upper()} → {to_currency.upper()}</b>\n\n"\
-        f"📊 {from_formatted} = <b>{to_formatted}</b>\n\n"\
-        f"💸 <b>Итого к оплате: {total_amount:,.0f} ₽</b>"\
+        f"💱 <b>{from_currency.upper()} → {to_currency.upper()}</b>\n\n"
+        f"📊 {from_formatted} = <b>{to_formatted}</b>\n\n"
+        f"💸 <b>Итого к оплате: {total_amount:,.0f} ₽</b>"
     )
     
     await message.answer(
@@ -246,9 +246,9 @@ async def calculator_reverse(callback: CallbackQuery, state: FSMContext):
     
     text = (
         f"💱 <b>{to_currency.upper()}-{from_currency.upper()}</b>\n\n"
-        f"📊 Курс: {rate_text}\n\n"\
-        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"\
-        f"Или введите произвольную сумму"\
+        f"📊 Курс: {rate_text}\n\n"
+        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"
+        f"Или введите произвольную сумму"
     )
     
     try:
@@ -293,9 +293,9 @@ async def calculator_recalculate(callback: CallbackQuery, state: FSMContext):
     
     text = (
         f"💱 <b>{from_currency.upper()}-{to_currency.upper()}</b>\n\n"
-        f"📊 Курс: {rate_text}\n\n"\
-        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"\
-        f"Или введите произвольную сумму"\
+        f"📊 Курс: {rate_text}\n\n"
+        f"💰 <b>Выберите сумму {currency_symbol}:</b>\n"
+        f"Или введите произвольную сумму"
     )
     
     try:

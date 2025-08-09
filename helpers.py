@@ -2,14 +2,14 @@
 from config import config
 
 def get_mirror_config(bot):
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
        
     mirror_id = getattr(bot, 'mirror_id', 'main')
     
@@ -27,42 +27,42 @@ def get_mirror_config(bot):
     }
 
 def get_mirror_id(bot):
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
        
     return getattr(bot, 'mirror_id', 'main')
 
 def get_config_value(bot, key, default=None):
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
+
+
        
     mirror_id = get_mirror_id(bot)
     return config.get_config_value(mirror_id, key, default)
 
 def is_admin(user_id: int, bot=None):
-\
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
+
        
     if bot:
         admin_id = get_config_value(bot, 'ADMIN_USER_ID')
@@ -70,15 +70,15 @@ def is_admin(user_id: int, bot=None):
     return user_id == config.ADMIN_USER_ID
 
 def is_operator_chat(chat_id: int, bot=None):
-\
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
+
        
     if bot:
         operator_chat_id = get_config_value(bot, 'OPERATOR_CHAT_ID')
@@ -86,15 +86,15 @@ def is_operator_chat(chat_id: int, bot=None):
     return chat_id == config.OPERATOR_CHAT_ID
 
 def is_admin_chat(chat_id: int, bot=None):
-\
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
+
        
     if bot:
         admin_chat_id = get_config_value(bot, 'ADMIN_CHAT_ID')
@@ -102,14 +102,14 @@ def is_admin_chat(chat_id: int, bot=None):
     return chat_id == config.ADMIN_CHAT_ID
 
 def format_exchange_info(bot):
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
        
     mirror_config = get_mirror_config(bot)
     
@@ -121,23 +121,23 @@ def format_exchange_info(bot):
     }
 
 def get_referral_link(bot, user_id: int):
-\
-\
-\
-\
-\
-\
-\
-\
-\
+
+
+
+
+
+
+
+
+
        
     bot_username = get_config_value(bot, 'BOT_USERNAME')
     return f"https://t.me/{bot_username}?start=r-{user_id}"
 
 def with_mirror_config(func):
-\
-\
-\
+
+
+
        
     import functools
     
@@ -159,7 +159,7 @@ def with_mirror_config(func):
 
 class CommonConfig:
                                                   
-    \
+    
     @staticmethod
     def get_min_amount():
         return config.MIN_AMOUNT

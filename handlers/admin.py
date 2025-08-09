@@ -17,9 +17,9 @@ from api.pspware_api import PSPWareAPI
 from helpers import get_mirror_config, get_config_value, is_admin
 import json
 
-\
-\
-\
+
+
+
 import platform
 
 def format_size(bytes_size):
@@ -287,11 +287,11 @@ async def admin_messages_handler(callback: CallbackQuery, state: FSMContext):
     elif action == "view":
         text = "📋 <b>Текущие приветственные сообщения:</b>\n\n"
         
-        \
+        
         main_config = config.get_mirror_config("main")
         text += f"📱 <b>Основной бот:</b>\n{main_config.get('WELCOME_MESSAGE', 'Не задано')}\n\n"
         
-        \
+        
         for i in range(len(config.MIRROR_BOT_TOKENS)):
             mirror_id = f"mirror_{i+1}"
             mirror_config = config.get_mirror_config(mirror_id)
@@ -326,12 +326,12 @@ async def admin_edit_welcome_handler(callback: CallbackQuery, state: FSMContext)
     
     text = (f"✏️ <b>Редактирование приветствия - {bot_name}</b>\n\n"
             f"<b>Текущее сообщение:</b>\n{current_message}\n\n"
-            f"<b>Доступные переменные:</b>\n"\
-            f"• <code>{{exchange_name}}</code> - название обменника\n"\
-            f"• <code>{{support_manager}}</code> - менеджер поддержки\n"\
-            f"• <code>{{news_channel}}</code> - канал новостей\n"\
-            f"• <code>{{support_chat}}</code> - чат поддержки\n"\
-            f"• <code>{{reviews_channel}}</code> - канал отзывов\n\n"\
+            f"<b>Доступные переменные:</b>\n"
+            f"• <code>{{exchange_name}}</code> - название обменника\n"
+            f"• <code>{{support_manager}}</code> - менеджер поддержки\n"
+            f"• <code>{{news_channel}}</code> - канал новостей\n"
+            f"• <code>{{support_chat}}</code> - чат поддержки\n"
+            f"• <code>{{reviews_channel}}</code> - канал отзывов\n\n"
             f"Отправьте новое приветственное сообщение:")
     
     builder = InlineKeyboardBuilder()
@@ -348,10 +348,10 @@ async def process_welcome_message(message: Message, state: FSMContext):
     mirror_id = data.get('editing_welcome')
     new_message = message.text.strip()
     
-    \
+    
     await db.save_config_value(mirror_id, 'WELCOME_MESSAGE', new_message)
     
-    \
+    
     if mirror_id == "main":
         config.WELCOME_MESSAGE = new_message
     else:
@@ -389,7 +389,7 @@ async def admin_panel_handler(message: Message, state: FSMContext):
         builder = create_main_admin_panel()
         await message.answer(
             f"👑 <b>Панель администратора</b>\n"
-            f"Чат: {message.chat.title}\n"\
+            f"Чат: {message.chat.title}\n"
             f"Администратор: {message.from_user.first_name}",
             reply_markup=builder.as_markup(),
             parse_mode="HTML"
@@ -408,7 +408,7 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             builder = create_main_admin_panel()
             text = (
                 f"👑 <b>Панель администратора</b>\n"
-                f"Администратор: {callback.from_user.first_name}"\
+                f"Администратор: {callback.from_user.first_name}"
             )
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
 
@@ -423,14 +423,14 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                     service_status += f" (Код: {health_response['status_code']})"
             text = (
                 f"📊 <b>Статистика системы</b>\n\n"
-                f"👥 Пользователей: {stats['total_users']}\n"\
-                f"📋 Заявок: {stats['total_orders']}\n"\
-                f"✅ Завершено: {stats['completed_orders']}\n"\
-                f"💰 Оборот: {stats['total_volume']:,.0f} ₽\n\n"\
-                f"📈 Процент завершения: {stats['completion_rate']:.1f}%\n"\
-                f"📅 Сегодня заявок: {stats['today_orders']}\n"\
-                f"💵 Сегодня оборот: {stats['today_volume']:,.0f} ₽\n\n"\
-                f"🔧 Состояние сервиса PSPWare: {service_status}"\
+                f"👥 Пользователей: {stats['total_users']}\n"
+                f"📋 Заявок: {stats['total_orders']}\n"
+                f"✅ Завершено: {stats['completed_orders']}\n"
+                f"💰 Оборот: {stats['total_volume']:,.0f} ₽\n\n"
+                f"📈 Процент завершения: {stats['completion_rate']:.1f}%\n"
+                f"📅 Сегодня заявок: {stats['today_orders']}\n"
+                f"💵 Сегодня оборот: {stats['today_volume']:,.0f} ₽\n\n"
+                f"🔧 Состояние сервиса PSPWare: {service_status}"
             )
             builder = InlineKeyboardBuilder()
             builder.row(
@@ -503,9 +503,9 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             
             text = (
                 f"⚙️ <b>Настройки системы</b>\n\n"
-                f"💸 Комиссия сервиса: {commission_percentage}%\n"\
-                f"🤖 Капча: {status_text}\n"\
-                f"💰 Лимиты: {min_amount:,} - {max_amount:,} ₽"\
+                f"💸 Комиссия сервиса: {commission_percentage}%\n"
+                f"🤖 Капча: {status_text}\n"
+                f"💰 Лимиты: {min_amount:,} - {max_amount:,} ₽"
             )
             await callback.message.edit_text(text, reply_markup=create_settings_panel().as_markup(), parse_mode="HTML")
 
@@ -521,9 +521,9 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 
                 text = (
                     f"👥 <b>Управление пользователями</b>\n\n"
-                    f"📊 Всего: {total_users}\n"\
-                    f"⚡ Активных: {active_users}\n"\
-                    f"🚫 Заблокированных: {blocked_users}"\
+                    f"📊 Всего: {total_users}\n"
+                    f"⚡ Активных: {active_users}\n"
+                    f"🚫 Заблокированных: {blocked_users}"
                 )
             except:
                 text = "👥 <b>Управление пользователями</b>\n\n❌ Ошибка загрузки статистики"
@@ -542,9 +542,9 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             
             text = (
                 f"🔧 <b>Персонал системы</b>\n\n"
-                f"👑 Администраторов: {len(admin_users) + 1}\n"\
-                f"🔧 Операторов (БД): {len(operator_users)}\n"\
-                f"🔧 Операторов (файл): {len(operator_file_list)}"\
+                f"👑 Администраторов: {len(admin_users) + 1}\n"
+                f"🔧 Операторов (БД): {len(operator_users)}\n"
+                f"🔧 Операторов (файл): {len(operator_file_list)}"
             )
             await callback.message.edit_text(text, reply_markup=create_staff_panel().as_markup(), parse_mode="HTML")
 
@@ -552,10 +552,10 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             stats = await db.get_statistics()
             text = (
                 f"📋 <b>Управление заявками</b>\n\n"
-                f"📊 Всего: {stats['total_orders']}\n"\
-                f"✅ Завершено: {stats['completed_orders']}\n"\
-                f"⏳ В ожидании: {stats['total_orders'] - stats['completed_orders']}\n"\
-                f"💰 Общий оборот: {stats['total_volume']:,.0f} ₽"\
+                f"📊 Всего: {stats['total_orders']}\n"
+                f"✅ Завершено: {stats['completed_orders']}\n"
+                f"⏳ В ожидании: {stats['total_orders'] - stats['completed_orders']}\n"
+                f"💰 Общий оборот: {stats['total_volume']:,.0f} ₽"
             )
             await callback.message.edit_text(text, reply_markup=create_orders_panel().as_markup(), parse_mode="HTML")
 
@@ -574,27 +574,27 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 mem_info = process.memory_info()
                 cpu_usage_proc = process.cpu_percent(interval=0.5)
 
-                \
+                
                 cpu_usage_sys = psutil.cpu_percent(interval=0.5)
                 ram = psutil.virtual_memory()
                 uptime_seconds = (datetime.now() - datetime.fromtimestamp(psutil.boot_time())).total_seconds()
                 uptime = str(timedelta(seconds=int(uptime_seconds)))
 
-                \
+                
                 db_size = 0
                 if hasattr(db, "db_path") and db.db_path and os.path.exists(db.db_path):
                     db_size = os.path.getsize(db.db_path)
 
                 text = (
                     f"📊 <b>Системная информация</b>\n\n"
-                    f"🌐 ОС: {platform.system()} {platform.release()} ({platform.machine()})\n"\
-                    f"🕐 Аптайм системы: {uptime}\n\n"\
-                    f"🖥 CPU процесса: {cpu_usage_proc:.1f}%\n"\
-                    f"🖥 CPU системы: {cpu_usage_sys:.1f}%\n"\
-                    f"💾 Память процесса: {format_size(mem_info.rss)}\n"\
-                    f"💾 Используется ОЗУ: {ram.percent}% из {format_size(ram.total)}\n"\
-                    f"📂 Размер БД: {format_size(db_size)}\n\n"\
-                    f"🕐 Время сервера: {datetime.now().strftime('%d.%m.%Y %H:%M:%S')}\n"\
+                    f"🌐 ОС: {platform.system()} {platform.release()} ({platform.machine()})\n"
+                    f"🕐 Аптайм системы: {uptime}\n\n"
+                    f"🖥 CPU процесса: {cpu_usage_proc:.1f}%\n"
+                    f"🖥 CPU системы: {cpu_usage_sys:.1f}%\n"
+                    f"💾 Память процесса: {format_size(mem_info.rss)}\n"
+                    f"💾 Используется ОЗУ: {ram.percent}% из {format_size(ram.total)}\n"
+                    f"📂 Размер БД: {format_size(db_size)}\n\n"
+                    f"🕐 Время сервера: {datetime.now().strftime('%d.%m.%Y %H:%M:%S')}\n"
                 )
 
                 builder = InlineKeyboardBuilder()
@@ -673,13 +673,13 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             try:
                 text = "📋 <b>Список зеркал:</b>\n\n"
                 
-                \
+                
                 text += f"🔹 <b>main (основной)</b>:\n"
                 text += f"  📱 @{config.BOT_USERNAME}\n"
                 text += f"  🏢 {config.EXCHANGE_NAME}\n"
                 text += f"  👨‍💼 {config.SUPPORT_MANAGER}\n\n"
                 
-                \
+                
                 if config.MIRROR_BOT_TOKENS:
                     for i, token in enumerate(config.MIRROR_BOT_TOKENS):
                         mirror_id = f"mirror_{i+1}"
@@ -701,26 +701,26 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
         elif action == "mirrors_create":
             text = (
                 "🔧 <b>Создаём новое зеркало</b>\n\n"
-                "1️⃣ Создай нового бота через @BotFather.\n"\
-                "   Отправь команду <code>/newbot</code> и следуй инструкциям.\n\n"\
-                "2️⃣ Скопируй токен бота.\n\n"\
-                "3️⃣ Добавь его в переменные окружения:\n"\
-                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,новый_токен</code>\n\n"\
-                "4️⃣ В файле <code>.env</code> пропиши данные зеркала:\n"\
-                "   <code>MIRROR_X_BOT_USERNAME=имя_бота</code>\n"\
-                "   <code>MIRROR_X_EXCHANGE_NAME=название</code>\n"\
-                "   <code>MIRROR_X_SUPPORT_MANAGER=@поддержка</code>\n"\
-                "   <code>MIRROR_X_NEWS_CHANNEL=@канал</code>\n"\
-                "   X — это номер зеркала (например, 3).\n\n"\
-                "5️⃣ Перезапусти бота.\n\n"\
-                "📝 Пример для зеркала №3:\n"\
-                "   <code>MIRROR_3_BOT_USERNAME=MyExchanger3_bot</code>\n"\
-                "   <code>MIRROR_3_EXCHANGE_NAME=My Exchanger 3</code>\n"\
-                "   <code>MIRROR_3_SUPPORT_MANAGER=@support3</code>\n"\
-                "   <code>MIRROR_3_NEWS_CHANNEL=@news3</code>\n"\
+                "1️⃣ Создай нового бота через @BotFather.\n"
+                "   Отправь команду <code>/newbot</code> и следуй инструкциям.\n\n"
+                "2️⃣ Скопируй токен бота.\n\n"
+                "3️⃣ Добавь его в переменные окружения:\n"
+                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,новый_токен</code>\n\n"
+                "4️⃣ В файле <code>.env</code> пропиши данные зеркала:\n"
+                "   <code>MIRROR_X_BOT_USERNAME=имя_бота</code>\n"
+                "   <code>MIRROR_X_EXCHANGE_NAME=название</code>\n"
+                "   <code>MIRROR_X_SUPPORT_MANAGER=@поддержка</code>\n"
+                "   <code>MIRROR_X_NEWS_CHANNEL=@канал</code>\n"
+                "   X — это номер зеркала (например, 3).\n\n"
+                "5️⃣ Перезапусти бота.\n\n"
+                "📝 Пример для зеркала №3:\n"
+                "   <code>MIRROR_3_BOT_USERNAME=MyExchanger3_bot</code>\n"
+                "   <code>MIRROR_3_EXCHANGE_NAME=My Exchanger 3</code>\n"
+                "   <code>MIRROR_3_SUPPORT_MANAGER=@support3</code>\n"
+                "   <code>MIRROR_3_NEWS_CHANNEL=@news3</code>\n"
             )
 
-            \
+            
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="📋 Проверить конфигурацию", callback_data="admin_mirrors_check"))
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
@@ -730,12 +730,12 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
             try:
                 text = "🔍 <b>Проверка конфигурации зеркал:</b>\n\n"
                 
-                \
+                
                 text += f"🔹 <b>Основной бот:</b>\n"
                 text += f"  {'✅' if config.BOT_TOKEN else '❌'} Токен: {'Настроен' if config.BOT_TOKEN else 'Не настроен'}\n"
                 text += f"  ✅ Username: {config.BOT_USERNAME}\n\n"
                 
-                \
+                
                 if config.MIRROR_BOT_TOKENS:
                     text += f"🪞 <b>Зеркальные боты:</b> {len(config.MIRROR_BOT_TOKENS)}\n\n"
                     
@@ -763,26 +763,26 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
         elif action == "mirrors_settings":
             text = (
                 "⚙️ <b>Настройки зеркал</b>\n\n"
-                "Используй эти переменные в файле <code>.env</code>, чтобы настроить зеркало X.\n\n"\
-\
-                "🔧 <b>Основные параметры:</b>\n"\
-                "• <code>MIRROR_X_BOT_USERNAME</code> — имя бота\n"\
-                "• <code>MIRROR_X_EXCHANGE_NAME</code> — название обменника\n"\
-                "• <code>MIRROR_X_SUPPORT_CHAT</code> — чат поддержки\n"\
-                "• <code>MIRROR_X_SUPPORT_MANAGER</code> — менеджер поддержки\n"\
-                "• <code>MIRROR_X_NEWS_CHANNEL</code> — канал новостей\n"\
-                "• <code>MIRROR_X_REVIEWS_CHANNEL</code> — канал отзывов\n\n"\
-\
-                "🆔 <b>ID чатов:</b>\n"\
-                "• <code>MIRROR_X_ADMIN_USER_ID</code> — ID администратора\n"\
-                "• <code>MIRROR_X_ADMIN_CHAT_ID</code> — ID админ-чата\n"\
-                "• <code>MIRROR_X_OPERATOR_CHAT_ID</code> — ID чата операторов\n"\
-                "• <code>MIRROR_X_REVIEWS_CHANNEL_ID</code> — ID канала отзывов\n\n"\
-\
-                "💡 Если параметр не указан — используется значение из основного бота.\n"\
+                "Используй эти переменные в файле <code>.env</code>, чтобы настроить зеркало X.\n\n"
+
+                "🔧 <b>Основные параметры:</b>\n"
+                "• <code>MIRROR_X_BOT_USERNAME</code> — имя бота\n"
+                "• <code>MIRROR_X_EXCHANGE_NAME</code> — название обменника\n"
+                "• <code>MIRROR_X_SUPPORT_CHAT</code> — чат поддержки\n"
+                "• <code>MIRROR_X_SUPPORT_MANAGER</code> — менеджер поддержки\n"
+                "• <code>MIRROR_X_NEWS_CHANNEL</code> — канал новостей\n"
+                "• <code>MIRROR_X_REVIEWS_CHANNEL</code> — канал отзывов\n\n"
+
+                "🆔 <b>ID чатов:</b>\n"
+                "• <code>MIRROR_X_ADMIN_USER_ID</code> — ID администратора\n"
+                "• <code>MIRROR_X_ADMIN_CHAT_ID</code> — ID админ-чата\n"
+                "• <code>MIRROR_X_OPERATOR_CHAT_ID</code> — ID чата операторов\n"
+                "• <code>MIRROR_X_REVIEWS_CHANNEL_ID</code> — ID канала отзывов\n\n"
+
+                "💡 Если параметр не указан — используется значение из основного бота.\n"
             )
 
-            \
+            
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
@@ -790,17 +790,17 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
         elif action == "mirrors_update":
             text = (
                 "🔄 <b>Обновление токенов зеркал</b>\n\n"
-                "1️⃣ Останови бота.\n"\
-                "2️⃣ В файле <code>.env</code> измени строку:\n"\
-                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,токен3</code>\n"\
-                "   (пиши токены через запятую, без пробелов)\n"\
-                "3️⃣ Запусти бота снова.\n\n"\
-                "⚠️ <b>Важно:</b>\n"\
-                "• Разделяй токены только запятой\n"\
-                "• Без пробелов между токенами\n"\
-                "• Каждый токен должен быть рабочим\n"\
-                "• После изменения нужен перезапуск\n\n"\
-                f"📝 <b>Текущие токены:</b> {len(config.MIRROR_BOT_TOKENS) if config.MIRROR_BOT_TOKENS else 0}\n"\
+                "1️⃣ Останови бота.\n"
+                "2️⃣ В файле <code>.env</code> измени строку:\n"
+                "   <code>MIRROR_BOT_TOKENS=токен1,токен2,токен3</code>\n"
+                "   (пиши токены через запятую, без пробелов)\n"
+                "3️⃣ Запусти бота снова.\n\n"
+                "⚠️ <b>Важно:</b>\n"
+                "• Разделяй токены только запятой\n"
+                "• Без пробелов между токенами\n"
+                "• Каждый токен должен быть рабочим\n"
+                "• После изменения нужен перезапуск\n\n"
+                f"📝 <b>Текущие токены:</b> {len(config.MIRROR_BOT_TOKENS) if config.MIRROR_BOT_TOKENS else 0}\n"
             )
             
             builder = InlineKeyboardBuilder()
@@ -810,21 +810,21 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
         elif action == "mirrors_delete":
             text = (
                 "🗑️ <b>Удаление зеркала</b>\n\n"
-                "1️⃣ Останови всех ботов.\n"\
-                "2️⃣ Удали токен зеркала из <code>MIRROR_BOT_TOKENS</code> в .env.\n"\
-                "3️⃣ Убери параметры зеркала:\n"\
-                "   - <code>MIRROR_X_BOT_USERNAME</code>\n"\
-                "   - <code>MIRROR_X_EXCHANGE_NAME</code>\n"\
-                "   - и другие связанные переменные\n"\
-                "4️⃣ Запусти бота заново.\n\n"\
-                "⚠️ <b>Важно:</b>\n"\
-                "• Данные пользователей этого зеркала сохранятся в базе.\n"\
-                "• Все заявки тоже сохранятся.\n"\
-                "• Перед удалением желательно сделать бэкап.\n\n"\
-                "❗ <i>После удаления вернуть зеркало можно только через повторную настройку.</i>\n"\
+                "1️⃣ Останови всех ботов.\n"
+                "2️⃣ Удали токен зеркала из <code>MIRROR_BOT_TOKENS</code> в .env.\n"
+                "3️⃣ Убери параметры зеркала:\n"
+                "   - <code>MIRROR_X_BOT_USERNAME</code>\n"
+                "   - <code>MIRROR_X_EXCHANGE_NAME</code>\n"
+                "   - и другие связанные переменные\n"
+                "4️⃣ Запусти бота заново.\n\n"
+                "⚠️ <b>Важно:</b>\n"
+                "• Данные пользователей этого зеркала сохранятся в базе.\n"
+                "• Все заявки тоже сохранятся.\n"
+                "• Перед удалением желательно сделать бэкап.\n\n"
+                "❗ <i>После удаления вернуть зеркало можно только через повторную настройку.</i>\n"
             )
 
-            \
+            
             builder = InlineKeyboardBuilder()
             builder.row(InlineKeyboardButton(text="◀️ Назад", callback_data="admin_mirrors_menu"))
             await callback.message.edit_text(text, reply_markup=builder.as_markup(), parse_mode="HTML")
@@ -991,7 +991,7 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 
                 await callback.message.edit_text(
                     f"📤 <b>Рассылка активным пользователям</b>\n\n"
-                    f"Найдено активных пользователей: {len(users)}\n\n"\
+                    f"Найдено активных пользователей: {len(users)}\n\n"
                     "Отправьте сообщение для рассылки:",
                     parse_mode="HTML"
                 )
@@ -1009,7 +1009,7 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 
                 await callback.message.edit_text(
                     f"📤 <b>Рассылка новым пользователям</b>\n\n"
-                    f"Найдено новых пользователей (за неделю): {len(users)}\n\n"\
+                    f"Найдено новых пользователей (за неделю): {len(users)}\n\n"
                     "Отправьте сообщение для рассылки:",
                     parse_mode="HTML"
                 )
@@ -1026,7 +1026,7 @@ async def admin_callback_handler(callback: CallbackQuery, state: FSMContext):
                 
                 await callback.message.edit_text(
                     f"📤 <b>Рассылка пользователям с операциями</b>\n\n"
-                    f"Найдено пользователей с операциями: {len(users)}\n\n"\
+                    f"Найдено пользователей с операциями: {len(users)}\n\n"
                     "Отправьте сообщение для рассылки:",
                     parse_mode="HTML"
                 )
@@ -1070,8 +1070,8 @@ async def handle_settings_and_management(callback: CallbackQuery, state: FSMCont
         
         await callback.message.edit_text(
             f"💸 <b>Изменение комиссии сервиса</b>\n\n"
-            f"📊 Текущая комиссия: <b>{commission_percentage}%</b>\n\n"\
-            f"Введите новую комиссию (от 0 до 50):\n"\
+            f"📊 Текущая комиссия: <b>{commission_percentage}%</b>\n\n"
+            f"Введите новую комиссию (от 0 до 50):\n"
             f"Например: 16.67",
             reply_markup=builder.as_markup(),
             parse_mode="HTML"
@@ -1090,8 +1090,8 @@ async def handle_settings_and_management(callback: CallbackQuery, state: FSMCont
         
         await callback.message.edit_text(
             f"💰 <b>Изменение лимитов</b>\n\n"
-            f"📊 Текущие лимиты: <b>{min_amount:,} - {max_amount:,} ₽</b>\n\n"\
-            f"Введите новые лимиты через пробел:\n"\
+            f"📊 Текущие лимиты: <b>{min_amount:,} - {max_amount:,} ₽</b>\n\n"
+            f"Введите новые лимиты через пробел:\n"
             f"Например: 1000 500000",
             reply_markup=builder.as_markup(),
             parse_mode="HTML"
@@ -1109,7 +1109,7 @@ async def handle_settings_and_management(callback: CallbackQuery, state: FSMCont
         
         await callback.message.edit_text(
             f"📝 <b>Изменение приветственного сообщения</b>\n\n"
-            f"📊 Текущее сообщение:\n<i>{current_welcome[:200]}{'...' if len(current_welcome) > 200 else ''}</i>\n\n"\
+            f"📊 Текущее сообщение:\n<i>{current_welcome[:200]}{'...' if len(current_welcome) > 200 else ''}</i>\n\n"
             f"Отправьте новое приветственное сообщение:",
             reply_markup=builder.as_markup(),
             parse_mode="HTML"
@@ -1152,7 +1152,7 @@ async def handle_settings_and_management(callback: CallbackQuery, state: FSMCont
         
         await callback.message.edit_text(
             f"📤 <b>Рассылка всем пользователям</b>\n\n"
-            f"Найдено пользователей: {len(users)}\n\n"\
+            f"Найдено пользователей: {len(users)}\n\n"
             f"Отправьте сообщение для рассылки:",
             reply_markup=builder.as_markup(),
             parse_mode="HTML"
@@ -1228,12 +1228,12 @@ async def show_detailed_user_stats(callback: CallbackQuery):
         
         text = (
             f"📊 <b>Детальная статистика пользователей</b>\n\n"
-            f"👥 Всего пользователей: {total_users}\n"\
-            f"🚫 Заблокированных: {blocked_users}\n"\
-            f"⚡ Активных: {active_users}\n"\
-            f"📅 Регистраций сегодня: {today_registrations}\n"\
-            f"📅 Регистраций за неделю: {week_registrations}\n"\
-            f"📈 Процент активности: {activity_rate:.1f}%"\
+            f"👥 Всего пользователей: {total_users}\n"
+            f"🚫 Заблокированных: {blocked_users}\n"
+            f"⚡ Активных: {active_users}\n"
+            f"📅 Регистраций сегодня: {today_registrations}\n"
+            f"📅 Регистраций за неделю: {week_registrations}\n"
+            f"📈 Процент активности: {activity_rate:.1f}%"
         )
         
         builder = InlineKeyboardBuilder()
@@ -1351,22 +1351,22 @@ async def process_order_search(message: Message, state: FSMContext):
             "problem": "⚠️ Проблемная"
         }.get(status, status)
         
-        \
+        
         commission = total_amount - amount_rub
         
         text = (
             f"🔍 <b>Заявка #{display_id}</b>\n\n"
-            f"🆔 Внутренний ID: {internal_id}\n"\
-            f"👤 Пользователь: {user_id}\n"\
-            f"💰 Сумма: {amount_rub:,.0f} ₽\n"\
-            f"₿ Bitcoin: {amount_btc:.8f} BTC\n"\
-            f"💸 К оплате: {total_amount:,.0f} ₽\n"\
-            f"🏛 Комиссия сервиса: {commission:,.0f} ₽\n"\
-            f"💱 Курс: {rate:,.0f} ₽\n"\
-            f"📱 Тип оплаты: {payment_type or 'Не указан'}\n"\
-            f"📊 Статус: {status_text}\n"\
-            f"📅 Создана: {created_at}\n\n"\
-            f"₿ <b>Bitcoin адрес:</b>\n<code>{btc_address}</code>"\
+            f"🆔 Внутренний ID: {internal_id}\n"
+            f"👤 Пользователь: {user_id}\n"
+            f"💰 Сумма: {amount_rub:,.0f} ₽\n"
+            f"₿ Bitcoin: {amount_btc:.8f} BTC\n"
+            f"💸 К оплате: {total_amount:,.0f} ₽\n"
+            f"🏛 Комиссия сервиса: {commission:,.0f} ₽\n"
+            f"💱 Курс: {rate:,.0f} ₽\n"
+            f"📱 Тип оплаты: {payment_type or 'Не указан'}\n"
+            f"📊 Статус: {status_text}\n"
+            f"📅 Создана: {created_at}\n\n"
+            f"₿ <b>Bitcoin адрес:</b>\n<code>{btc_address}</code>"
         )
         
         await message.answer(text, parse_mode="HTML")
@@ -1434,14 +1434,14 @@ async def show_user_info(message: Message, user_id: int):
     orders = await db.get_user_orders(user_id, 5)
     text = (
         f"👤 <b>Информация о пользователе</b>\n\n"
-        f"🆔 ID: <code>{user['user_id']}</code>\n"\
-        f"👨‍💼 Имя: {user['first_name'] or 'Не указано'}\n"\
-        f"📝 Username: @{user['username'] or 'Не указан'}\n"\
-        f"📅 Регистрация: {user['registration_date'][:16]}\n"\
-        f"🚫 Заблокирован: {'Да' if user.get('is_blocked') else 'Нет'}\n"\
-        f"📊 Операций: {user.get('total_operations', 0)}\n"\
-        f"💰 Общая сумма: {user.get('total_amount', 0):,.0f} ₽\n"\
-        f"👥 Рефералов: {user.get('referral_count', 0)}"\
+        f"🆔 ID: <code>{user['user_id']}</code>\n"
+        f"👨‍💼 Имя: {user['first_name'] or 'Не указано'}\n"
+        f"📝 Username: @{user['username'] or 'Не указан'}\n"
+        f"📅 Регистрация: {user['registration_date'][:16]}\n"
+        f"🚫 Заблокирован: {'Да' if user.get('is_blocked') else 'Нет'}\n"
+        f"📊 Операций: {user.get('total_operations', 0)}\n"
+        f"💰 Общая сумма: {user.get('total_amount', 0):,.0f} ₽\n"
+        f"👥 Рефералов: {user.get('referral_count', 0)}"
     )
     
     status_emoji_map = {
@@ -1520,7 +1520,7 @@ async def handle_user_management(message: Message, user_id: int, action: str):
                 await message.bot.send_message(
                     user_id,
                     f"🎉 Вам выданы права оператора!\n"
-                    f"Операторский чат: {config.OPERATOR_CHAT_ID}"\
+                    f"Операторский чат: {config.OPERATOR_CHAT_ID}"
                 )
             except:
                 pass
@@ -1548,9 +1548,9 @@ async def process_user_message(message: Message, state: FSMContext):
     try:
         full_message = (
             f"📨 <b>Сообщение от администрации</b>\n\n"
-            f"{message.text}\n\n"\
-            f"━━━━━━━━━━━━━━━━━━━━\n"\
-            f"📞 Поддержка: {config.SUPPORT_MANAGER}"\
+            f"{message.text}\n\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"📞 Поддержка: {config.SUPPORT_MANAGER}"
         )
         
         await message.bot.send_message(user_id, full_message, parse_mode="HTML")
@@ -1585,7 +1585,7 @@ async def process_block_reason(message: Message, state: FSMContext):
             await message.bot.send_message(
                 user_id,
                 f"🚫 <b>Ваш аккаунт заблокирован</b>\n\n"
-                f"📝 Причина: {reason}\n"\
+                f"📝 Причина: {reason}\n"
                 f"📞 Для разблокировки обратитесь в поддержку: {config.SUPPORT_MANAGER}",
                 parse_mode="HTML"
             )
@@ -1626,7 +1626,7 @@ async def process_broadcast_message(message: Message, state: FSMContext):
         
         await message.answer(
             f"✅ <b>Рассылка завершена!</b>\n\n"
-            f"📤 Отправлено: {sent_count}\n"\
+            f"📤 Отправлено: {sent_count}\n"
             f"❌ Ошибок: {failed_count}",
             parse_mode="HTML"
         )
@@ -1652,8 +1652,8 @@ async def find_user_by_username(username: str) -> int:
 import html
 from aiogram.types import FSInputFile
 
-\
-\
+
+
 @router.message(Command("get_log"))
 async def get_log_command(message: Message):
     if not await is_admin_extended(message.from_user.id):
@@ -1681,7 +1681,7 @@ async def get_log_command(message: Message):
         last_modified = datetime.fromtimestamp(os.path.getmtime(filename)).strftime('%d.%m.%Y %H:%M')
         size_mb = file_size / 1024 / 1024
 
-        \
+        
         with open(filename, encoding='utf-8', errors='replace') as f:
             content = f.read()
 
@@ -1692,17 +1692,17 @@ async def get_log_command(message: Message):
 
         preview = html.escape(preview)
 
-        \
+        
         head = (
             f"📋 <b>Лог-файл: {html.escape(filename)}</b>\n"
-            f"🗂️ Размер: {size_mb:.2f} MB\n"\
-            f"🕑 Обновлён: {last_modified}\n"\
+            f"🗂️ Размер: {size_mb:.2f} MB\n"
+            f"🕑 Обновлён: {last_modified}\n"
         )
 
         if file_size > 4096:                                             
             await message.answer(
                 f"{head}\n"
-                f"Показаны последние строки:\n\n"\
+                f"Показаны последние строки:\n\n"
                 f"<code>{preview}</code>\n\n",
                 parse_mode="HTML"
             )
@@ -1737,12 +1737,12 @@ async def review_moderation(callback: CallbackQuery):
             if review_data:
                 channel_text = (
                     f"⭐️ <b>Отзыв о работе {config.EXCHANGE_NAME}</b>\n\n"
-                    f"📅 {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"\
-                    f"💬 <b>Текст отзыва:</b>\n"\
-                    f"{review_data['text']}\n\n"\
-                    f"━━━━━━━━━━━━━━━━━━━━\n"\
-                    f"💰 {config.EXCHANGE_NAME} - надежный обмен криптовалют\n"\
-                    f"🤖 @{config.BOT_USERNAME}"\
+                    f"📅 {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
+                    f"💬 <b>Текст отзыва:</b>\n"
+                    f"{review_data['text']}\n\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"💰 {config.EXCHANGE_NAME} - надежный обмен криптовалют\n"
+                    f"🤖 @{config.BOT_USERNAME}"
                 )
                 
                 try:
@@ -1823,7 +1823,7 @@ async def detailed_turnover_stats(callback: CallbackQuery):
     text += f"💰 Оборот: {current_stats['total_amount']:,.0f} ₽\n"
     text += f"📋 Заказов: {current_stats['total_orders']}\n\n"
     
-    \
+    
     today = await db.get_turnover_by_period(1, current_mirror)
     week = await db.get_turnover_by_period(7, current_mirror)
     month = await db.get_turnover_by_period(30, current_mirror)

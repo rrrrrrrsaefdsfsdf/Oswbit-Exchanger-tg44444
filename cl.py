@@ -17,7 +17,6 @@ def remove_comments_and_docstrings(source):
     output_tokens = []
     prev_toktype = tokenize.INDENT
     last_lineno = -1
-    last_col = 0
     blank_lines = 0
 
     try:
@@ -47,25 +46,35 @@ def remove_comments_and_docstrings(source):
                     output_tokens.extend([tokenize.TokenInfo(tokenize.NEWLINE, '\n', (start_line, 0), (start_line, 0), '\n')] * (3 - min(3, blank_lines)))
                 blank_lines = 0
 
-            output_tokens.append(tok)
-
+        output_tokens.append(tok)
         prev_toktype = token_type
         last_lineno = end_line
-        last_col = end_col
 
-    new_code = tokenize.untokenize(output_tokens).decode('utf-8')
-    return new_code
+                                                  
+    try:
+        new_code = tokenize.untokenize(output_tokens).decode('utf-8')
+                                                     
+        new_code = new_code.replace('\\\n', '\n')
+                                              
+        lines = new_code.split('\n')
+        clean_lines = []
+        for line in lines:
+            clean_lines.append(line.rstrip('\\'))
+        new_code = '\n'.join(clean_lines)
+        return new_code
+    except Exception:
+        return source
 
 def remove_comments_from_file(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             source = f.read()
-
+        
         new_source = remove_comments_and_docstrings(source)
-
+        
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(new_source)
-
+        
         print(f'Комментарии и докстринги удалены из: {file_path}')
     except Exception as e:
         print(f'Ошибка при обработке файла {file_path}: {e}')
@@ -73,7 +82,6 @@ def remove_comments_from_file(file_path):
 def remove_comments_from_project(root_dir):
     for subdir, dirs, files in os.walk(root_dir):
         dirs[:] = [d for d in dirs if d not in ['.venv', '__pycache__']]
-
         for file in files:
             if file.endswith('.py'):
                 remove_comments_from_file(os.path.join(subdir, file))

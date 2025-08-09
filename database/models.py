@@ -32,7 +32,7 @@ class Database:
 
 
     async def get_order_remaining_time(self, order_id: int) -> Optional[Dict]:
-        """Получает оставшееся время до удаления заявки"""
+                                                          
         order = await self.get_order(order_id)
         if not order or order['status'] != 'waiting':
             return None
@@ -43,7 +43,7 @@ class Database:
             current_time = datetime.now()
             elapsed_time = current_time - created_at
             
-            deletion_time = timedelta(minutes=30)  # 30 минут как в schedule_order_deletion
+            deletion_time = timedelta(minutes=30)                                          
             remaining_time = deletion_time - elapsed_time
             
             if remaining_time.total_seconds() > 0:
@@ -162,7 +162,7 @@ class Database:
                 )
             ''')
 
-            \
+            
             await db.execute('''
                 CREATE TABLE IF NOT EXISTS bot_configs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -664,7 +664,7 @@ class Database:
                 return [dict(row) for row in rows]
 
 async def get_config_value(self, mirror_id: str, key: str, default=None):
-    """Получение значения конфигурации из БД"""
+                                               
     try:
         async with aiosqlite.connect(self.db_path) as db:
             async with db.execute(
@@ -678,7 +678,7 @@ async def get_config_value(self, mirror_id: str, key: str, default=None):
         return default
 
 async def save_config_value(self, mirror_id: str, key: str, value: str):
-    """Сохранение значения конфигурации в БД"""
+                                               
     try:
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute('''

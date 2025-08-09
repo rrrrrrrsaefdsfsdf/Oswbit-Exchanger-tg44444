@@ -1,4 +1,67 @@
-/.env
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Виртуальные окружения Python
 /.venv
+/venv
+/env
+/.virtualenv
+
+# База данных
 /oswaldo_exchanger.db
-/__pycache__
+*.db
+*.sqlite
+*.sqlite3
+
+# Кэш Python
+/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Логи
+*.log
+logs/
+
+# Временные файлы
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Файлы сборки и дистрибутивы
+build/
+dist/
+*.egg-info/
+
+# Конфигурационные файлы
+config.local.*
+settings.local.*
+
+# Резервные копии
+*.bak
+*.backup
+
+# Тестовые файлы
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Системные файлы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
